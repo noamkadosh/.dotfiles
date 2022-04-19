@@ -1,0 +1,9 @@
+[alias]
+	last = log -1 HEAD
+[core]
+	editor = code --wait
+[user]
+	name = noam
+	email = noamkadosh91@gmail.com
+[init]
+	defaultBranch = main
