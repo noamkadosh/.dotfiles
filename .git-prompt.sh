@@ -436,7 +436,7 @@ __git_ps1 ()
 	if [ -z "${GIT_PS1_COMPRESSSPARSESTATE-}" ] &&
 	   [ -z "${GIT_PS1_OMITSPARSESTATE-}" ] &&
 	   [ "$(git config --bool core.sparseCheckout)" = "true" ]; then
-		sparse="|SPARSE"
+		sparse=" SPARSE"
 	fi
 
 	local r=""
@@ -447,25 +447,25 @@ __git_ps1 ()
 		__git_eread "$g/rebase-merge/head-name" b
 		__git_eread "$g/rebase-merge/msgnum" step
 		__git_eread "$g/rebase-merge/end" total
-		r="|REBASE"
+		r=" REBASING"
 	else
 		if [ -d "$g/rebase-apply" ]; then
 			__git_eread "$g/rebase-apply/next" step
 			__git_eread "$g/rebase-apply/last" total
 			if [ -f "$g/rebase-apply/rebasing" ]; then
 				__git_eread "$g/rebase-apply/head-name" b
-				r="|REBASE"
+				r=" REBASING"
 			elif [ -f "$g/rebase-apply/applying" ]; then
-				r="|AM"
+				r=" AM"
 			else
-				r="|AM/REBASE"
+				r=" AM/REBASING"
 			fi
 		elif [ -f "$g/MERGE_HEAD" ]; then
-			r="|MERGING"
+			r=" MERGING"
 		elif __git_sequencer_status; then
 			:
 		elif [ -f "$g/BISECT_LOG" ]; then
-			r="|BISECTING"
+			r=" BISECTING"
 		fi
 
 		if [ -n "$b" ]; then
