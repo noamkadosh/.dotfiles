@@ -306,21 +306,21 @@ __git_sequencer_status ()
 	local todo
 	if test -f "$g/CHERRY_PICK_HEAD"
 	then
-		r="|CHERRY-PICKING"
+		r=" CHERRY-PICKING"
 		return 0;
 	elif test -f "$g/REVERT_HEAD"
 	then
-		r="|REVERTING"
+		r=" REVERTING"
 		return 0;
 	elif __git_eread "$g/sequencer/todo" todo
 	then
 		case "$todo" in
 		p[\ \	]|pick[\ \	]*)
-			r="|CHERRY-PICKING"
+			r=" CHERRY-PICKING"
 			return 0
 		;;
 		revert[\ \	]*)
-			r="|REVERTING"
+			r=" REVERTING"
 			return 0
 		;;
 		esac
