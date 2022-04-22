@@ -234,13 +234,17 @@ alias reloadtmux='tmux source-file ~/.tmux.conf'
 alias myip='curl http://ipecho.net/plain; echo'
 alias unique='typeset -U'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
-alias lastCommit='git rev-parse HEAD | cut -c 1-8'
+alias gcplast='gcp $lastCommit'
 # gco-- <commit> <filename>
 alias gco--='gRemoveFileChangesTillCommit'
 # byebye <port>
 alias byebye='killPort'
 
 # Define personal functions
+# getLastCommit
+function saveLastCommit() {
+    lastCommit=$(git rev-parse HEAD | cut -c 1-8)
+}
 
 # gRemoveFileChangesTillCommit <commit> <filename>
 function gRemoveFileChangesTillCommit() {
