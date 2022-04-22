@@ -234,6 +234,7 @@ alias reloadtmux='tmux source-file ~/.tmux.conf'
 alias myip='curl http://ipecho.net/plain; echo'
 alias unique='typeset -U'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias lastCommit='git rev-parse HEAD | cut -c 1-8'
 # gco-- <commit> <filename>
 alias gco--='gRemoveFileChangesTillCommit'
 # byebye <port>
