@@ -236,6 +236,7 @@ alias unique='typeset -U'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 alias gcns='gc && saveLastCommit'
 alias gcplast='gcp $lastCommit'
+alias gbstop='git bisect reset HEAD'
 # gco-- <commit> <filename>
 alias gco--='gRemoveFileChangesTillCommit'
 # byebye <port>
