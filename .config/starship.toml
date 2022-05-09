@@ -64,7 +64,7 @@ disabled = false
 [cmd_duration]
 format = '''
 
-[ ╰╼\[](#969da9)[⏱ $duration](fg: #BF616A)[\]](#969da9)'''
+[ ╰╼\[](#4C566A)[⏱ $duration](fg: #BF616A)[\]](#4C566A)'''
 disabled = false
 
 # disabled
