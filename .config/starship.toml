@@ -1,0 +1,209 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = '''
+[┌─╼\[](bg: #4C566A)$time[\]](bg: #4C566A)
+[└─╼\[](bg: #4C566A)$directory[\]](bg: #4C566A)$git_branch$git_status$git_state$git_commit$cmd_duration
+$character '''
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[character]
+success_symbol = "[▶](bg: #A3BE8C)"
+error_symbol = "[▶](bg: #BF616A)"
+
+[time]
+time_format = "%H:%M"
+format = '[$time](fg:#81A1C1)'
+disabled = false
+
+[directory]
+format = '[$path](fg:#81A1C1)'
+disabled = false
+
+[git_branch]
+format = '''
+
+[ ╰╼\[](bg: #4C566A)[$branch](fg:#A3BE8C)'''
+disabled = false
+
+[git_status]
+format = '([$all_status$ahead_behind](fg: #D8DEE9))'
+conflicted = " ="
+ahead = " ⇡"
+behind = " ⇣"
+diverged = " ⇕"
+up_to_date = ""
+untracked = " ?"
+stashed = " $"
+modified = " !"
+staged = " +"
+renamed = " »"
+deleted = " x"
+disabled = false
+
+[git_state]
+format = '([$state](fg: #D8DEE9))'
+rebase = " REBASING"
+merge = " MERGING"
+revert = " REVERTING"
+cherry_pick = " CHERRY-PICKING"
+bisect = " BISECTING"
+am = " AM"
+am_or_rebase = " AM/REBASE"
+disabled = false
+
+[git_commit]
+format = '[\]](bg: #4C566A)[╾─╼\[](bg: #4C566A)[$hash](fg:#88C0D0)[\]](bg: #4C566A)'
+commit_hash_length = 7
+only_detached = false
+tag_disabled = true
+disabled = false
+
+[cmd_duration]
+format = '''
+
+[ ╰╼\[](#969da9)[⏱ $duration](fg: #BF616A)[\]](#969da9)'''
+disabled = false
+
+# disabled
+[aws]
+disabled = true
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[conda]
+disabled = true
+
+[crystal]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[golang]
+disabled = true
+
+[haskell]
+disabled = true
+
+[helm]
+disabled = true
+
+[hg_branch]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[lua]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[openstack]
+disabled = true
+
+[package]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[python]
+disabled = true
+
+[red]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[scala]
+disabled = true
+
+[spack]
+disabled = true
+
+[sudo]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[username]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[vlang]
+disabled = true
+
+[zig]
+disabled = true

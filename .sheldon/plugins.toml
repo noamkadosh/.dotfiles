@@ -1,0 +1,62 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "zsh"
+
+[plugins]
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[templates]
+defer = { value = 'zsh-defer source "{{ file }}"', each = true }
+
+[plugins.zsh-256color]
+github = "chrissicool/zsh-256color"
+apply = ["defer"]
+
+[plugins.macos]
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/macos/macos.plugin.zsh"
+apply = ["defer"]
+
+[plugins.web-search]
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/web-search/web-search.plugin.zsh"
+apply = ["defer"]
+
+[plugins.vscode]
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/vscode/vscode.plugin.zsh"
+apply = ["defer"]
+
+[plugins.git]
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/git/git.plugin.zsh"
+apply = ["defer"]
+
+[plugins.rust]
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/rust/rust.plugin.zsh"
+apply = ["defer"]
+
+[plugins.tmux]
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/tmux/tmux.plugin.zsh"
+apply = ["defer"]
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ["{{ name }}.zsh"]
+apply = ["defer"]
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+[plugins."z.lua"]
+github = "skywind3000/z.lua"
+apply = ["defer"]
