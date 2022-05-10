@@ -48,6 +48,10 @@ apply = ["defer"]
 remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/tmux/tmux.plugin.zsh"
 apply = ["defer"]
 
+[plugins.yarn]
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/yarn/yarn.plugin.zsh"
+apply = ["defer"]
+
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
