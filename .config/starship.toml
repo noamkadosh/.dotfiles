@@ -2,8 +2,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
-[┌─╼\[](bg: #4C566A)$time[\]](bg: #4C566A)
-[└─╼\[](bg: #4C566A)$directory[\]](bg: #4C566A)$git_branch$git_status$git_state$git_commit$cmd_duration
+[┌─╼\[](bg: #4C566A)$time[\]](bg: #4C566A)$cmd_duration
+[└─╼\[](bg: #4C566A)$directory[\]](bg: #4C566A)$git_branch$git_status$git_state$git_commit
 $character '''
 
 # Inserts a blank line between shell prompts
@@ -30,11 +30,11 @@ disabled = false
 
 [git_status]
 format = '([$all_status$ahead_behind](fg: #D8DEE9))'
-conflicted = " ="
+conflicted = " *"
 ahead = " ⇡"
 behind = " ⇣"
 diverged = " ⇕"
-up_to_date = ""
+up_to_date = " ="
 untracked = " ?"
 stashed = " $"
 modified = " !"
@@ -62,9 +62,7 @@ tag_disabled = true
 disabled = false
 
 [cmd_duration]
-format = '''
-
-[ ╰╼\[](#4C566A)[⏱ $duration](fg: #BF616A)[\]](#4C566A)'''
+format = '[╾─╼\[](#4C566A)[⏱ $duration](fg: #BF616A)[\]](#4C566A)'
 disabled = false
 
 # disabled
