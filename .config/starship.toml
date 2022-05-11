@@ -2,34 +2,34 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
-[┌─╼\[](bg: #4C566A)$time[\]](bg: #4C566A)$cmd_duration
-[└─╼\[](bg: #4C566A)$directory[\]](bg: #4C566A)$git_branch$git_status$git_state$git_commit
+[┌─╼\[](bg: #445566)$time[\]](bg: #445566)$cmd_duration
+[└─╼\[](bg: #445566)$directory[\]](bg: #445566)$git_branch$git_status$git_state$git_commit
 $character '''
 
 # Inserts a blank line between shell prompts
 add_newline = true
 
 [character]
-success_symbol = "[▶](bg: #A3BE8C)"
-error_symbol = "[▶](bg: #BF616A)"
+success_symbol = "[▶](bg: green)"
+error_symbol = "[▶](bg: #BB6666)"
 
 [time]
 time_format = "%H:%M"
-format = '[$time](fg:#81A1C1)'
+format = '[$time](fg:#77AACC)'
 disabled = false
 
 [directory]
-format = '[$path](fg:#81A1C1)'
+format = '[$path](fg:#77AACC)'
 disabled = false
 
 [git_branch]
 format = '''
 
-[ ╰╼\[](bg: #4C566A)[$branch](fg:#A3BE8C)'''
+[ ╰╼\[](bg: #445566)[$branch](bg: green)'''
 disabled = false
 
 [git_status]
-format = '([$all_status$ahead_behind](fg: #D8DEE9))'
+format = '([$all_status$ahead_behind](fg: #DDDDEE))'
 conflicted = " *"
 ahead = " ⇡"
 behind = " ⇣"
@@ -44,7 +44,7 @@ deleted = " x"
 disabled = false
 
 [git_state]
-format = '([$state](fg: #D8DEE9))'
+format = '([$state](fg: #DDDDEE))'
 rebase = " REBASING"
 merge = " MERGING"
 revert = " REVERTING"
@@ -55,14 +55,14 @@ am_or_rebase = " AM/REBASE"
 disabled = false
 
 [git_commit]
-format = '[\]](bg: #4C566A)[╾─╼\[](bg: #4C566A)[$hash](fg:#88C0D0)[\]](bg: #4C566A)'
+format = '[\]](bg: #445566)[╾─╼\[](bg: #445566)[$hash](fg:#77CCDD)[\]](bg: #445566)'
 commit_hash_length = 7
 only_detached = false
 tag_disabled = true
 disabled = false
 
 [cmd_duration]
-format = '[╾─╼\[](#4C566A)[⏱ $duration](fg: #BF616A)[\]](#4C566A)'
+format = '[╾─╼\[](#445566)[⏱ $duration](fg: #BB6666)[\]](#445566)'
 disabled = false
 
 # disabled
