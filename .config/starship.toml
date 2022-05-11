@@ -62,7 +62,7 @@ tag_disabled = true
 disabled = false
 
 [cmd_duration]
-format = '[╾─╼\[](#445566)[⏱ $duration](fg: #BB6666)[\]](#445566)'
+format = '[╾─╼\[](#445566)[DURATION $duration](fg: #BB6666)[\]](#445566)'
 disabled = false
 
 # disabled
