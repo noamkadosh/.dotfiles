@@ -40,6 +40,10 @@ apply = ["defer"]
 remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/git/git.plugin.zsh"
 apply = ["defer"]
 
+[plugins.git-core]
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/lib/git.zsh"
+apply = ["defer"]
+
 [plugins.rust]
 remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/rust/rust.plugin.zsh"
 apply = ["defer"]
