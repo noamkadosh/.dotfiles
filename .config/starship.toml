@@ -44,7 +44,7 @@ deleted = " x"
 disabled = false
 
 [git_state]
-format = '([$state($progress_current/$progress_total)](fg: #DDDDEE))'
+format = '([$state\($progress_current/$progress_total\)](fg: #DDDDEE))'
 rebase = " REBASING"
 merge = " MERGING"
 revert = " REVERTING"
