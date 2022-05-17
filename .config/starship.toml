@@ -4,7 +4,7 @@
 format = '''
 [┌─╼\[](bg: #445566)$time[\]](bg: #445566)$cmd_duration
 [└─╼\[](bg: #445566)$directory[\]](bg: #445566)$git_branch$git_status$git_state$git_commit
-$character '''
+$character'''
 
 # Inserts a blank line between shell prompts
 add_newline = true
