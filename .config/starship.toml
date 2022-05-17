@@ -9,6 +9,9 @@ $character '''
 # Inserts a blank line between shell prompts
 add_newline = true
 
+# Extend command timeouts
+command_timeout = 750
+
 [character]
 success_symbol = "[▶](bg: green)"
 error_symbol = "[▶](bg: #BB6666)"
