@@ -27,6 +27,9 @@ COMPLETION_WAITING_DOTS="true"
 
 eval "$(sheldon source)"
 
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOCONNECT=true
+
 export EDITOR='code'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -92,8 +95,3 @@ function killPort() {
 # prevent duplicates in $PATH and $FPATH, check why this is happening.
 unique path
 unique fpath
-
-# Start tmux on every shell session
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-    exec tmux
-fi
