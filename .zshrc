@@ -41,6 +41,7 @@ alias c='cargo'
 alias p='pnpm'
 alias px='pnpm exec'
 alias pr='pnpm run'
+alias pnx='pnpm nx --'
 alias zshconfig='$EDITOR ~/.zshrc'
 alias tmuxconfig='$EDITOR ~/.tmux.conf'
 alias hyperconfig='$EDITOR ~/.hyper.js'
@@ -91,6 +92,11 @@ function killPort() {
         echo 'Error: please provide a port number.'
     fi
 }
+
+# pnpm
+export PNPM_HOME="/Users/noam/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
 
 # prevent duplicates in $PATH and $FPATH, check why this is happening.
 unique path
