@@ -7,3 +7,5 @@
 	email = noamkadosh91@gmail.com
 [init]
 	defaultBranch = main
+[pull]
+	rebase = false
