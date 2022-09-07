@@ -20,6 +20,10 @@ github = "romkatv/zsh-defer"
 [templates]
 defer = { value = 'zsh-defer source "{{ file }}"', each = true }
 
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"
+apply = ["defer"]
+
 [plugins.zsh-256color]
 github = "chrissicool/zsh-256color"
 apply = ["defer"]
@@ -77,8 +81,8 @@ github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
 apply = ["defer"]
 
-[plugins.zsh-syntax-highlighting]
-github = "zsh-users/zsh-syntax-highlighting"
+[plugins.fast-syntax-highlighting]
+github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
 
 [plugins."z.lua"]

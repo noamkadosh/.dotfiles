@@ -27,6 +27,9 @@ COMPLETION_WAITING_DOTS="true"
 
 eval "$(sheldon source)"
 
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
 export BAT_THEME="Nord"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
