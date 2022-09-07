@@ -27,8 +27,17 @@ COMPLETION_WAITING_DOTS="true"
 
 eval "$(sheldon source)"
 
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=true
+export BAT_THEME="Nord"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pnpm
+export PNPM_HOME="/Users/noam/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOCONNECT=true
 
 export EDITOR='code'
 
@@ -41,7 +50,7 @@ alias c='cargo'
 alias p='pnpm'
 alias px='pnpm exec'
 alias pr='pnpm run'
-alias pnx='pnpm nx --'
+alias pnx='pnpm nx'
 alias zshconfig='$EDITOR ~/.zshrc'
 alias tmuxconfig='$EDITOR ~/.tmux.conf'
 alias hyperconfig='$EDITOR ~/.hyper.js'
@@ -59,6 +68,10 @@ alias dotsp='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME push'
 alias dotsa='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME add'
 alias dotss='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME status'
 alias dotsco='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout'
+alias gwt='git-fzf worktree'
+alias gwta='git-fzf worktree add'
+alias gwtli='git-fzf worktree list'
+alias gwtrm='git-fzf worktree remove'
 alias gcns='gc && saveLastCommit'
 alias gcplast='gcp $lastCommit'
 alias gbstop='git bisect reset HEAD'
@@ -92,11 +105,6 @@ function killPort() {
         echo 'Error: please provide a port number.'
     fi
 }
-
-# pnpm
-export PNPM_HOME="/Users/noam/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
 
 # prevent duplicates in $PATH and $FPATH, check why this is happening.
 unique path

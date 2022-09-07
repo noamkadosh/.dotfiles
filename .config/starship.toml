@@ -10,7 +10,7 @@ $character'''
 add_newline = true
 
 # Extend command timeouts
-command_timeout = 750
+command_timeout = 30000 # 30 seconds
 
 [character]
 success_symbol = "[▶](bg: green)"
