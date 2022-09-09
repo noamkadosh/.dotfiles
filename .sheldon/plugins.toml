@@ -40,16 +40,16 @@ apply = ["defer"]
 remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/vscode/vscode.plugin.zsh"
 apply = ["defer"]
 
+[plugins.zsh-git-fzf]
+github = "alexiszamanidis/zsh-git-fzf"
+apply = ["defer"]
+
 [plugins.git]
 remote = "https://github.com/davidde/git/raw/master/git.plugin.zsh"
 apply = ["defer"]
 
 [plugins.git-core]
 remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/lib/git.zsh"
-apply = ["defer"]
-
-[plugins.zsh-git-fzf]
-github = "alexiszamanidis/zsh-git-fzf"
 apply = ["defer"]
 
 [plugins.functions]
