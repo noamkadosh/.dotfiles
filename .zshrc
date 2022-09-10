@@ -94,12 +94,15 @@ function saveLastCommit() {
 function gitWorktreeAdd() {
     if [[ -n "$2" ]]
     then
-      local folder_name = "$2" | tr '/' '-'
+      local folder_name=$(echo "$2" | tr '/' '-')
+      local folder_path="../.git-worktrees/${folder_name}"
       if [[ "$1" == "new" ]]
       then
-          git worktree add --checkout --track -b ../.git-worktrees/"$folder_name" "$2"
+          git worktree add --track -b "$2" "${folder_path}"
+          pushd "${folder_path}" > /dev/null
       else
-          git worktree add --checkout ../.git-worktrees/"$folder_name" "$2"
+          git worktree add "${folder_path}" "$2"
+          pushd "${folder_path}" > /dev/null
       fi
     else
         echo 'Error: please provide path and a branch.'
