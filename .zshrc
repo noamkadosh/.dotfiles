@@ -70,7 +70,8 @@ alias dotsa='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME add'
 alias dotss='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME status'
 alias dotsco='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout'
 alias gwt='git worktree'
-alias gwta='git worktree add --track -b'
+alias gwta='correctGitWorktreePath existsing'
+alias gwtab='correctGitWorktreePath new'
 alias gwtls='git worktree list'
 alias gwtrm='git worktree remove'
 alias gwtrmf='git worktree remove -f'
@@ -87,6 +88,21 @@ alias byebye='killPort'
 # getLastCommit
 function saveLastCommit() {
     lastCommit=$(git rev-parse HEAD | cut -c 1-8)
+}
+
+# correctGitWorktreePath <new/existing> <path> <branch>
+function correctGitWorktreePath() {
+    if [[ -n "$2" || -n "$3" ]]
+    then
+      if [[ "$1" == "new" ]]
+      then
+          git worktree add --track -b ../"$2" "$3"
+      else
+          git worktree add ../"$2" "$3"
+      fi
+    else
+        echo 'Error: please provide path and a branch.'
+    fi
 }
 
 # gRemoveFileChangesTillCommit <commit> <filename>
