@@ -50,6 +50,11 @@ export EDITOR='code'
 # For a full list of active aliases, run `alias`.
 alias cmon='sudo $(fc -ln -1)'
 alias c='cargo'
+alias cr='cargo run'
+alias crr='cargo run --release'
+alias cb='cargo build'
+alias ct='cargo test'
+alias cta='cargo test && cargo test -- --ignored'
 alias p='pnpm'
 alias px='pnpm exec'
 alias pr='pnpm run'
@@ -128,6 +133,8 @@ function killPort() {
         echo 'Error: please provide a port number.'
     fi
 }
+
+export PATH="$HOME/.local/bin:$PATH"
 
 # prevent duplicates in $PATH and $FPATH, check why this is happening.
 unique path
