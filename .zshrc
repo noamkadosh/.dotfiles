@@ -7,40 +7,19 @@ setopt correct # this command correct typos in your commands
 autoload -U compinit # zsh completion
 compinit
 
-expand-or-complete-with-dots() {
-  echo -n "\e[31m...\e[0m"
-  zle expand-or-complete
-  zle redisplay
-}
-zle -N expand-or-complete-with-dots
-bindkey "^I" expand-or-complete-with-dots
-
 eval "$(starship init zsh)"
-
-test -r ~/.dir_colors && eval $(gdircolors ~/.dir_colors)
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
-
 eval "$(sheldon source)"
+
+export BAT_THEME="Nord"
+test -r ~/.config/.dir_colors && eval $(gdircolors ~/.config/.dir_colors)
 
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-export BAT_THEME="Nord"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # pnpm
 export PNPM_HOME="/Users/noam/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
-
-# ZSH_TMUX_AUTOSTART=true
-# ZSH_TMUX_AUTOCONNECT=true
 
 export EDITOR='code'
 
@@ -48,6 +27,7 @@ export EDITOR='code'
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+alias ls='gls --color=always -G' # use GNU ls to get dir_colors
 alias cmon='sudo $(fc -ln -1)'
 alias c='cargo'
 alias cr='cargo run'
@@ -136,6 +116,6 @@ function killPort() {
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# prevent duplicates in $PATH and $FPATH, check why this is happening.
+# prevent duplicates in $PATH and $FPATH.
 unique path
 unique fpath
