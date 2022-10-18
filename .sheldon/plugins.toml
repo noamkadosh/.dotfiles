@@ -56,6 +56,10 @@ apply = ["defer"]
 remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/rust/rust.plugin.zsh"
 apply = ["defer"]
 
+[plugins.golang]
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/golang/golang.plugin.zsh"
+apply = ["defer"]
+
 [plugins.tmux-only]
 remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/tmux/tmux.only.conf"
 apply = ["defer"]
