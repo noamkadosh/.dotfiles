@@ -13,8 +13,19 @@ eval "$(sheldon source)"
 export BAT_THEME="Nord"
 test -r ~/.config/.dir_colors && eval $(gdircolors ~/.config/.dir_colors)
 
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# fzf
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+    --color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1
+    --color=fg+:#e5e9f0,bg+:#2E3440,hl+:#e5e9f0
+    --color=info:#eacb8a,prompt:#bf6069,pointer:#a3be8b
+    --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
+# fzf end
+
+# fzf-tab
+zstyle ':fzf-tab:*' switch-group '[' ']'
+zstyle ':fzf-tab:*' continuous-trigger 'tab'
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
+# fzf-tab end
 
 # pnpm
 export PNPM_HOME="/Users/noam/Library/pnpm"
