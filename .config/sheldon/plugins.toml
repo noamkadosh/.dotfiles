@@ -42,7 +42,7 @@ remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/vscode/vscode.pl
 apply = ["defer"]
 
 [plugins.git]
-remote = "https://github.com/davidde/git/raw/master/git.plugin.zsh"
+remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/git/git.plugin.zsh"
 apply = ["defer"]
 
 [plugins.git-core]
