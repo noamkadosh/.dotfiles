@@ -22,8 +22,9 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 # fzf end
 
 # fzf-tab
-zstyle ':fzf-tab:*' switch-group '[' ']'
-zstyle ':fzf-tab:*' continuous-trigger 'tab'
+zstyle ':completion:*:descriptions' format '[%d]' # set descriptions format to enable group support
+zstyle ':fzf-tab:*' switch-group '[' ']' # switch group using `[` and `]`
+zstyle ':fzf-tab:*' continuous-trigger 'tab' # continuous trigger using tab key
 zstyle ':fzf-tab:complete:_zlua:*' query-string input
 # fzf-tab end
 
