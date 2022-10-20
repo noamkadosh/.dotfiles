@@ -1,5 +1,5 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 setopt autocd autopushd # this command will let you navigatge without cding
 setopt correct # this command correct typos in your commands
@@ -50,6 +50,7 @@ alias p='pnpm'
 alias px='pnpm exec'
 alias pr='pnpm run'
 alias pnx='pnpm nx'
+alias alacrittyconfig='$EDITOR ~/.config/alacritty/alacritty.yml'
 alias zshconfig='$EDITOR ~/.zshrc'
 alias tmuxconfig='$EDITOR ~/.tmux.conf'
 alias nvimconfig='$EDITOR ~/.config/nvim/init.vim'
@@ -124,8 +125,6 @@ function killPort() {
         echo 'Error: please provide a port number.'
     fi
 }
-
-export PATH="$HOME/.local/bin:$PATH"
 
 # prevent duplicates in $PATH and $FPATH.
 unique path

@@ -1,5 +1,13 @@
 [alias]
 	last = log -1 HEAD
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	ps = push
+	pl = pull
+	lo = log
 [core]
 	editor = code --wait
 [user]

@@ -761,15 +761,32 @@ font:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-# key_bindings:
+key_bindings:
+  - { key: Back,     mods: Super,         chars: "\x15"                  } # delete word/line
+  - { key: Left,     mods: Alt,           chars: "\x1bb"                 } # one word left
+  - { key: Right,    mods: Alt,           chars: "\x1bf"                 } # one word right
+  - { key: Left,     mods: Command,       chars: "\x1bOH"                } # Home
+  - { key: Left,     mods: Command,       chars: "\x1b[H"                } # Home
+  - { key: Right,    mods: Command,       chars: "\x1bOF"                } # End
+  - { key: Right,    mods: Command,       chars: "\x1b[F"                } # End
+
+  - { key: V,        mods: Command,       action: Paste                  }
+  - { key: C,        mods: Command,       action: Copy                   }
+  - { key: Q,        mods: Command,       action: Quit                   }
+  - { key: N,        mods: Command,       action: SpawnNewInstance       }
+  - { key: Return,   mods: Command,       action: ToggleFullscreen       }
+  - { key: Key0,     mods: Command,       action: ResetFontSize          }
+  - { key: Equals,   mods: Command,       action: IncreaseFontSize       }
+  - { key: Minus,    mods: Command,       action: DecreaseFontSize       }
+
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
   #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp   }
   #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
-  #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop    }
-  #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
+  # - { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop    }
+  # - { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
