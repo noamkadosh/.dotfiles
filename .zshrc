@@ -9,6 +9,7 @@ compinit
 
 eval "$(starship init zsh)"
 eval "$(sheldon source)"
+eval "$(zoxide init zsh)"
 
 export BAT_THEME="Nord"
 test -r ~/.config/.dir_colors && eval $(gdircolors ~/.config/.dir_colors)
@@ -25,6 +26,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 zstyle ':completion:*:descriptions' format '[%d]' # set descriptions format to enable group support
 zstyle ':fzf-tab:*' switch-group '[' ']' # switch group using `[` and `]`
 zstyle ':fzf-tab:*' continuous-trigger 'tab' # continuous trigger using tab key
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath' # preview directory's content with exa when completing cd
 zstyle ':fzf-tab:complete:_zlua:*' query-string input
 # fzf-tab end
 
@@ -35,11 +37,17 @@ export PATH="$PNPM_HOME:$PATH"
 
 export EDITOR='code'
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-alias ls='gls --color=always -G' # use GNU ls to get dir_colors
+# Built-ins aliases
+alias ls='exa'
+alias cat='bat'
+alias find='fd'
+alias ps='procs'
+alias sed='sd'
+alias du='dust'
+alias grep='ripgrep'
+alias top='ytop'
+
+# Other aliases
 alias cmon='sudo $(fc -ln -1)'
 alias c='cargo'
 alias cr='cargo run'
@@ -82,7 +90,6 @@ alias gco--='gRemoveFileChangesTillCommit'
 # byebye <port>
 alias byebye='killPort'
 
-# Define personal functions
 # getLastCommit
 function saveLastCommit() {
     lastCommit=$(git rev-parse HEAD | cut -c 1-8)
@@ -130,3 +137,6 @@ function killPort() {
 # prevent duplicates in $PATH and $FPATH.
 unique path
 unique fpath
+
+# Start Zellij on startup
+eval "$(zellij setup --generate-auto-start zsh)"
