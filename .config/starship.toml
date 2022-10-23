@@ -2,9 +2,9 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
- [┌─╼\[](bg: #445566)$time[\]](bg: #445566)$cmd_duration
- [└─╼\[](bg: #445566)$directory[\]](bg: #445566)$git_branch$git_status$git_state$git_commit
- $character'''
+[┌─╼\[](bg: #445566)$time[\]](bg: #445566)$cmd_duration
+[└─╼\[](bg: #445566)$directory[\]](bg: #445566)$git_branch$git_status$git_state$git_commit
+$character'''
 
 # Inserts a blank line between shell prompts
 add_newline = true
@@ -28,7 +28,7 @@ disabled = false
 [git_branch]
 format = '''
 
- [ ╰╼\[](bg: #445566)[$branch](bg: green)'''
+[ ╰╼\[](bg: #445566)[$branch](bg: green)'''
 disabled = false
 
 [git_status]
@@ -67,6 +67,9 @@ disabled = false
 [cmd_duration]
 format = '[╾─╼\[](#445566)[DURATION $duration](fg: #BB6666)[\]](#445566)'
 disabled = false
+
+[container]
+# add intra container prompt config here
 
 # disabled
 [aws]

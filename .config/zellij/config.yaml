@@ -589,24 +589,24 @@ plugins:
 # Options:
 #   - true (default)
 #   - false
-pane_frames: false
+pane_frames: true
 
 # Choose the theme that is specified in the themes section.
 # For some examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
 # Default: default
 themes:
     nord:
-        fg: [216,222,233] # #D8DEE9
+        fg: [136,192,208] # #88C0D0
         bg: [46,52,64] # #2E3440
-        black: [59,66,82] # #3B4252
-        red: [191,97,106] # #BF616A
-        green: [163,190,140] # #A3BE8C
+        black: [68,85,102] # #445566
+        red: [187,102,102] # #BB6666
+        green: [119,170,204] # #77AACC
         yellow: [235,203,139] # #EBCB8B
-        blue: [129,161,193] # #81A1C1
+        blue: [163,190,140] # #A3BE8C
         magenta: [180,142,173] # #B48EAD
         cyan: [136,192,208] # #88C0D0
-        white: [229,233,240] # #E5E9F0
-        orange: [208,135,112] # #D08770
+        white: [221,221,238] # #DDDDEE
+        orange: [163,190,140] # #A3BE8C
 
 theme: nord
 
