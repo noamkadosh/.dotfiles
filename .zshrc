@@ -11,15 +11,15 @@ eval "$(starship init zsh)"
 eval "$(sheldon source)"
 eval "$(zoxide init zsh)"
 
-export BAT_THEME="Nord"
+export BAT_THEME="tokyo-night"
 test -r ~/.config/.dir_colors && eval $(gdircolors ~/.config/.dir_colors)
 
 # fzf
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-    --color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1
-    --color=fg+:#e5e9f0,bg+:#2E3440,hl+:#e5e9f0
-    --color=info:#eacb8a,prompt:#bf6069,pointer:#a3be8b
-    --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
+	export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
+	--color=fg:#C0CAF5,bg:#1A1B26,hl:#bb9af7
+	--color=fg+:#C0CAF5,bg+:#1A1B26,hl+:#7DCFFF
+	--color=info:#7AA2F7,prompt:#7DCFFF,pointer:#7DCFFF 
+	--color=marker:#9ECE6A,spinner:#9ECE6A,header:#9ECE6A'
 # fzf end
 
 # fzf-tab
@@ -33,6 +33,10 @@ zstyle ':fzf-tab:complete:_zlua:*' query-string input
 # pnpm
 export PNPM_HOME="/Users/noam/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 # pnpm end
 
 export EDITOR='code'
@@ -59,6 +63,7 @@ alias p='pnpm'
 alias px='pnpm exec'
 alias pr='pnpm run'
 alias pnx='pnpm nx'
+alias pdlx='pnpm dlx'
 alias alacrittyconfig='$EDITOR ~/.config/alacritty/alacritty.yml'
 alias zshconfig='$EDITOR ~/.zshrc'
 alias tmuxconfig='$EDITOR ~/.tmux.conf'

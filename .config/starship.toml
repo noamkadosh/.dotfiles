@@ -2,8 +2,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
-[┌─╼\[](bg: #445566)$time[\]](bg: #445566)$cmd_duration
-[└─╼\[](bg: #445566)$directory[\]](bg: #445566)$git_branch$git_status$git_state$git_commit
+[┌─╼\[](bg: #383E5A)$time[\]](bg: #383E5A)$cmd_duration
+[└─╼\[](bg: #383E5A)$directory[\]](bg: #383E5A)$git_branch$git_status$git_state$git_commit
 $character'''
 
 # Inserts a blank line between shell prompts
@@ -13,26 +13,26 @@ add_newline = true
 command_timeout = 30000 # 30 seconds
 
 [character]
-success_symbol = "[▶](bg: green)"
-error_symbol = "[▶](bg: #BB6666)"
+success_symbol = "[▶](bg: #9ECE6A)"
+error_symbol = "[▶](bg: #F93357)"
 
 [time]
 time_format = "%H:%M"
-format = '[$time](fg:#77AACC)'
+format = '[$time](fg:#7AA2F7)'
 disabled = false
 
 [directory]
-format = '[$path](fg:#77AACC)'
+format = '[$path](fg:#7AA2F7)'
 disabled = false
 
 [git_branch]
 format = '''
 
-[ ╰╼\[](bg: #445566)[$branch](bg: green)'''
+[ ╰╼\[](bg: #383E5A)[$branch](bg: #9ECE6A)'''
 disabled = false
 
 [git_status]
-format = '([$all_status$ahead_behind](fg: #DDDDEE))'
+format = '([$all_status$ahead_behind](fg: #C0CAF5))'
 conflicted = " *"
 ahead = " ⇡"
 behind = " ⇣"
@@ -47,7 +47,7 @@ deleted = " x"
 disabled = false
 
 [git_state]
-format = '([$state\($progress_current/$progress_total\)](fg: #DDDDEE))'
+format = '([$state\($progress_current/$progress_total\)](fg: #C0CAF5))'
 rebase = " REBASING"
 merge = " MERGING"
 revert = " REVERTING"
@@ -58,14 +58,14 @@ am_or_rebase = " AM/REBASE"
 disabled = false
 
 [git_commit]
-format = '[\]](bg: #445566)[╾─╼\[](bg: #445566)[$hash](fg:#77CCDD)[\]](bg: #445566)'
+format = '[\]](bg: #383E5A)[╾─╼\[](bg: #383E5A)[$hash](fg:#2AC3DE)[\]](bg: #383E5A)'
 commit_hash_length = 7
 only_detached = false
 tag_disabled = true
 disabled = false
 
 [cmd_duration]
-format = '[╾─╼\[](#445566)[DURATION $duration](fg: #BB6666)[\]](#445566)'
+format = '[╾─╼\[](#383E5A)[DURATION $duration](fg: #F93357)[\]](#383E5A)'
 disabled = false
 
 [container]
