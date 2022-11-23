@@ -81,11 +81,12 @@ alias dotsa='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME add'
 alias dotss='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME status'
 alias dotsco='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout'
 alias gwt='git worktree'
-alias gwtco='gitWorktreeAdd existing'
 alias gwtan='gitWorktreeAdd new'
+alias gwtco='gitWorktreeAdd existing'
 alias gwtls='git worktree list'
 alias gwtrm='git worktree remove'
 alias gwtrmf='git worktree remove -f'
+alias gwtrt='gitWorktreeAdd root'
 alias gwtprn='git worktree prune'
 alias gcns='gc && saveLastCommit'
 alias gcplast='gcp $lastCommit'
@@ -102,7 +103,18 @@ function saveLastCommit() {
 
 # gitWorktreeAdd <new/existing> <branch>
 function gitWorktreeAdd() {
-    if [[ -n "$2" ]]; then
+    # move to root if requested
+    if [[ "$1" == "root" ]]; then
+        local root_path=""
+
+        if [[ $PWD = *.git-worktrees ]]; then
+            root_path=".."
+        elif [[ $PWD = *.git-worktrees* ]]; then
+            root_path="../.."
+        fi
+
+        pushd "${root_path}" > /dev/null
+    elif [[ -n "$2" ]]; then
         local folder_name=$(echo "$2" | tr '/' '-')
         local folder_path=".git-worktrees/${folder_name}"
 
@@ -115,18 +127,13 @@ function gitWorktreeAdd() {
         # new branch, new worktree
         if [[ "$1" == "new" ]]; then
             git worktree add --track -b "$2" "${folder_path}"
-            pushd "${folder_path}" > /dev/null
-        #existing branch
-        else
-            # worktree already exists - switch to it
-            if [ -d "$folder_path" ]; then 
-                pushd "${folder_path}" > /dev/null
-            # worktree doesn't exist - create it
-            else
-                git worktree add "${folder_path}" "$2"
-                pushd "${folder_path}" > /dev/null
-            fi
+        # worktree doesn't exist - create it
+        elif [ ! -d "$folder_path" ]; then 
+            git worktree add "${folder_path}" "$2"
         fi
+
+        # move to the new worktre
+        pushd "${folder_path}" > /dev/null
     else
         echo 'Error: please provide path and a branch.'
     fi
