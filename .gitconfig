@@ -17,3 +17,4 @@
 	defaultBranch = main
 [pull]
 	rebase = false
+	twohead = ort

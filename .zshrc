@@ -81,8 +81,8 @@ alias dotsa='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME add'
 alias dotss='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME status'
 alias dotsco='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout'
 alias gwt='git worktree'
-alias gwta='gitWorktreeAdd existsing'
-alias gwtab='gitWorktreeAdd new'
+alias gwtco='gitWorktreeAdd existing'
+alias gwtan='gitWorktreeAdd new'
 alias gwtls='git worktree list'
 alias gwtrm='git worktree remove'
 alias gwtrmf='git worktree remove -f'
@@ -104,16 +104,25 @@ function saveLastCommit() {
 function gitWorktreeAdd() {
     if [[ -n "$2" ]]
     then
-      local folder_name=$(echo "$2" | tr '/' '-')
-      local folder_path="../.git-worktrees/${folder_name}"
-      if [[ "$1" == "new" ]]
-      then
-          git worktree add --track -b "$2" "${folder_path}"
-          pushd "${folder_path}" > /dev/null
-      else
-          git worktree add "${folder_path}" "$2"
-          pushd "${folder_path}" > /dev/null
-      fi
+        local folder_name=$(echo "$2" | tr '/' '-')
+        local folder_path=".git-worktrees/${folder_name}"
+
+        if [[ $PWD = *.git-worktrees ]];
+        then
+            folder_path="${folder_name}"
+        elif [[ $PWD = *.git-worktrees* ]];
+        then
+            folder_path="../${folder_name}"
+        fi
+
+        if [[ "$1" == "new" ]]
+        then
+            git worktree add --track -b "$2" "${folder_path}"
+            pushd "${folder_path}" > /dev/null
+        else
+            # git worktree add "${folder_path}" "$2"
+            pushd "${folder_path}" > /dev/null
+        fi
     else
         echo 'Error: please provide path and a branch.'
     fi
