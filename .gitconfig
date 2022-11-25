@@ -10,6 +10,7 @@
 	lo = log
 [core]
 	editor = code --wait
+	excludesfile = /Users/noam/.gitignore_global
 [user]
 	name = noam
 	email = noamkadosh91@gmail.com
