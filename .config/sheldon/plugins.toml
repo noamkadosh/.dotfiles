@@ -13,7 +13,8 @@
 shell = "zsh"
 
 [templates]
-defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+defer = { value = 'zsh-defer source "{{ file }}"', each = true } # version 0.6.6
+# defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}" # version 0.7.0
 
 [plugins]
 

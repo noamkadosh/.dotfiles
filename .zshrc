@@ -12,7 +12,7 @@ eval "$(sheldon source)"
 eval "$(zoxide init zsh)"
 
 export BAT_THEME="tokyo-night"
-test -r ~/.config/.dir_colors && eval $(gdircolors ~/.config/.dir_colors)
+test -r ~/.config/.dir_colors && eval $(dircolors ~/.config/.dir_colors)
 
 # fzf
 	export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
@@ -41,38 +41,52 @@ export PATH="$PNPM_HOME:$PATH"
 
 export EDITOR='code'
 
-# Built-ins aliases
+# General aliases
+alias cmon='sudo $(fc -ln -1)'
 alias ls='exa'
 alias cat='bat'
 alias find='fd'
 alias ps='procs'
 alias sed='sd'
 alias du='dust'
-alias grep='ripgrep'
-alias top='ytop'
+alias grep='rg'
+alias myip='curl http://ipecho.net/plain; echo'
+alias unique='typeset -U'
+# byebye <port>
+alias byebye='killPort'
 
-# Other aliases
-alias cmon='sudo $(fc -ln -1)'
+# Cargo aliases
 alias c='cargo'
 alias cr='cargo run'
 alias crr='cargo run --release'
 alias cb='cargo build'
 alias ct='cargo test'
 alias cta='cargo test && cargo test -- --ignored'
+
+# Pnpm aliases
 alias p='pnpm'
 alias px='pnpm exec'
 alias pr='pnpm run'
 alias pnx='pnpm nx'
 alias pdlx='pnpm dlx'
+
+# Nix aliases
+alias nixrs="darwin-rebuild switch"
+alias nixgc="nix-collect-garbage -d"
+alias nixq="nix-env -qaP"
+alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
+alias nixup="nix-env -u"
+
+# Config aliases
 alias alacrittyconfig='$EDITOR ~/.config/alacritty/alacritty.yml'
 alias zshconfig='$EDITOR ~/.zshrc'
-alias tmuxconfig='$EDITOR ~/.tmux.conf'
+alias zellijconfig='$EDITOR ~/.config/zellij/config.kdl'
+alias nixconfig='$EDITOR ~/.nixpkgs/darwin-configuration.nix'
 alias nvimconfig='$EDITOR ~/.config/nvim/init.vim'
 alias gitconfig='$EDITOR ~/.gitconfig'
 alias reloadzsh='source ~/.zshrc'
-alias reloadtmux='tmux source-file ~/.tmux.conf'
-alias myip='curl http://ipecho.net/plain; echo'
-alias unique='typeset -U'
+
+# Dotfiles bare repo management
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 alias dotsc='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME commit'
 alias dotsl='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME pull'
@@ -80,6 +94,8 @@ alias dotsp='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME push'
 alias dotsa='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME add'
 alias dotss='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME status'
 alias dotsco='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout'
+
+# Git worktrees aliases
 alias gwt='git worktree'
 alias gwtan='gitWorktreeAdd new'
 alias gwtco='gitWorktreeAdd existing'
@@ -88,14 +104,15 @@ alias gwtrm='git worktree remove'
 alias gwtrmf='git worktree remove -f'
 alias gwtrt='gitWorktreeAdd root'
 alias gwtprn='git worktree prune'
+
+# Git aliases
 alias gcns='gc && saveLastCommit'
 alias gcplast='gcp $lastCommit'
 alias gbstop='git bisect reset HEAD'
 # gco-- <commit> <filename>
 alias gco--='gRemoveFileChangesTillCommit'
-# byebye <port>
-alias byebye='killPort'
 
+### Functions - Start ###
 # getLastCommit
 function saveLastCommit() {
     lastCommit=$(git rev-parse HEAD | cut -c 1-8)
@@ -157,6 +174,7 @@ function killPort() {
         echo 'Error: please provide a port number.'
     fi
 }
+### Functions - End ###
 
 # prevent duplicates in $PATH and $FPATH.
 unique path
