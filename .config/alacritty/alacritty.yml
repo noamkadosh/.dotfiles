@@ -70,7 +70,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  # opacity: 1.0
+  opacity: 0.9
 
   # Startup Mode (changes require restart)
   #
@@ -81,7 +81,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Fullscreen
+  # startup_mode: Fullscreen
 
   # Window title
   # title: Alacritty
@@ -121,7 +121,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: "JetBrains Mono"
+    family: "JetBrainsMono Nerd Font"
 
     # The `style` can be specified to pick a specific face.
     # style: Regular
@@ -160,7 +160,7 @@ font:
   # style: Bold Italic
 
   # Point size
-  size: 16.0
+  size: 18.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -451,8 +451,11 @@ font:
 # directory of the parent process will be used.
 # working_directory: None
 
+# Doesn't seem to work at the moment
+# (https://github.com/alacritty/alacritty/issues/62)
+# (https://github.com/alacritty/alacritty/issues/93)
 # Send ESC (\x1b) before characters when alt is pressed.
-# alt_send_esc: true
+alt_send_esc: true
 
 # Offer IPC using `alacritty msg` (unix only)
 # ipc_socket: true

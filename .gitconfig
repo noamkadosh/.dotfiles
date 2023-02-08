@@ -19,3 +19,5 @@
 [pull]
 	rebase = false
 	twohead = ort
+[rerere]
+	enabled = true
