@@ -12,6 +12,7 @@ return {
   require("noam.plugins.lsp"),
   require("noam.plugins.trouble"),
   require("noam.plugins.which_key"),
+  require("noam.plugins.noice"),
   require("noam.plugins.lualine"),
   require("noam.plugins.bufferline"),
   require("noam.plugins.modicator"),

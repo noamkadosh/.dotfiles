@@ -3,6 +3,7 @@ return {
     tag = "0.1.0",
     dependencies = {
         "nvim-lua/plenary.nvim",
+        "tsakirist/telescope-lazy.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
         {
             "nvim-telescope/telescope-fzf-native.nvim",
@@ -41,11 +42,13 @@ return {
                     override_generic_sorter = true,
                     override_file_sorter = true,
                 },
-            }
+            },
         })
         telescope.load_extension("fzf")
+        telescope.load_extension("lazy")
         telescope.load_extension("file_browser")
         telescope.load_extension("projects")
+        telescope.load_extension("noice")
 
         vim.keymap.set("n", "<leader>pv", telescope.extensions.file_browser.file_browser)
         vim.keymap.set("n", "<leader>pf", builtin.find_files, {})

@@ -41,6 +41,7 @@
       lua
       # mongodb
       neovim
+      # neovim-nightly
       nodejs-18_x
       nodePackages.pnpm
       nodePackages.snyk

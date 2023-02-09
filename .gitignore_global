@@ -36,6 +36,7 @@
 ehthumbs.db
 Thumbs.db
 
-# Git Worktrees #
+# Git #
 ######################
+gh/hosts.yaml
 .git-worktrees/

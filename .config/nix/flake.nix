@@ -13,20 +13,37 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Other sources
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      # Pin to a nixpkgs revision that doesn't have NixOS/nixpkgs#208103 yet
+      inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
+    };
     comma = { url = github:Shopify/comma; flake = false; };
     
   };
 
-  outputs = { self, darwin, nixpkgs, home-manager, ... }@inputs:
+  outputs = {
+    self,
+    darwin,
+    nixpkgs,
+    nixpkgs-unstable,
+    home-manager,
+    neovim-nightly-overlay,
+    ...
+    }@inputs:
   let 
 
     inherit (darwin.lib) darwinSystem;
-    inherit (inputs.nixpkgs-unstable.lib) attrValues makeOverridable optionalAttrs singleton;
+    inherit (nixpkgs-unstable.lib) attrValues makeOverridable optionalAttrs singleton;
+
+    overlays = [
+      neovim-nightly-overlay.overlay
+    ];
 
     # Configuration for `nixpkgs`
     nixpkgsConfig = {
       config = { allowUnfree = true; allowUnsupportedSystem = true; };
-      overlays = attrValues self.overlays ++ singleton (
+      overlays = attrValues self.overlays ++ overlays ++ singleton (
         # Sub in x86 version of packages that don't build on Apple Silicon yet
         final: prev: (optionalAttrs (prev.stdenv.system == "aarch64-darwin") {
           inherit (final.pkgs-x86)
@@ -51,7 +68,7 @@
             # `home-manager` config
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.noam = import ./home.nix;            
+            home-manager.users.noam = import ./home.nix;
           }
         ];
       };

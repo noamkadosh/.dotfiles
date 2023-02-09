@@ -31,8 +31,8 @@ alias px='pnpm dlx'
 # Nix aliases
 alias nixgc="nix-collect-garbage -d"
 alias nixq="nix-env -qaP"
-alias nixb="nix build .#darwinConfigurations.nk.system
-./result/sw/bin/darwin-rebuild switch --flake ."
+alias nixb="nix build ./.config/nix#darwinConfigurations.Noam.system
+./result/sw/bin/darwin-rebuild switch --flake ~/.config/nix"
 alias nixup="nix-env -u"
 alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
 
