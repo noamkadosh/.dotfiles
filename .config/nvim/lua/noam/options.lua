@@ -1,7 +1,4 @@
 return {
-    -- defaults = {
-    --     lazy = true,
-    -- },
     ui = {
         icons = {
             cmd = "⌘",

@@ -314,4 +314,7 @@
 		"*.cts": "${capture}.typegen.ts"
 	},
 	"workbench.productIconTheme": "fluent-icons",
+	"[nix]": {
+		"editor.defaultFormatter": "brettm12345.nixfmt-vscode"
+	},
 }

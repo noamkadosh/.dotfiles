@@ -11,14 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local remap_info = require("noam.remap")
+require("noam.remap")
 require("noam.set")
 
 local options = require("noam.options")
 
 require("lazy").setup("noam.plugins", options)
-
-local which_key = require("which-key")
-which_key.register(remap_info.normal_mode)
-which_key.register(remap_info.visual_mode, { mode = "v" })
-

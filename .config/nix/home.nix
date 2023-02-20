@@ -25,6 +25,7 @@
       cachix # adding/managing alternative binary caches hosted by Cachix
       coreutils
       curl
+      delta
       # docker
       # docker-compose
       du-dust
@@ -33,15 +34,17 @@
       flyctl
       fzf
       gh
+      gnused
+      (writeShellScriptBin "gsed" "exec ${pkgs.gnused}/bin/sed")
       go
       grex
       hyperfine
       kubectl
+      lazygit
       linode-cli
       lua
       # mongodb
       neovim
-      # neovim-nightly
       nodejs-18_x
       nodePackages.pnpm
       nodePackages.snyk
@@ -59,6 +62,7 @@
       starship
       tealdeer
       tokei
+      wget
       yarn
       zellij
       zoxide
@@ -82,5 +86,4 @@
     };
     nix.enable = true;
   };
-
 }

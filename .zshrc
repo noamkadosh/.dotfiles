@@ -1,9 +1,12 @@
-export PATH="$HOME/.local/bin:$VOLTA_HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$VOLTA_HOME/bin:$GOBIN:$GOROOT/bin:$PATH"
 export FPATH="$HOME/.config/zsh/completions:$FPATH"
 export ZDOTDIR="$HOME"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export VOLTA_HOME="$HOME/.volta"
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
+export GOROOT="/usr/local/opt/go/libexec"
 export EDITOR='code'
 
 # Load zsh config files

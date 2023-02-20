@@ -1,25 +1,8 @@
 return {
-  require("noam.plugins.alpha"),
-  require("noam.plugins.telescope"),
-  require("noam.plugins.treesitter"),
-  require("noam.plugins.tokyonight"),
-  "nvim-treesitter/playground",
-  require("noam.plugins.project"),
-  require("noam.plugins.zellij"),
-  require("noam.plugins.harpoon"),
-  require("noam.plugins.undotree"),
-  require("noam.plugins.fugitive"),
-  require("noam.plugins.lsp"),
-  require("noam.plugins.trouble"),
-  require("noam.plugins.which_key"),
-  require("noam.plugins.noice"),
-  require("noam.plugins.lualine"),
-  require("noam.plugins.bufferline"),
-  require("noam.plugins.modicator"),
-  require("noam.plugins.cursorline"),
-  "RRethy/vim-illuminate",
-  require("noam.plugins.zen_mode"),
-  require("noam.plugins.twilight"),
-  require("noam.plugins.copilot"),
-  "ThePrimeagen/vim-be-good"
+    {
+        "lewis6991/impatient.nvim",
+        config = function()
+            require("impatient")
+        end,
+    },
 }

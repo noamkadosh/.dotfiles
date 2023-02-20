@@ -21,3 +21,5 @@
 	twohead = ort
 [rerere]
 	enabled = true
+[delta]
+    navigate = true

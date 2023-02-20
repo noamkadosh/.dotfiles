@@ -30,7 +30,7 @@ function M.header_color(heading)
     local output = {
         type = "group",
         val = lines,
-        opts = { position = "center", },
+        opts = { position = "center" },
     }
 
     return output
@@ -38,11 +38,14 @@ end
 
 local function getDate()
     local day = tonumber(os.date("%d"):match("^%d*"))
-    local dateTime = " " .. os.date("%A, %B ") .. day ..
-        (day % 10 == 1 and day % 100 ~= 11 and "st" or
-            (day % 10 == 2 and day % 100 ~= 12 and "nd" or
-                (day % 10 == 3 and day % 100 ~= 13 and "rd" or "th"))) ..
-        os.date(" %Y")
+    local dateTime = " "
+        .. os.date("%A, %B ")
+        .. day
+        ..
+        (
+        day % 10 == 1 and day % 100 ~= 11 and "st" or
+            (day % 10 == 2 and day % 100 ~= 12 and "nd" or (day % 10 == 3 and day % 100 ~= 13 and "rd" or "th")))
+        .. os.date(" %Y")
 
     return dateTime
 end
@@ -51,7 +54,11 @@ function M.info_text()
     local total_plugins = require("lazy").stats().count
     local datetime = getDate()
     local version = vim.version()
-    local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+    local nvim_version_info = ""
+
+    if version ~= nil then
+        nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+    end
 
     return datetime .. "   " .. total_plugins .. " plugins" .. nvim_version_info
 end
@@ -61,9 +68,10 @@ function M.shortcuts()
     vim.api.nvim_create_autocmd({ "User" }, {
         pattern = { "AlphaReady" },
         callback = function(_)
+            vim.api.nvim_buf_set_keymap(0, "n", "z", "<cmd>Lazy<CR>", keybind_opts)
             vim.api.nvim_buf_set_keymap(0, "n", "p", "<cmd>Telescope projects<CR>", keybind_opts)
-            vim.api.nvim_buf_set_keymap(0, "n", "t", "<cmd>Telescope themes<CR>", keybind_opts)
-            vim.api.nvim_buf_set_keymap(0, "n", "s", "<cmd>e $MYVIMRC<CR>", keybind_opts)
+            vim.api.nvim_buf_set_keymap(0, "n", "r", "<cmd>e ~/.config/nvim/lua/noam/remap.lua<CR>", keybind_opts)
+            vim.api.nvim_buf_set_keymap(0, "n", "s", "<cmd>e ~/.config/nvim/lua/noam/set.lua<CR>", keybind_opts)
             vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>q<CR>", keybind_opts)
         end,
     })
@@ -71,15 +79,16 @@ function M.shortcuts()
         {
             type = "text",
             val = {
-                " Project [p]     Themes [t]     Settings [s]     Quit [q]",
+                " Lazy [z]     Project [p]     Remaps [r]     Settings [s]     Quit [q]",
             },
             opts = {
                 position = "center",
                 hl = {
-                    { "String", 1, 20 },
-                    { "PreProc", 20, 38 },
-                    { "Function", 38, 59 },
-                    { "Constant", 59, 80 },
+                    { "String", 1, 18 },
+                    { "PreProc", 18, 36 },
+                    { "Function", 36, 54 },
+                    { "Constant", 54, 74 },
+                    { "rainbowcol1", 74, 100 },
                 },
             },
         },
@@ -92,9 +101,9 @@ function M.open_project(project_path)
     if not success then
         return
     end
-    require("telescope.builtin").find_files {
+    require("telescope.builtin").find_files({
         cwd = project_path,
-    }
+    })
 end
 
 function M.get_recent_projects(start, target_width)
@@ -113,6 +122,7 @@ function M.get_recent_projects(start, target_width)
             break
         end
         local project_path = project_paths[i]
+        ---@diagnostic disable-next-line: undefined-field
         local stat = vim.loop.fs_stat(project_path .. "/.git")
         if stat ~= nil and stat.type == "directory" then
             added_projects = added_projects + 1
@@ -142,7 +152,9 @@ function M.get_recent_projects(start, target_width)
                     keymap = {
                         "n",
                         shortcut,
-                        "<cmd>lua require('noam.plugins.alpha.helpers').open_project('" .. project_path .. "')<CR>",
+                        "<cmd>lua require('noam.plugins.startup_screen.helpers').open_project('"
+                            .. project_path
+                            .. "')<CR>",
                         { noremap = true, silent = true, nowait = true },
                     },
                 },

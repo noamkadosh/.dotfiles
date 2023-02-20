@@ -26,6 +26,8 @@ env:
   TERM: alacritty
 
 window:
+  option_as_alt: true
+
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. Both lines and columns
@@ -256,7 +258,7 @@ font:
   # Line indicator
   #
   # Color used for the indicator displaying the position in history during
-  # search and vi mode.
+  # search and   mode.
   #
   # By default, these will use the opposing primary color.
   # line_indicator:
@@ -451,9 +453,6 @@ font:
 # directory of the parent process will be used.
 # working_directory: None
 
-# Doesn't seem to work at the moment
-# (https://github.com/alacritty/alacritty/issues/62)
-# (https://github.com/alacritty/alacritty/issues/93)
 # Send ESC (\x1b) before characters when alt is pressed.
 alt_send_esc: true
 

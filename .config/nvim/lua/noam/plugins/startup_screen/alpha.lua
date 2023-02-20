@@ -1,4 +1,4 @@
-local helpers = require("noam.plugins.alpha.helpers")
+local helpers = require("noam.plugins.startup_screen.helpers")
 
 local hero = {
     [[  ██████   █████                   █████   █████  ███                  ]],
