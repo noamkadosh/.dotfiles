@@ -52,6 +52,10 @@ return {
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-nvim-lua" },
 
+		-- Github copilot
+		{ "zbirenbaum/copilot.lua" },
+		{ "zbirenbaum/copilot-cmp" },
+
 		-- LSP Icons
 		{ "onsails/lspkind.nvim" },
 
@@ -70,6 +74,9 @@ return {
 
 		local lsp = require("lsp-zero")
 		require("noam.plugins.lsp.lsp").setup_lsp_zero(lsp)
+		require("noam.plugins.lsp.completion").setup_cmp(lsp)
+		require("noam.plugins.lsp.null-ls").setup_null_ls()
+		require("noam.plugins.lsp.debug").setup_dap()
 
 		local language_tools = require("noam.plugins.lsp.language_tools")
 		language_tools.setup_rust(lsp)
@@ -78,10 +85,7 @@ return {
 		language_tools.setup_lua(lsp)
 		language_tools.setup_json(lsp)
 
-		require("noam.plugins.lsp.null-ls").setup_null_ls()
-		require("noam.plugins.lsp.completion").setup_cmp(lsp)
-
-		require("noam.plugins.lsp.debug").setup_dap()
+		lsp.setup()
 
 		require("noice").setup({
 			lsp = {

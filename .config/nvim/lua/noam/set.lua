@@ -19,8 +19,9 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
+vim.opt.guicursor = "i-ci-ve:block-blinkwait10-blinkon80-blinkoff80"
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 100
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 

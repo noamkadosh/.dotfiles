@@ -47,6 +47,7 @@ recent_files.val[3] = {
 quick_links.val[1].val = "  Quick Actions"
 quick_links.val[4] = dashboard.button("SPC p f", "  Find file")
 quick_links.val[5] = dashboard.button("SPC p s", "  Live grep")
+quick_links.val[7] = dashboard.button("u", "  Update plugins", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
 table.remove(quick_links.val, 8)
 table.insert(quick_links.val, 3, dashboard.button("SPC p v", "  File Explorer"))
 
