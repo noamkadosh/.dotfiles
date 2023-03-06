@@ -25,4 +25,24 @@ return {
             })
         end,
     },
+
+    {
+        "folke/neoconf.nvim",
+        lazy = true,
+        cmd = "Neoconf",
+        config = true,
+    },
+
+    {
+        "folke/neodev.nvim",
+        lazy = true,
+        opts = {
+            experimental = { pathStrict = true },
+        },
+        config = function()
+            require("neodev").setup({
+                library = { plugins = { "nvim-dap-ui" }, types = true },
+            })
+        end,
+    },
 }

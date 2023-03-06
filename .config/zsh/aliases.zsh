@@ -12,6 +12,7 @@ alias ports='lsof -i -P -n | grep LISTEN'
 alias ps='procs'
 # alias sed='sd'
 alias unique='typeset -U'
+alias gui='gitui'
 
 # Cargo aliases
 alias c='cargo'

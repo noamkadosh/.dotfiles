@@ -13,11 +13,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Other sources
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      # Pin to a nixpkgs revision that doesn't have NixOS/nixpkgs#208103 yet
-      inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
-    };
+    # neovim-nightly-overlay = {
+    #   url = "github:nix-community/neovim-nightly-overlay";
+    #   # Pin to a nixpkgs revision that doesn't have NixOS/nixpkgs#208103 yet
+    #   inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
+    # };
     comma = { url = github:Shopify/comma; flake = false; };
     
   };
@@ -28,7 +28,7 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    neovim-nightly-overlay,
+    # neovim-nightly-overlay,
     ...
     }@inputs:
   let 
@@ -37,7 +37,7 @@
     inherit (nixpkgs-unstable.lib) attrValues makeOverridable optionalAttrs singleton;
 
     overlays = [
-      neovim-nightly-overlay.overlay
+      # neovim-nightly-overlay.overlay
     ];
 
     # Configuration for `nixpkgs`

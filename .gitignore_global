@@ -38,6 +38,8 @@ Thumbs.db
 
 # Git #
 ######################
-gh/hosts.yaml
-github-copilot/hosts.json
+
+
+**/gh/hosts.yaml
+**/github-copilot/hosts.json
 .git-worktrees/

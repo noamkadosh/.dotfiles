@@ -87,24 +87,20 @@ return {
 			local mark = require("harpoon.mark")
 			local ui = require("harpoon.ui")
 
-			-- There is a problem in alacritty where the Alt (Option) key is not working properly
-			-- The appropriate keymap is commented out
-			-- (https://github.com/alacritty/alacritty/issues/62)
-			-- (https://github.com/alacritty/alacritty/issues/93)
-			vim.keymap.set("n", "<leader>h", mark.add_file, { desc = "Add file to Harpoon" })
-			vim.keymap.set("n", "´", ui.toggle_quick_menu, { desc = "Toggle Harpoon panel" }) -- <A-e>
-			vim.keymap.set("n", "˙", function()
+			vim.keymap.set("n", "<leader>ha", mark.add_file, { desc = "Add file to Harpoon" })
+			vim.keymap.set("n", "<leader>he", ui.toggle_quick_menu, { desc = "Toggle Harpoon panel" })
+			vim.keymap.set("n", "<leader>hh", function()
 				ui.nav_file(1)
-			end, { desc = "Navigate to file 1" }) -- <A-h>
-			vim.keymap.set("n", "†", function()
+			end, { desc = "Navigate to file 1" })
+			vim.keymap.set("n", "<leader>ht", function()
 				ui.nav_file(2)
-			end, { desc = "Navigate to file 2" }) -- <A-t>
-			vim.keymap.set("n", "˜", function()
+			end, { desc = "Navigate to file 2" })
+			vim.keymap.set("n", "<leader>hn", function()
 				ui.nav_file(3)
-			end, { desc = "Navigate to file 3" }) -- <A-n>
-			vim.keymap.set("n", "ß", function()
+			end, { desc = "Navigate to file 3" })
+			vim.keymap.set("n", "<leader>hs", function()
 				ui.nav_file(4)
-			end, { desc = "Navigate to file 4" }) -- <A-s>
+			end, { desc = "Navigate to file 4" })
 		end,
 	},
 

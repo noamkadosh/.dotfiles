@@ -34,17 +34,18 @@
       flyctl
       fzf
       gh
+      gitui
       gnused
       (writeShellScriptBin "gsed" "exec ${pkgs.gnused}/bin/sed")
       go
       grex
       hyperfine
       kubectl
-      lazygit
       linode-cli
       lua
       # mongodb
-      neovim
+      mprocs
+      # neovim
       nodejs-18_x
       nodePackages.pnpm
       nodePackages.snyk
