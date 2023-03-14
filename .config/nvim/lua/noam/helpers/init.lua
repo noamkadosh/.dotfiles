@@ -42,9 +42,7 @@ local function getDate()
         .. os.date("%A, %B ")
         .. day
         ..
-        (
-        day % 10 == 1 and day % 100 ~= 11 and "st" or
-            (day % 10 == 2 and day % 100 ~= 12 and "nd" or (day % 10 == 3 and day % 100 ~= 13 and "rd" or "th")))
+        (day % 10 == 1 and day % 100 ~= 11 and "st" or (day % 10 == 2 and day % 100 ~= 12 and "nd" or (day % 10 == 3 and day % 100 ~= 13 and "rd" or "th")))
         .. os.date(" %Y")
 
     return dateTime
@@ -84,10 +82,10 @@ function M.shortcuts()
             opts = {
                 position = "center",
                 hl = {
-                    { "String", 1, 18 },
-                    { "PreProc", 18, 36 },
-                    { "Function", 36, 54 },
-                    { "Constant", 54, 74 },
+                    { "String",      1,  18 },
+                    { "PreProc",     18, 36 },
+                    { "Function",    36, 54 },
+                    { "Constant",    54, 74 },
                     { "rainbowcol1", 74, 100 },
                 },
             },
@@ -152,9 +150,7 @@ function M.get_recent_projects(start, target_width)
                     keymap = {
                         "n",
                         shortcut,
-                        "<cmd>lua require('noam.plugins.startup_screen.helpers').open_project('"
-                            .. project_path
-                            .. "')<CR>",
+                        "<cmd>lua require('noam.helpers').open_project('" .. project_path .. "')<CR>",
                         { noremap = true, silent = true, nowait = true },
                     },
                 },
@@ -165,12 +161,18 @@ function M.get_recent_projects(start, target_width)
 end
 
 function M.has_words_before()
-	if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
-		return false
-	end
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+        return false
+    end
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 
-	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+    return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
+
+function M.capitalize(str)
+    return str:gsub("(%l)(%w*)", function(a, b)
+        return string.upper(a) .. b
+    end)
 end
 
 return M

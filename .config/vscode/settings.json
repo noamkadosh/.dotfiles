@@ -186,7 +186,7 @@
 	"editor.cursorStyle": "block",
 	"editor.cursorSurroundingLines": 100,
 	"editor.cursorSurroundingLinesStyle": "default",
-	"editor.fontFamily": "JetBrainsMono Nerd Font",
+	"editor.fontFamily": "LeagueMono Narrow Nerd Font",
 	"editor.fontLigatures": true,
 	"editor.fontSize": 18,
 	"editor.formatOnPaste": true,

@@ -6,4 +6,4 @@ export VOLTA_HOME="$HOME/.volta"
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 export GOROOT="/usr/local/opt/go/libexec"
-export EDITOR='code'
+export EDITOR='nvim'

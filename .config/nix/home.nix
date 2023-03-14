@@ -18,6 +18,7 @@
 
   home.packages = with pkgs; [
       act
+      argparse
       avrdude
       bandwhich
       bat
@@ -31,7 +32,9 @@
       du-dust
       exa
       fd
+      ffmpeg_5
       flyctl
+      fontforge
       fzf
       gh
       gitui
@@ -42,10 +45,8 @@
       hyperfine
       kubectl
       linode-cli
-      lua
       # mongodb
       mprocs
-      # neovim
       nodejs-18_x
       nodePackages.pnpm
       nodePackages.snyk
@@ -53,12 +54,10 @@
       # postgresql
       procs
       python3
-      # redis
+      redis
       ripgrep
       rustup
       sd
-      # phantom "unsupported platform" issue 
-      # export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
       sheldon
       starship
       tealdeer

@@ -11,6 +11,31 @@ return {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPre", "BufNewFile" },
         opts = {
+            current_line_blame = true,
+            current_line_blame_opts = {
+                delay = 0,
+            },
+            current_line_blame_formatter = function(name, blame_info, opts)
+                local helpers = require("noam.helpers")
+
+                local day = tonumber(os.date("%d", blame_info.author_time):match("^%d*"))
+                local hour = tonumber(os.date("%I", blame_info.author_time))
+                local dateTime = os.date("%a, %b ", blame_info.author_time)
+                    .. day
+                    ..
+                    (day %10 == 1 and day % 100 ~= 11 and "st" or (day % 10 == 2 and day % 100 ~= 12 and "nd" or (day % 10 == 3 and day % 100 ~= 13 and "rd" or "th")))
+                    .. os.date(" %Y ", blame_info.author_time)
+                    .. hour
+                    .. os.date(":%M %p", blame_info.author_time)
+                local blame = "    by "
+                    .. helpers.capitalize(blame_info.author)
+                    .. " - at "
+                    .. dateTime
+                    .. ": "
+                    .. blame_info.summary
+
+                return { { blame, "Comment" } }
+            end,
             signs = {
                 add = { text = "▎" },
                 change = { text = "▎" },

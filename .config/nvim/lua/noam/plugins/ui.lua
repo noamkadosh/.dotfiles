@@ -11,7 +11,21 @@ return {
                     theme = "tokyonight",
                 },
                 sections = {
+                    lualine_b = {
+                        "branch",
+                        "diff",
+                        {
+                            "diagnostics",
+                            symbols = {
+                                error = " ",
+                                warn = " ",
+                                hint = " ",
+                                info = " ",
+                            },
+                        },
+                    },
                     lualine_c = {
+                        "filename",
                         {
                             function()
                                 return require("nvim-navic").get_location()
@@ -23,11 +37,6 @@ return {
                     },
                     lualine_x = {
                         {
-                            noice.api.status.message.get_hl,
-                            cond = noice.api.status.message.has,
-                            color = { fg = colors.red}
-                        },
-                        {
                             noice.api.status.command.get,
                             cond = noice.api.status.command.has,
                             color = { fg = colors.green },
@@ -37,6 +46,9 @@ return {
                             cond = noice.api.status.search.has,
                             color = { fg = colors.orange },
                         },
+                        "encoding",
+                        "fileformat",
+                        "filetype",
                     },
                     lualine_y = { "progress", "location" },
                     lualine_z = {
@@ -47,11 +59,7 @@ return {
                                 .. os.date("%a, %b ")
                                 .. day
                                 ..
-                                (
-                                day % 10 == 1 and day % 100 ~= 11 and "st" or
-                                    (
-                                    day % 10 == 2 and day % 100 ~= 12 and "nd" or
-                                        (day % 10 == 3 and day % 100 ~= 13 and "rd" or "th")))
+                                (day % 10 == 1 and day % 100 ~= 11 and "st" or (day % 10 == 2 and day % 100 ~= 12 and "nd" or (day % 10 == 3 and day % 100 ~= 13 and "rd" or "th")))
                                 .. "  "
                                 .. hour
                                 .. os.date(":%M %p")
@@ -83,24 +91,6 @@ return {
     },
 
     {
-        "akinsho/bufferline.nvim",
-        tag = "v3.1.0",
-        event = "VeryLazy",
-        config = function()
-            vim.opt.termguicolors = true
-            require("bufferline").setup({
-                options = {
-                    diagnostics = "nvim_lsp",
-                    indicator = { style = "underline" },
-                    separator_style = "thick",
-                    show_close_icon = false,
-                    hover = { enabled = true, reveal = { "close" } },
-                },
-            })
-        end,
-    },
-
-    {
         "folke/noice.nvim",
         dependencies = {
             "MunifTanjim/nui.nvim",
@@ -121,9 +111,9 @@ return {
                         enabled = false,
                     },
                     override = {
-                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                        ["vim.lsp.util.stylize_markdown"] = true,
-                        ["cmp.entry.get_documentation"] = true,
+                            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                            ["vim.lsp.util.stylize_markdown"] = true,
+                            ["cmp.entry.get_documentation"] = true,
                     },
                 },
                 presets = {
@@ -255,4 +245,24 @@ return {
     },
 
     { "nvim-tree/nvim-web-devicons", lazy = true },
+
+    { "mortepau/codicons.nvim",      event = "VeryLazy" },
+
+    -- {
+    --     "akinsho/bufferline.nvim",
+    --     tag = "v3.1.0",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         vim.opt.termguicolors = true
+    --         require("bufferline").setup({
+    --             options = {
+    --                 diagnostics = "nvim_lsp",
+    --                 indicator = { style = "underline" },
+    --                 separator_style = "thick",
+    --                 show_close_icon = false,
+    --                 hover = { enabled = true, reveal = { "close" } },
+    --             },
+    --         })
+    --     end,
+    -- },
 }

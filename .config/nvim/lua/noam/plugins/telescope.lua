@@ -14,28 +14,6 @@ return {
                 build = "make",
             },
         },
-        -- Lazy load Telescope, can't do that now
-        -- cmd = "Telescope",
-        -- keys = function()
-        -- 	local telescope = require("telescope")
-        -- 	local builtin = require("telescope.builtin")
-
-        -- 	return {
-        -- 		{ "<leader>pv", telescope.extensions.file_browser.file_browser, { desc = "File browser" } },
-        -- 		{ "<leader>pf", builtin.find_files, { desc = "Find file" } },
-        -- 		{ "<leader>pg", builtin.git_files, { desc = "Find file (Git)" } },
-        -- 		{
-        -- 			"<leader>ps",
-        -- 			function()
-        -- 				builtin.grep_string({
-        -- 					search = vim.fn.input({ " Grep > " }),
-        -- 				})
-        -- 			end,
-        -- 			{ desc = "Find file (Grep)" },
-        -- 		},
-        -- 		{ "<leader>cd", telescope.extensions.zoxide.list, { desc = "Jump list (Zoxide)" } },
-        -- 	}
-        -- end,
         config = function()
             local telescope = require("telescope")
             local builtin = require("telescope.builtin")
@@ -60,6 +38,7 @@ return {
                 },
                 extensions = {
                     file_browser = {
+                        -- hidden = true,
                         hijack_netrw = true,
                         path = "%:p:h",
                         cwd_to_path = true,
@@ -79,6 +58,7 @@ return {
                 },
             })
             telescope.load_extension("fzf")
+            telescope.load_extension("ui-select")
             telescope.load_extension("lazy")
             telescope.load_extension("file_browser")
             telescope.load_extension("undo")
@@ -87,7 +67,6 @@ return {
             telescope.load_extension("projects")
             telescope.load_extension("noice")
             telescope.load_extension("aerial")
-            telescope.load_extension("ui-select")
 
             vim.keymap.set("n", "<leader>pv", telescope.extensions.file_browser.file_browser, { desc = "File browser" })
             vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Find file" })
@@ -98,6 +77,7 @@ return {
                 })
             end, { desc = "Find file (Grep)" })
             vim.keymap.set("n", "<leader>cd", telescope.extensions.zoxide.list, { desc = "Jump list (Zoxide)" })
+            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Line code actions" })
             vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "Undo" })
 
             require("which-key").register({

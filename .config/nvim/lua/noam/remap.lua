@@ -3,8 +3,8 @@ vim.g.mapleader = " ";
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move highlighted line down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted line up" })
 
-vim.keymap.set("v", "˚", "yP", { desc = "Duplicate highlighted up" })
-vim.keymap.set("v", "∆", "y'>p", { desc = "Duplicate highlighted down" })
+vim.keymap.set("v", "˚", "yP`[V`]", { desc = "Duplicate highlighted up" })
+vim.keymap.set("v", "∆", "y'>p`[V`]", { desc = "Duplicate highlighted down" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Paste at the end of line, cursor stays in place" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll half page down" })
@@ -20,9 +20,6 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank line to system clipboar
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete, keep buffer" })
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "" })
-
--- zellij doesn't support a similar command at tho moment
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format" })
 
