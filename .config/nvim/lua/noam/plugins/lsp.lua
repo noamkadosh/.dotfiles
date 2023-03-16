@@ -15,8 +15,10 @@ return {
             "hrsh7th/nvim-cmp",
             "kosayoda/nvim-lightbulb",
 
-            -- LSP Icons
-            { "SmiteshP/nvim-navic" },
+            -- LSP Statusline Components
+            "SmiteshP/nvim-navic",
+
+            { "RRethy/vim-illuminate" },
         },
         event = { "BufReadPre", "BufNewFile", "InsertEnter", "CmdlineEnter" },
         config = function()
@@ -30,8 +32,6 @@ return {
                 "jsonls",
                 "lua_ls",
             })
-
-            local codicons = require("codicons")
 
             lsp.set_preferences({
                 suggest_lsp_servers = false,

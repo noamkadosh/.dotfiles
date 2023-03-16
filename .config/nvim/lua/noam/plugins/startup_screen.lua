@@ -40,7 +40,7 @@ return {
             local recent_files = config.layout[4]
             local quick_links = config.layout[6]
 
-            recent_files.val[1].val = "  Recent Files"
+            recent_files.val[1].val = "󱋡  Recent Files"
             recent_files.val[2] = padding
             recent_files.val[3] = {
                 type = "group",
@@ -49,20 +49,21 @@ return {
                 end,
                 opts = { shrink_margin = false },
             }
-            quick_links.val[1].val = "  Quick Actions"
-            quick_links.val[4] = dashboard.button("SPC p f", "  Find file")
-            quick_links.val[5] = dashboard.button("SPC p s", "  Live grep")
+            quick_links.val[1].val = "  Quick Actions"
+            quick_links.val[4] = dashboard.button("SPC p f", "󰈞  Find file")
+            quick_links.val[5] = dashboard.button("SPC p s", "󰊄  Live grep")
+            quick_links.val[6] = dashboard.button("c", "󰒓  Configuration")
             quick_links.val[7] =
-                dashboard.button("u", "  Update plugins", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
+                dashboard.button("u", "󰚰  Update plugins", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
             table.remove(quick_links.val, 8)
-            table.insert(quick_links.val, 3, dashboard.button("SPC p v", "  File Explorer"))
+            table.insert(quick_links.val, 3, dashboard.button("SPC p v", "󰥨  File Explorer"))
 
             local section_projects = {
                 type = "group",
                 val = {
                     {
                         type = "text",
-                        val = "  Recent Projects",
+                        val = "󰪺   Recent Projects",
                         opts = {
                             hl = "SpecialComment",
                             shrink_margin = false,

@@ -1,5 +1,71 @@
 local M = {}
 
+-- TODO: Refactor this function, code uses pretty much the same patterns and probably can be generalized. Also should fix bg color of icons.
+function M.lsp_breakdown()
+    local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+
+    if #clients == 0 then
+        return
+    end
+
+    local status = {}
+    local web_devicons = require("nvim-web-devicons")
+
+    for _, client in pairs(clients) do
+        if client.config.name == "copilot" then
+            table.insert(status, "%#CmpItemKindCopilot# %#StatusLine#" .. client.name)
+        elseif client.config.name == "null-ls" then
+            table.insert(status, "%#Constant#󱁤 %#StatusLine#" .. client.name)
+        elseif client.config.name == "tsserver" then
+            local icon = web_devicons.get_icon("ts") .. " "
+
+            table.insert(status, "%#DevIconTs#" .. icon .. "%#StatusLine#" .. client.name)
+        elseif client.config.name == "eslint" then
+            table.insert(status, "%#TSRainbowViolet#󰱺 %#StatusLine#" .. client.name)
+        elseif client.config.name == "tailwindcss" then
+            table.insert(status, "%#rainbowcol4#󱏿 %#StatusLine#" .. client.name)
+        elseif client.config.name == "stylelint_lsp" then
+            table.insert(status, "%#rainbowcol4# %#StatusLine#" .. client.name)
+        elseif client.config.filetypes == nil then
+            table.insert(status, client.name)
+        elseif client.config.filetypes[1] == "rust" then
+            local icon = web_devicons.get_icon("rs") .. " "
+
+            table.insert(status, "%#DevIconRs#" .. icon .. "%#StatusLine#" .. client.name)
+        elseif client.config.filetypes[1] == "typescript" then
+            local icon = web_devicons.get_icon("ts") .. " "
+
+            table.insert(status, "%#DevIconTs#" .. icon .. "%#StatusLine#" .. client.name)
+        elseif client.config.filetypes[1] == "typescriptreact" then
+            local icon = web_devicons.get_icon("tsx") .. " "
+
+            table.insert(status, "%#DevIconTsx#" .. icon .. "%#StatusLine#" .. client.name)
+        elseif client.config.filetypes[1] == "javascript" then
+            local icon = web_devicons.get_icon("js") .. " "
+
+            table.insert(status, "%#DevIconJs#" .. icon .. "%#StatusLine#" .. client.name)
+        elseif client.config.filetypes[1] == "javascriptreact" then
+            local icon = web_devicons.get_icon("jsx") .. " "
+
+            table.insert(status, "%#DevIconJsx#" .. icon .. "%#StatusLine#" .. client.name)
+        else
+            local icon = web_devicons.get_icon(client.config.filetypes[1]) .. " "
+
+            table.insert(
+                status,
+                "%#DevIcon"
+                .. (client.config.filetypes[1]:gsub("^%l", string.upper))
+                .. "#"
+                .. icon
+                .. "%#StatusLine#"
+                .. client.name
+            )
+        end
+    end
+
+    return "    " .. table.concat(status, "%#StatusLineSeparator# · %#StatusLine#")
+end
+
 function M.assignGradientColors(lines)
     local out = {}
     for i, line in ipairs(lines) do
@@ -38,7 +104,7 @@ end
 
 local function getDate()
     local day = tonumber(os.date("%d"):match("^%d*"))
-    local dateTime = " "
+    local dateTime = " "
         .. os.date("%A, %B ")
         .. day
         ..
@@ -55,10 +121,10 @@ function M.info_text()
     local nvim_version_info = ""
 
     if version ~= nil then
-        nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+        nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
     end
 
-    return datetime .. "   " .. total_plugins .. " plugins" .. nvim_version_info
+    return datetime .. "   " .. total_plugins .. " plugins" .. nvim_version_info
 end
 
 function M.shortcuts()
@@ -77,7 +143,7 @@ function M.shortcuts()
         {
             type = "text",
             val = {
-                " Lazy [z]     Project [p]     Remaps [r]     Settings [s]     Quit [q]",
+                " Lazy [z]     Project [p]    󰅱 Remaps [r]    󰒓 Settings [s]     Quit [q]",
             },
             opts = {
                 position = "center",
@@ -125,7 +191,7 @@ function M.get_recent_projects(start, target_width)
         if stat ~= nil and stat.type == "directory" then
             added_projects = added_projects + 1
             local shortcut = tostring(added_projects + 4)
-            local display_path = "ﮛ  " .. string.gsub(project_path, vim.env.HOME, "~")
+            local display_path = "  " .. string.gsub(project_path, vim.env.HOME, "~")
             local path_ok, plenary_path = pcall(require, "plenary.path")
             if #display_path > target_width and path_ok then
                 display_path = plenary_path.new(display_path):shorten(1, { -2, -1 })

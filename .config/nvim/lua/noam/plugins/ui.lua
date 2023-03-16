@@ -1,19 +1,34 @@
 return {
     {
         "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile", "InsertEnter", "CmdlineEnter" },
+        dependencies = {},
         config = function()
             local noice = require("noice")
             local colors = require("tokyonight.colors").setup({})
+            local navic = require("nvim-navic")
 
             require("lualine").setup({
                 options = {
                     theme = "tokyonight",
+                    component_separators = { left = "", right = "" },
+                    section_separators = { left = "    ", right = "    " },
                 },
                 sections = {
-                    lualine_b = {
+                    lualine_b = {},
+                    lualine_c = {
+                        {
+                            noice.api.status.command.get,
+                            cond = noice.api.status.command.has,
+                            color = { fg = colors.green },
+                            separator = "    ",
+                        },
                         "branch",
                         "diff",
+                        {
+                            require("noam.helpers").lsp_breakdown,
+                            separator = "    ",
+                        },
                         {
                             "diagnostics",
                             symbols = {
@@ -22,53 +37,77 @@ return {
                                 hint = " ",
                                 info = " ",
                             },
-                        },
-                    },
-                    lualine_c = {
-                        "filename",
-                        {
-                            function()
-                                return require("nvim-navic").get_location()
-                            end,
-                            cond = function()
-                                return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-                            end,
-                        },
-                    },
-                    lualine_x = {
-                        {
-                            noice.api.status.command.get,
-                            cond = noice.api.status.command.has,
-                            color = { fg = colors.green },
+                            padding = { left = 0, right = 1 },
+                            separator = "    ",
                         },
                         {
                             noice.api.status.search.get,
                             cond = noice.api.status.search.has,
                             color = { fg = colors.orange },
                         },
-                        "encoding",
-                        "fileformat",
-                        "filetype",
                     },
-                    lualine_y = { "progress", "location" },
+                    lualine_x = {
+                        { "encoding",   separator = "%#StatusLineSeparator#·%#StatusLine#" },
+                        { "fileformat", separator = "%#StatusLineSeparator#·%#StatusLine#" },
+                        { "filetype",   separator = "    " },
+                        {
+                            "progress",
+                            separator = "%#StatusLineSeparator# · %#StatusLine#",
+                            padding = { right = 0, left = 1 },
+                        },
+                        {
+                            "location",
+                            fmt = function(str)
+                                return str:match("^%s*(.-)%s*$")
+                            end,
+                            padding = 0,
+                        },
+                    },
+                    lualine_y = {},
                     lualine_z = {
                         function()
                             local day = tonumber(os.date("%d"):match("^%d*"))
                             local hour = tonumber(os.date("%I"))
-                            local dateTime = " "
+                            local dateTime = " "
                                 .. os.date("%a, %b ")
                                 .. day
                                 ..
                                 (day % 10 == 1 and day % 100 ~= 11 and "st" or (day % 10 == 2 and day % 100 ~= 12 and "nd" or (day % 10 == 3 and day % 100 ~= 13 and "rd" or "th")))
-                                .. "  "
+                                .. " 󱑍 "
                                 .. hour
                                 .. os.date(":%M %p")
                             return dateTime
                         end,
                     },
                 },
+                winbar = {
+                    lualine_a = {
+                        {
+                            function()
+                                return vim.api.nvim_get_current_buf()
+                            end,
+                        },
+                        { "filename", file_status = true, path = 1 },
+                    },
+                    lualine_c = {
+                        {
+                            function()
+                                return navic.get_location() .. "%#StatusLine#"
+                            end,
+                            cond = navic.is_available,
+                        },
+                    },
+                },
             })
         end,
+    },
+
+    {
+        "SmiteshP/nvim-navic",
+        lazy = true,
+        opts = {
+            highlight = true,
+        },
     },
 
     {
@@ -78,13 +117,11 @@ return {
             require("nvim-cursorline").setup({
                 cursorline = {
                     enable = true,
-                    timeout = 1000,
+                    timeout = 0,
                     number = false,
                 },
                 cursorword = {
-                    enable = true,
-                    min_length = 3,
-                    hl = { underline = true },
+                    enable = false,
                 },
             })
         end,
@@ -148,23 +185,6 @@ return {
                     return "<c-b>"
                 end
             end, { silent = true, expr = true, desc = "Scroll history backward (LSP)" })
-        end,
-    },
-
-    {
-        "stevearc/dressing.nvim",
-        lazy = true,
-        init = function()
-            ---@diagnostic disable-next-line: duplicate-set-field
-            vim.ui.select = function(...)
-                require("lazy").load({ plugins = { "dressing.nvim" } })
-                return vim.ui.select(...)
-            end
-            ---@diagnostic disable-next-line: duplicate-set-field
-            vim.ui.input = function(...)
-                require("lazy").load({ plugins = { "dressing.nvim" } })
-                return vim.ui.input(...)
-            end
         end,
     },
 
@@ -245,8 +265,6 @@ return {
     },
 
     { "nvim-tree/nvim-web-devicons", lazy = true },
-
-    { "mortepau/codicons.nvim",      event = "VeryLazy" },
 
     -- {
     --     "akinsho/bufferline.nvim",

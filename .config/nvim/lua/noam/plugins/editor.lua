@@ -85,25 +85,26 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
-        keys = function()
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            local keys = "iueoa12345"
+
+            require("buffer_manager").setup({
+                line_keys = keys,
+            })
+
             local buffer_manager_ui = require("buffer_manager.ui")
 
             vim.keymap.set("n", "<leader>be", buffer_manager_ui.toggle_quick_menu, { desc = "Toggle buffers list" })
             vim.keymap.set("n", "<leader>bk", buffer_manager_ui.nav_next, { desc = "Next buffer" })
             vim.keymap.set("n", "<leader>bj", buffer_manager_ui.nav_prev, { desc = "Previous buffer" })
             --
-            local keys = "aoeui12345"
             for i = 1, #keys do
                 local key = keys:sub(i, i)
                 vim.keymap.set("n", "<leader>h" .. key, function()
                     buffer_manager_ui.nav_file(i)
                 end, { desc = "Navigate to buffer " .. i })
             end
-        end,
-        config = function()
-            require("buffer_manager").setup({
-                line_keys = "aoeui12345",
-            })
         end,
     },
 
@@ -187,8 +188,6 @@ return {
             })
         end,
     },
-
-    { "RRethy/vim-illuminate", event = { "BufReadPost", "BufNewFile" } },
 
     {
         "zbirenbaum/neodim",
