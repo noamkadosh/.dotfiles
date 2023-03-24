@@ -1,208 +1,165 @@
 return {
-    {
-        "VonHeikemen/lsp-zero.nvim",
-        dependencies = {
-            "folke/neoconf.nvim",
-            "folke/neodev.nvim",
-            "williamboman/mason.nvim",
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
+		dependencies = {
+			"folke/neoconf.nvim",
+			"folke/neodev.nvim",
 
-            -- Language tools
-            "simrat39/rust-tools.nvim",
-            "jose-elias-alvarez/typescript.nvim",
-            "ray-x/go.nvim",
-            { "b0o/schemastore.nvim" },
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
 
-            "hrsh7th/nvim-cmp",
-            "kosayoda/nvim-lightbulb",
+			{ "jose-elias-alvarez/null-ls.nvim" },
+			"mfussenegger/nvim-dap",
 
-            -- LSP Statusline Components
-            "SmiteshP/nvim-navic",
+			{ "jay-babu/mason-null-ls.nvim" },
+			{ "jay-babu/mason-nvim-dap.nvim" },
 
-            { "RRethy/vim-illuminate" },
-        },
-        event = { "BufReadPre", "BufNewFile", "InsertEnter", "CmdlineEnter" },
-        config = function()
-            local lsp = require("lsp-zero")
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp" },
 
-            lsp.preset("recommended")
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" },
 
-            lsp.ensure_installed({
-                "eslint",
-                "gopls",
-                "jsonls",
-                "lua_ls",
-            })
+			-- Language tools
+			{ "simrat39/rust-tools.nvim" },
+			{ "jose-elias-alvarez/typescript.nvim" },
+			{
+				"ray-x/go.nvim",
+				dependencies = { "ray-x/guihua.lua" },
+				ft = { "go", "gomod" },
+				build = ":lua require('go.install').update_all_sync()",
+			},
+			{ "b0o/schemastore.nvim" },
 
-            lsp.set_preferences({
-                suggest_lsp_servers = false,
-                sign_icons = {
-                    error = " ",
-                    warn = " ",
-                    hint = " ",
-                    info = " ",
-                },
-            })
+			-- Code actions
+			"kosayoda/nvim-lightbulb",
 
-            lsp.on_attach(function(client, bufnr)
-                local opts = {
-                    buffer = bufnr,
-                    remap = false,
-                }
+			-- LSP Statusline Components
+			"SmiteshP/nvim-navic",
 
-                if client.server_capabilities.documentSymbolProvider then
-                    require("nvim-navic").attach(client, bufnr)
-                end
+			{ "RRethy/vim-illuminate" },
+		},
+		event = { "BufReadPre", "BufNewFile", "InsertEnter", "CmdlineEnter" },
+		config = function()
+			local lsp = require("lsp-zero").preset({
+				manage_nvim_cmp = {
+					set_format = false,
+					set_sources = "recommended",
+				},
+				configure_diagnostics = false,
+			})
 
-                local diag_float_grp = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
-                vim.api.nvim_create_autocmd("CursorHold", {
-                    callback = function()
-                        vim.diagnostic.open_float(nil, { focusable = false })
-                    end,
-                    group = diag_float_grp,
-                })
+			lsp.ensure_installed({
+				"rust_analyzer",
+				"tsserver",
+				"gopls",
+				"jsonls",
+				"html",
+				"cssls",
+				"tailwindcss",
+				"stylelint_lsp",
+				"lua_ls",
+				"nil_ls",
+				"docker_compose_language_service",
+				"dockerls",
+				"marksman",
+				"yamlls",
+			})
 
-                vim.keymap.set(
-                    "n",
-                    "<leader>vd",
-                    vim.lsp.buf.definition,
-                    { unpack(opts), desc = "Jump to definition of symbol under the cursor" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>vD",
-                    vim.lsp.buf.declaration,
-                    { unpack(opts), desc = "Jump to declaration of symbol under the cursor" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "K",
-                    vim.lsp.buf.hover,
-                    { unpack(opts), desc = "Dispaly hover info about symbol under the cursor" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>vws",
-                    vim.lsp.buf.workspace_symbol,
-                    { unpack(opts), desc = "Search symbol in workspace" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>vd",
-                    vim.diagnostic.open_float,
-                    { unpack(opts), desc = "Dispaly diagnostics in a floating window" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "[d",
-                    vim.diagnostic.goto_next,
-                    { unpack(opts), desc = "Move to prev diagnostic in current buffer" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "]d",
-                    vim.diagnostic.goto_prev,
-                    { unpack(opts), desc = "Move to next diagnostic in current buffer" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>vc",
-                    vim.lsp.buf.code_action,
-                    { unpack(opts), desc = "Select a code action available in the under the current cursor position" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>vr",
-                    vim.lsp.buf.references,
-                    { unpack(opts), desc = "List all references to the symbol under the cursor" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>vn",
-                    vim.lsp.buf.rename,
-                    { unpack(opts), desc = "Renames all references to the symbol under the cursor" }
-                )
-                vim.keymap.set(
-                    "i",
-                    "<C-k>",
-                    vim.lsp.buf.signature_help,
-                    { unpack(opts), desc = "Dispaly signature info about symbol under the cursor in a floating window" }
-                )
-            end)
+			lsp.set_sign_icons({
+				error = " ",
+				warn = " ",
+				hint = " ",
+				info = " ",
+			})
 
-            -- Fix Undefined global "vim"
-            lsp.configure("lua_ls", {
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim" },
-                        },
-                        completion = {
-                            callSnippet = "Replace",
-                        },
-                    },
-                    telemetry = {
-                        enable = false,
-                    },
-                },
-            })
+			lsp.on_attach(function(client, bufnr)
+				if client.server_capabilities.documentSymbolProvider then
+					require("nvim-navic").attach(client, bufnr)
+				end
 
-            lsp.configure("jsonls", {
-                settings = {
-                    json = {
-                        schemas = require("schemastore").json.schemas(),
-                        validate = { enable = true },
-                    },
-                },
-            })
+				local diag_float_grp = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
+				vim.api.nvim_create_autocmd("CursorHold", {
+					callback = function()
+						vim.diagnostic.open_float(nil, { focusable = true })
+					end,
+					group = diag_float_grp,
+				})
 
-            lsp.setup()
+				vim.keymap.set("n", "<leader>f", function()
+					vim.lsp.buf.format({
+						filter = function(client)
+							return client.name == "null-ls"
+						end,
+						bufnr = bufnr,
+					})
+				end, { desc = "Format" })
+				lsp.default_keymaps({ buffer = bufnr })
+			end)
 
-            require("noice").setup({
-                lsp = {
-                    override = {
-                            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                            ["vim.lsp.util.stylize_markdown"] = true,
-                            ["cmp.entry.get_documentation"] = true,
-                    },
-                },
-            })
-        end,
-    },
+			lsp.skip_server_setup({ "rust_analyzer", "tsserver" })
 
-    {
-        "williamboman/mason.nvim",
-        lazy = true,
-        dependencies = {
-            "williamboman/mason-lspconfig.nvim",
-            "jay-babu/mason-nvim-dap.nvim",
-            "jay-babu/mason-null-ls.nvim",
-        },
-    },
+			lsp.configure("jsonls", {
+				settings = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
+			})
 
-    {
-        "williamboman/mason-lspconfig.nvim",
-        lazy = true,
-        dependencies = {
-            { "neovim/nvim-lspconfig" },
-        },
-    },
+			lsp.setup()
 
-    {
-        "kosayoda/nvim-lightbulb",
-        lazy = true,
-        config = function()
-            require("nvim-lightbulb").setup({
-                autocmd = { enabled = true },
-                sign = {
-                    enabled = true,
-                    priority = 10,
-                },
-            })
+			require("noam.plugins.utils.language_tools").setup_language_tools(lsp)
 
-            vim.fn.sign_define("LightBulbSign", {
-                text = "󱠂",
-                texthl = "@string.documentation",
-            })
-        end,
-    },
+			require("noice").setup({
+				lsp = {
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true,
+					},
+				},
+			})
+
+			vim.diagnostic.config({
+				signs = {
+					severity = {
+						min = vim.diagnostic.severity.HINT,
+					},
+				},
+				virtual_text = {
+					severity = {
+						min = vim.diagnostic.severity.WARN,
+						source = "if_many",
+					},
+				},
+				underline = true,
+				severity_sort = true,
+				update_in_insert = true,
+			})
+		end,
+	},
+
+	{
+		"kosayoda/nvim-lightbulb",
+		lazy = true,
+		config = function()
+			require("nvim-lightbulb").setup({
+				autocmd = { enabled = true },
+				sign = {
+					enabled = true,
+					priority = 10,
+				},
+			})
+
+			vim.fn.sign_define("LightBulbSign", {
+				text = "󱠂",
+				texthl = "@string.documentation",
+			})
+		end,
+	},
 }

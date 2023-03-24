@@ -21,8 +21,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete, keep buffer
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "" })
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format" })
-
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next error in quickfix" })
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Previous error in quickfix" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next error in the current file" })

@@ -39,7 +39,7 @@
       gh
       gitui
       gnused
-      (writeShellScriptBin "gsed" "exec ${pkgs.gnused}/bin/sed")
+      (writeShellScriptBin "gsed" '' exec ${gnused}/bin/sed "$@" '')
       go
       grex
       hyperfine

@@ -3,7 +3,7 @@ return {
         "goolord/alpha-nvim",
         event = "VimEnter",
         config = function()
-            local helpers = require("noam.helpers")
+            local helpers = require("noam.plugins.utils.utils")
 
             local hero = {
                 [[  ██████   █████                   █████   █████  ███                  ]],
@@ -56,7 +56,9 @@ return {
             quick_links.val[7] =
                 dashboard.button("u", "󰚰  Update plugins", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
             table.remove(quick_links.val, 8)
-            table.insert(quick_links.val, 3, dashboard.button("SPC p v", "󰥨  File Explorer"))
+            table.insert(quick_links.val, 3, dashboard.button("SPC p v", "󰥨  File explorer"))
+            table.insert(quick_links.val, 3, dashboard.button("SPC o s", "󰪺  Restore current cwd last session"))
+            table.insert(quick_links.val, 3, dashboard.button("SPC o l", "󰅒  Restore last session"))
 
             local section_projects = {
                 type = "group",
