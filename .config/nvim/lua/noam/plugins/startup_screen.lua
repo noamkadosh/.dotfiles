@@ -3,7 +3,7 @@ return {
         "goolord/alpha-nvim",
         event = "VimEnter",
         config = function()
-            local helpers = require("noam.plugins.utils.utils")
+            local helpers = require("noam.plugins.tools.helpers")
 
             local hero = {
                 [[  ██████   █████                   █████   █████  ███                  ]],
@@ -28,7 +28,8 @@ return {
                 },
             }
 
-            local section_shortcuts = { type = "group", val = helpers.shortcuts }
+            local section_shortcuts =
+                { type = "group", val = helpers.shortcuts }
 
             local padding = { type = "padding", val = 1 }
             local double_padding = { type = "padding", val = 2 }
@@ -53,12 +54,31 @@ return {
             quick_links.val[4] = dashboard.button("SPC p f", "󰈞  Find file")
             quick_links.val[5] = dashboard.button("SPC p s", "󰊄  Live grep")
             quick_links.val[6] = dashboard.button("c", "󰒓  Configuration")
-            quick_links.val[7] =
-                dashboard.button("u", "󰚰  Update plugins", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
+            quick_links.val[7] = dashboard.button(
+                "u",
+                "󰚰  Update plugins",
+                "<cmd>Lazy update<CR>",
+                { desc = "Update plugins" }
+            )
             table.remove(quick_links.val, 8)
-            table.insert(quick_links.val, 3, dashboard.button("SPC p v", "󰥨  File explorer"))
-            table.insert(quick_links.val, 3, dashboard.button("SPC o s", "󰪺  Restore current cwd last session"))
-            table.insert(quick_links.val, 3, dashboard.button("SPC o l", "󰅒  Restore last session"))
+            table.insert(
+                quick_links.val,
+                3,
+                dashboard.button("SPC p v", "󰥨  File explorer")
+            )
+            table.insert(
+                quick_links.val,
+                3,
+                dashboard.button(
+                    "SPC o s",
+                    "󰪺  Restore current cwd last session"
+                )
+            )
+            table.insert(
+                quick_links.val,
+                3,
+                dashboard.button("SPC o l", "󰅒  Restore last session")
+            )
 
             local section_projects = {
                 type = "group",

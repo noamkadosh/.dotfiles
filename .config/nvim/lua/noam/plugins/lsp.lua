@@ -1,165 +1,170 @@
 return {
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
-		dependencies = {
-			"folke/neoconf.nvim",
-			"folke/neodev.nvim",
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        branch = "v2.x",
+        dependencies = {
+            "folke/neoconf.nvim",
+            "folke/neodev.nvim",
 
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
+            { "neovim/nvim-lspconfig" },
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
 
-			{ "jose-elias-alvarez/null-ls.nvim" },
-			"mfussenegger/nvim-dap",
+            { "jose-elias-alvarez/null-ls.nvim" },
+            "mfussenegger/nvim-dap",
 
-			{ "jay-babu/mason-null-ls.nvim" },
-			{ "jay-babu/mason-nvim-dap.nvim" },
+            { "jay-babu/mason-null-ls.nvim" },
+            { "jay-babu/mason-nvim-dap.nvim" },
 
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/nvim-cmp" },
+            { "hrsh7th/cmp-nvim-lsp" },
 
-			-- Snippets
-			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
+            -- Snippets
+            { "L3MON4D3/LuaSnip" },
+            { "rafamadriz/friendly-snippets" },
 
-			-- Language tools
-			{ "simrat39/rust-tools.nvim" },
-			{ "jose-elias-alvarez/typescript.nvim" },
-			{
-				"ray-x/go.nvim",
-				dependencies = { "ray-x/guihua.lua" },
-				ft = { "go", "gomod" },
-				build = ":lua require('go.install').update_all_sync()",
-			},
-			{ "b0o/schemastore.nvim" },
+            -- Language tools
+            { "simrat39/rust-tools.nvim" },
+            { "jose-elias-alvarez/typescript.nvim" },
+            {
+                "ray-x/go.nvim",
+                dependencies = { "ray-x/guihua.lua" },
+                ft = { "go", "gomod" },
+                build = ":lua require('go.install').update_all_sync()",
+            },
+            { "b0o/schemastore.nvim" },
 
-			-- Code actions
-			"kosayoda/nvim-lightbulb",
+            -- Code actions
+            "kosayoda/nvim-lightbulb",
 
-			-- LSP Statusline Components
-			"SmiteshP/nvim-navic",
+            -- LSP Statusline Components
+            "SmiteshP/nvim-navic",
 
-			{ "RRethy/vim-illuminate" },
-		},
-		event = { "BufReadPre", "BufNewFile", "InsertEnter", "CmdlineEnter" },
-		config = function()
-			local lsp = require("lsp-zero").preset({
-				manage_nvim_cmp = {
-					set_format = false,
-					set_sources = "recommended",
-				},
-				configure_diagnostics = false,
-			})
+            { "RRethy/vim-illuminate" },
+        },
+        event = { "BufReadPre", "BufNewFile", "InsertEnter", "CmdlineEnter" },
+        config = function()
+            local lsp = require("lsp-zero").preset({
+                manage_nvim_cmp = {
+                    set_format = false,
+                    set_sources = "recommended",
+                },
+                configure_diagnostics = false,
+            })
 
-			lsp.ensure_installed({
-				"rust_analyzer",
-				"tsserver",
-				"gopls",
-				"jsonls",
-				"html",
-				"cssls",
-				"tailwindcss",
-				"stylelint_lsp",
-				"lua_ls",
-				"nil_ls",
-				"docker_compose_language_service",
-				"dockerls",
-				"marksman",
-				"yamlls",
-			})
+            lsp.ensure_installed({
+                "rust_analyzer",
+                "tsserver",
+                "gopls",
+                "jsonls",
+                "html",
+                "cssls",
+                "tailwindcss",
+                "stylelint_lsp",
+                "lua_ls",
+                "nil_ls",
+                "docker_compose_language_service",
+                "dockerls",
+                "marksman",
+                "yamlls",
+            })
 
-			lsp.set_sign_icons({
-				error = " ",
-				warn = " ",
-				hint = " ",
-				info = " ",
-			})
+            lsp.set_sign_icons({
+                error = " ",
+                warn = " ",
+                hint = " ",
+                info = " ",
+            })
 
-			lsp.on_attach(function(client, bufnr)
-				if client.server_capabilities.documentSymbolProvider then
-					require("nvim-navic").attach(client, bufnr)
-				end
+            lsp.on_attach(function(client, bufnr)
+                if client.server_capabilities.documentSymbolProvider then
+                    require("nvim-navic").attach(client, bufnr)
+                end
 
-				local diag_float_grp = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
-				vim.api.nvim_create_autocmd("CursorHold", {
-					callback = function()
-						vim.diagnostic.open_float(nil, { focusable = true })
-					end,
-					group = diag_float_grp,
-				})
+                local diag_float_grp = vim.api.nvim_create_augroup(
+                    "DiagnosticFloat",
+                    { clear = true }
+                )
+                vim.api.nvim_create_autocmd("CursorHold", {
+                    callback = function()
+                        vim.diagnostic.open_float(nil, { focusable = true })
+                    end,
+                    group = diag_float_grp,
+                })
 
-				vim.keymap.set("n", "<leader>f", function()
-					vim.lsp.buf.format({
-						filter = function(client)
-							return client.name == "null-ls"
-						end,
-						bufnr = bufnr,
-					})
-				end, { desc = "Format" })
-				lsp.default_keymaps({ buffer = bufnr })
-			end)
+                vim.keymap.set("n", "<leader>f", function()
+                    vim.lsp.buf.format({
+                        filter = function(lsp_client)
+                            return lsp_client.name == "null-ls"
+                        end,
+                        bufnr = bufnr,
+                    })
+                end, { desc = "Format" })
+                lsp.default_keymaps({ buffer = bufnr })
+            end)
 
-			lsp.skip_server_setup({ "rust_analyzer", "tsserver" })
+            lsp.skip_server_setup({ "rust_analyzer", "tsserver" })
 
-			lsp.configure("jsonls", {
-				settings = {
-					json = {
-						schemas = require("schemastore").json.schemas(),
-						validate = { enable = true },
-					},
-				},
-			})
+            lsp.configure("jsonls", {
+                settings = {
+                    json = {
+                        schemas = require("schemastore").json.schemas(),
+                        validate = { enable = true },
+                    },
+                },
+            })
 
-			lsp.setup()
+            lsp.setup()
 
-			require("noam.plugins.utils.language_tools").setup_language_tools(lsp)
+            require("noam.plugins.tools.language_tools").setup_language_tools(
+                lsp
+            )
 
-			require("noice").setup({
-				lsp = {
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
-						["cmp.entry.get_documentation"] = true,
-					},
-				},
-			})
+            require("noice").setup({
+                lsp = {
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                },
+            })
 
-			vim.diagnostic.config({
-				signs = {
-					severity = {
-						min = vim.diagnostic.severity.HINT,
-					},
-				},
-				virtual_text = {
-					severity = {
-						min = vim.diagnostic.severity.WARN,
-						source = "if_many",
-					},
-				},
-				underline = true,
-				severity_sort = true,
-				update_in_insert = true,
-			})
-		end,
-	},
+            vim.diagnostic.config({
+                signs = {
+                    severity = {
+                        min = vim.diagnostic.severity.HINT,
+                    },
+                },
+                virtual_text = {
+                    severity = {
+                        min = vim.diagnostic.severity.WARN,
+                        source = "if_many",
+                    },
+                },
+                underline = true,
+                severity_sort = true,
+                update_in_insert = true,
+            })
+        end,
+    },
 
-	{
-		"kosayoda/nvim-lightbulb",
-		lazy = true,
-		config = function()
-			require("nvim-lightbulb").setup({
-				autocmd = { enabled = true },
-				sign = {
-					enabled = true,
-					priority = 10,
-				},
-			})
+    {
+        "kosayoda/nvim-lightbulb",
+        lazy = true,
+        config = function()
+            require("nvim-lightbulb").setup({
+                autocmd = { enabled = true },
+                sign = {
+                    enabled = true,
+                    priority = 10,
+                },
+            })
 
-			vim.fn.sign_define("LightBulbSign", {
-				text = "󱠂",
-				texthl = "@string.documentation",
-			})
-		end,
-	},
+            vim.fn.sign_define("LightBulbSign", {
+                text = "󱠂",
+                texthl = "@string.documentation",
+            })
+        end,
+    },
 }

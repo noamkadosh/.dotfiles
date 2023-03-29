@@ -5,7 +5,7 @@ return {
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             require("tokyonight").setup({
-                transparent = true,
+                -- transparent = true,
                 lualine_bold = true,
                 on_highlights = function(highlights, _)
                     highlights.gradient1 = { fg = "#1ABC9C" }
@@ -19,7 +19,8 @@ return {
 
                     local bg = highlights.StatusLine.bg
 
-                    highlights.StatusLineSeparator = { fg = highlights.Comment.fg, bg = bg }
+                    highlights.StatusLineSeparator =
+                        { fg = highlights.Comment.fg, bg = bg }
 
                     highlights.NavicIconsFile.bg = bg
                     highlights.NavicIconsModule.bg = bg

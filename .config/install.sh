@@ -6,6 +6,9 @@ source nix/install.sh
 # Rust
 rustup default stable
 
+# Zellij
+source zellij/install.sh
+
 # VSCode
 source vscode/install.sh
 
