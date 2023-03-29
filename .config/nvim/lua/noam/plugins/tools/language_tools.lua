@@ -72,6 +72,7 @@ local function setup_rust()
             inlay_hints = {
                 parameter_hints_prefix = " <- ",
                 other_hints_prefix = " => ",
+                auto = false,
             },
             hover_actions = {
                 max_width = nil,
@@ -118,16 +119,54 @@ local function setup_typescript()
                     { buffer = bufnr }
                 )
             end,
+            settings = {
+                typescript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    },
+                },
+                javascript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    },
+                },
+            },
         },
     })
 end
 
 local function setup_golang()
-    require("go").setup({})
+    require("go").setup({
+        lsp_inlay_hints = {
+            enable = true,
+            parameter_hints_prefix = " <- ",
+            other_hints_prefix = " => ",
+        },
+    })
 end
 
 local function setup_lua(lsp)
-    require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+    require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls({
+        settings = {
+            Lua = {
+                hint = {
+                    enable = true,
+                },
+            },
+        },
+    }))
 end
 
 function M.setup_language_tools(lsp)

@@ -21,7 +21,7 @@ impl DateTime {
     pub fn now() -> Self {
         // FIXME: UTC offset is always +00:00. Hardcoding TZ for now.
         let utc = Utc::now();
-        let offset = FixedOffset::east_opt(5 * 3600 /* hours */).unwrap();
+        let offset = FixedOffset::east_opt(-7 * 3600 /* hours */).unwrap();
         let now = utc.with_timezone(&offset);
 
         let day_suffix = match now.day() {
@@ -32,7 +32,7 @@ impl DateTime {
         };
 
         let date = now.format("%a, %b %d").to_string() + day_suffix;
-        let time = now.format("%I:%M %p").to_string();
+        let time = now.format("%-I:%M %p").to_string();
 
         Self {
             date: date.to_owned(),

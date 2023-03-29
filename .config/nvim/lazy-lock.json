@@ -20,6 +20,7 @@
   "guihua.lua": { "branch": "master", "commit": "a19ac4447021f21383fadd7a9e1fc150d0b67e1f" },
   "indent-blankline.nvim": { "branch": "master", "commit": "018bd04d80c9a73d399c1061fa0c3b14a7614399" },
   "lazy.nvim": { "branch": "main", "commit": "57cce98dfdb2f2dd05a0567d89811e6d0505e13b" },
+  "lsp-inlayhints.nvim": { "branch": "main", "commit": "84ca3abe8aaecbb5b30ad89e4701d4a9c821b72c" },
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "51dd7211eac8ed60f2c38719a4f97cb69c7952b2" },
   "lspkind.nvim": { "branch": "master", "commit": "c68b3a003483cf382428a43035079f78474cd11e" },
   "lualine.nvim": { "branch": "master", "commit": "e99d733e0213ceb8f548ae6551b04ae32e590c80" },

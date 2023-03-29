@@ -37,6 +37,9 @@ return {
             -- Code actions
             "kosayoda/nvim-lightbulb",
 
+            -- Hints
+            "lvimuser/lsp-inlayhints.nvim",
+
             -- LSP Statusline Components
             "SmiteshP/nvim-navic",
 
@@ -91,6 +94,8 @@ return {
                     end,
                     group = diag_float_grp,
                 })
+
+                require("lsp-inlayhints").on_attach(client, bufnr)
 
                 vim.keymap.set("n", "<leader>f", function()
                     vim.lsp.buf.format({
@@ -164,6 +169,24 @@ return {
             vim.fn.sign_define("LightBulbSign", {
                 text = "󱠂",
                 texthl = "@string.documentation",
+            })
+        end,
+    },
+
+    {
+        "lvimuser/lsp-inlayhints.nvim",
+        lazy = true,
+        config = function()
+            require("lsp-inlayhints").setup({
+                inlay_hints = {
+                    parameter_hints = {
+                        prefix = " <- ",
+                    },
+                    type_hints = {
+                        prefix = " => ",
+                    },
+                    highlight = "Comment",
+                },
             })
         end,
     },
