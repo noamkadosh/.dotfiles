@@ -5,4 +5,5 @@ export BOB_NVIM_HOME="$HOME/.local/share/bob/nvim-bin"
 export VOLTA_HOME="$HOME/.volta"
 export GOPATH="$HOME/go"
 export GOROOT=
-export EDITOR='nvim'
+export EDITOR="nvim"
+export TERM="alacritty"

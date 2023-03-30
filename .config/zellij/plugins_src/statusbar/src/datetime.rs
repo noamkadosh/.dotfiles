@@ -31,7 +31,7 @@ impl DateTime {
             _ => "th",
         };
 
-        let date = now.format("%a, %b %d").to_string() + day_suffix;
+        let date = now.format("%a, %b %-d").to_string() + day_suffix;
         let time = now.format("%-I:%M %p").to_string();
 
         Self {

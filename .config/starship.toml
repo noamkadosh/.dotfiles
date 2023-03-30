@@ -17,7 +17,7 @@ success_symbol = "[▶](bg: #9ECE6A)"
 error_symbol = "[▶](bg: #F93357)"
 
 [time]
-time_format = "%H:%M"
+time_format = "%-I:%M %p"
 format = '[$time](fg:#7AA2F7)'
 disabled = false
 

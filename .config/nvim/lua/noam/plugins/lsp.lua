@@ -63,7 +63,7 @@ return {
                 "html",
                 "cssls",
                 "tailwindcss",
-                "stylelint_lsp",
+                -- "stylelint_lsp",
                 "lua_ls",
                 "nil_ls",
                 "docker_compose_language_service",

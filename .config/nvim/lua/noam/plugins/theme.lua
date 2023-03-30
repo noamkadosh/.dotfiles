@@ -7,7 +7,7 @@ return {
             require("tokyonight").setup({
                 -- transparent = true,
                 lualine_bold = true,
-                on_highlights = function(highlights, _)
+                on_highlights = function(highlights, colors)
                     highlights.gradient1 = { fg = "#1ABC9C" }
                     highlights.gradient2 = { fg = "#2EB3A5" }
                     highlights.gradient3 = { fg = "#40AAAE" }
@@ -16,6 +16,15 @@ return {
                     highlights.gradient6 = { fg = "#798EC8" }
                     highlights.gradient7 = { fg = "#8B85D0" }
                     highlights.gradient8 = { fg = "#9D7CD8" }
+
+                    highlights.TelescopeNormal = {
+                        bg = colors.bg,
+                        fg = highlights.TelescopeNormal.fg
+                    }
+                    highlights.TelescopeBorder = {
+                        bg = colors.bg,
+                        fg = highlights.TelescopeBorder.fg
+                    }
 
                     local bg = highlights.StatusLine.bg
 

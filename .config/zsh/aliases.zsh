@@ -35,6 +35,7 @@ alias nixq="nix-env -qaP"
 alias nixb="nix build --out-link ~/result ~/.config/nix#darwinConfigurations.Noam.system
 ~/result/sw/bin/darwin-rebuild switch --flake ~/.config/nix"
 alias nixup="nix-env -u"
+alias nixupdate="nix flake update"
 alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
 
 # Config aliases

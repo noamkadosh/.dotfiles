@@ -1,3 +1,7 @@
+# TODO: some keymappings don't work:
+# delete forward
+# delete word forward
+
 import:
   - ~/.config/alacritty/themes/tokyo-night.yml
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
@@ -26,7 +30,7 @@ env:
   TERM: alacritty
 
 window:
-  option_as_alt: true
+  option_as_alt: Both
 
   # Window dimensions (changes require restart)
   #

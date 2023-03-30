@@ -18,6 +18,7 @@
 
   home.packages = with pkgs; [
       act
+      alejandra
       argparse
       avrdude
       bandwhich
@@ -42,13 +43,18 @@
       (writeShellScriptBin "gsed" '' exec ${gnused}/bin/sed "$@" '')
       go
       grex
+      hadolint
       hyperfine
       kubectl
       linode-cli
+      luarocks
+      mdl
+      (writeShellScriptBin "markdownlint" '' exec ${mdl}/bin/mdl "$@" '')
       # mongodb
       mprocs
       nodejs-18_x
       nodePackages.snyk
+      nodePackages.stylelint
       nodePackages.vercel
       # postgresql
       procs
@@ -59,8 +65,10 @@
       sd
       sheldon
       starship
+      statix
       tealdeer
       tokei
+      tree-sitter
       wget
       yarn
       zellij
