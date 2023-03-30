@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.stateVersion = "22.05";
+  home.stateVersion = "23.05";
 
   # https://github.com/malob/nixpkgs/blob/master/home/default.nix
 
