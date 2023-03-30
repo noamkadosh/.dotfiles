@@ -48,7 +48,6 @@
       # mongodb
       mprocs
       nodejs-18_x
-      nodePackages.pnpm
       nodePackages.snyk
       nodePackages.vercel
       # postgresql

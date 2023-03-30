@@ -18,3 +18,7 @@ bob use nightly
 
 # Volta
 curl https://get.volta.sh | bash
+
+# Pnpm
+corepack enable
+corepack prepare pnpm@latest --activate
