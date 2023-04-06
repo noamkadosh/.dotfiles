@@ -1,9 +1,9 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Symilink VSCode settings
 ln -s $HOME/.config/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
 ln -s $HOME/.config/vscode/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
-ln -s $HOME/.config/vscode/snippets/ $HOME/Library/Application\ Support/Code/User/
+ln -s $HOME/.config/vscode/snippets/ $HOME/Library/Application\ Support/Code/User/snippets/
 
 # Install VSCode extensions
 extensions=(

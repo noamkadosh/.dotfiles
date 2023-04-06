@@ -1,16 +1,19 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Nix
-source nix/install.sh
+source ~/.config/nix/install.sh
 
 # Rust
 rustup default stable
 
 # Zellij
-source zellij/install.sh
+source ~/.config/zellij/install.sh
 
 # VSCode
-source vscode/install.sh
+source ~/.config/vscode/install.sh
+
+# Bat
+bat cache --build
 
 # Bob-nvim
 cargo install bob-nvim

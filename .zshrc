@@ -15,4 +15,8 @@ unique fpath
 # Start Zellij on startup
 eval "$(zellij setup --generate-auto-start zsh)"
 
-source /Users/noam/.docker/init-zsh.sh || true # Added by Docker Desktop
+# Added by Docker Desktop
+if [ -f "/Users/noam/.docker/init-zsh.sh" ]; then
+    source /Users/noam/.docker/init-zsh.sh || true
+fi
+
