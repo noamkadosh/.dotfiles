@@ -52,7 +52,6 @@
       (writeShellScriptBin "markdownlint" '' exec ${mdl}/bin/mdl "$@" '')
       # mongodb
       mprocs
-      nodejs-18_x
       nodePackages.snyk
       nodePackages.stylelint
       nodePackages.vercel

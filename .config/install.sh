@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Volta
+curl https://get.volta.sh | bash
+
+volta install node
+volta install pnpm
+
 # Nix
 source ~/.config/nix/install.sh
 
@@ -19,9 +25,3 @@ bat cache --build
 cargo install bob-nvim
 bob use nightly
 
-# Volta
-curl https://get.volta.sh | bash
-
-# Pnpm
-corepack enable
-corepack prepare pnpm@latest --activate
