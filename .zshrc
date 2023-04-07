@@ -8,6 +8,8 @@ for conf in "$XDG_CONFIG_HOME/zsh/"*.zsh; do
 done
 unset conf
 
+fpath=($XDG_CONFIG_HOME/zsh/completions $fpath)
+
 # prevent duplicates in $PATH and $FPATH.
 unique path
 unique fpath
