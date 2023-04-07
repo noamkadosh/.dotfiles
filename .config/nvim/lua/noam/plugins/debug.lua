@@ -17,6 +17,10 @@ return {
             require("telescope").load_extension("dap")
             require("nvim-dap-virtual-text").setup({})
 
+            require("mason-nvim-dap").setup({
+                ensure_installed = { "codelldb", "delve" },
+            })
+
             require("dap-vscode-js").setup({
                 debugger_path = vim.fn.glob(
                     vim.fn.stdpath("data") .. "/lazy/vscode-js-debug/"
@@ -93,7 +97,6 @@ return {
                 "DapStopped",
                 { ctermbg = 0, fg = colors.green, bg = colors.bg }
             )
-
             vim.fn.sign_define("DapBreakpoint", {
                 text = "",
                 texthl = "DapBreakpoint",

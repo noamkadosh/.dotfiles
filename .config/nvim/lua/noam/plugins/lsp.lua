@@ -10,11 +10,11 @@ return {
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
 
-            { "jose-elias-alvarez/null-ls.nvim" },
+            "jose-elias-alvarez/null-ls.nvim",
             "mfussenegger/nvim-dap",
 
-            { "jay-babu/mason-null-ls.nvim" },
-            { "jay-babu/mason-nvim-dap.nvim" },
+            "jay-babu/mason-null-ls.nvim",
+            "jay-babu/mason-nvim-dap.nvim",
 
             { "hrsh7th/nvim-cmp" },
             { "hrsh7th/cmp-nvim-lsp" },
@@ -56,19 +56,18 @@ return {
             })
 
             lsp.ensure_installed({
-                "rust_analyzer",
-                "tsserver",
-                "gopls",
-                "jsonls",
-                "html",
                 "cssls",
-                "tailwindcss",
-                -- "stylelint_lsp",
-                "lua_ls",
-                "nil_ls",
-                "docker_compose_language_service",
                 "dockerls",
+                "docker_compose_language_service",
+                "gopls",
+                "html",
+                "jsonls",
+                "lua_ls",
                 "marksman",
+                "nil_ls",
+                "rust_analyzer",
+                "tailwindcss",
+                "tsserver",
                 "yamlls",
             })
 

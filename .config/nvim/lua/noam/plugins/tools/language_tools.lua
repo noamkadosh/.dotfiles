@@ -56,6 +56,20 @@ local function setup_null_ls()
             -- null_ls.builtins.code_actions.cspell,
         },
     })
+
+    require("mason-null-ls").setup({
+        ensure_installed = {
+            "actionlint",
+            "eslint_d",
+            "golangci_lint",
+            "prettierd",
+            "rustfmt",
+            "selene",
+            "stylua",
+            "yamlfmt",
+            "yamllint",
+        },
+    })
 end
 
 local function setup_rust()
