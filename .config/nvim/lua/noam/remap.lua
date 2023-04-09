@@ -13,8 +13,13 @@ vim.keymap.set(
     { desc = "Move highlighted line up" }
 )
 
-vim.keymap.set("v", "˚", "yP`[V`]", { desc = "Duplicate highlighted up" })
-vim.keymap.set("v", "∆", "y'>p`[V`]", { desc = "Duplicate highlighted down" })
+vim.keymap.set("v", "<leader>k", "yP`[V`]", { desc = "Duplicate highlighted up" })
+vim.keymap.set(
+    "v",
+    "<leader>j",
+    "y'>p`[V`]",
+    { desc = "Duplicate highlighted down" }
+)
 
 vim.keymap.set(
     "n",

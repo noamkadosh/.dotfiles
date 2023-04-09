@@ -30,13 +30,13 @@ font:
     text: CellBackground
     cursor: CellForeground
 key_bindings:
+  - {key: Home, chars: "\e[1~"}
+  - {key: End, chars: "\e[4~"}
   - {key: Back, mods: Super, chars: "\x15"}
   - {key: Left, mods: Alt, chars: "\eb"}
   - {key: Right, mods: Alt, chars: "\ef"}
-  - {key: Left, mods: Command, chars: "\eOH"}
-  - {key: Left, mods: Command, chars: "\e[H"}
-  - {key: Right, mods: Command, chars: "\eOF"}
-  - {key: Right, mods: Command, chars: "\e[F"}
+  - {key: Left, mods: Command, chars: "\e[1~"} # Home
+  - {key: Right, mods: Command, chars: "\e[4~"} # End
   - {key: V, mods: Command, action: Paste}
   - {key: C, mods: Command, action: Copy}
   - {key: Q, mods: Command, action: Quit}

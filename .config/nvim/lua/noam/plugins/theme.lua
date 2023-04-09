@@ -17,13 +17,26 @@ return {
                     highlights.gradient7 = { fg = "#8B85D0" }
                     highlights.gradient8 = { fg = "#9D7CD8" }
 
+                    highlights.NormalFloat = { bg = colors.bg }
+                    highlights.FloatBorder =
+                        { bg = colors.bg, fg = highlights.FloatBorder.fg }
+
+                    highlights.DiagnosticFloatingError =
+                        { bg = colors.bg, fg = colors.error }
+                    highlights.DiagnosticFloatingWarn =
+                        { bg = colors.bg, fg = colors.warning }
+                    highlights.DiagnosticFloatingInfo =
+                        { bg = colors.bg, fg = colors.info }
+                    highlights.DiagnosticFloatingHint =
+                        { bg = colors.bg, fg = colors.hint }
+
                     highlights.TelescopeNormal = {
                         bg = colors.bg,
-                        fg = highlights.TelescopeNormal.fg
+                        fg = highlights.TelescopeNormal.fg,
                     }
                     highlights.TelescopeBorder = {
                         bg = colors.bg,
-                        fg = highlights.TelescopeBorder.fg
+                        fg = highlights.TelescopeBorder.fg,
                     }
 
                     local bg = highlights.StatusLine.bg

@@ -18,6 +18,10 @@ return {
                 { desc = "Zen Mode" }
             )
             require("zen-mode").setup({
+                window = {
+                    width = 1,
+                    height = 1,
+                },
                 plugins = {
                     alacritty = {
                         enabled = true,

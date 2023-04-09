@@ -161,8 +161,10 @@ return {
         },
         event = "VeryLazy",
         config = function()
+            local colors = require("tokyonight.colors").setup({})
+
             require("notify").setup({
-                background_colour = "#000000",
+                background_colour = colors.bg,
             })
 
             require("noice").setup({

@@ -83,16 +83,18 @@ return {
                     require("nvim-navic").attach(client, bufnr)
                 end
 
-                local diag_float_grp = vim.api.nvim_create_augroup(
-                    "DiagnosticFloat",
-                    { clear = true }
-                )
-                vim.api.nvim_create_autocmd("CursorHold", {
-                    callback = function()
-                        vim.diagnostic.open_float(nil, { focusable = true })
-                    end,
-                    group = diag_float_grp,
-                })
+                vim.keymap.set("n", "<leader>tc", function()
+                    local _, float_winid = vim.diagnostic.open_float(
+                        nil,
+                        { focusable = true, source = true }
+                    )
+
+                    if float_winid == nil then
+                        return
+                    end
+
+                    vim.api.nvim_set_current_win(float_winid)
+                end, { desc = "Current line diagnostics pop up" })
 
                 require("lsp-inlayhints").on_attach(client, bufnr)
 
@@ -107,7 +109,12 @@ return {
                 lsp.default_keymaps({ buffer = bufnr })
             end)
 
-            lsp.skip_server_setup({ "rust_analyzer", "tsserver" })
+            lsp.skip_server_setup({
+                "rust_analyzer",
+                "tsserver",
+                "gopls",
+                "lua_ls",
+            })
 
             lsp.configure("jsonls", {
                 settings = {
