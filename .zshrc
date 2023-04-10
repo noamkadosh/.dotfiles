@@ -2,13 +2,16 @@ export ZDOTDIR="$HOME"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+fpath=($XDG_CONFIG_HOME/zsh/completions $fpath)
+
 # Load zsh config files
 for conf in "$XDG_CONFIG_HOME/zsh/"*.zsh; do
   source "${conf}"
 done
 unset conf
 
-fpath=($XDG_CONFIG_HOME/zsh/completions $fpath)
+autoload -Uz compinit # zsh completion
+compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 
 # prevent duplicates in $PATH and $FPATH.
 unique path

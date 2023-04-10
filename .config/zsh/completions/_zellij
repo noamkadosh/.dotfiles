@@ -42,10 +42,10 @@ _zellij() {
         case $line[1] in
             (options)
 _arguments "${_arguments_options[@]}" \
-'*--simplified-ui=[Allow plugins to use a more simplified layout that is compatible with more fonts (true or false)]:SIMPLIFIED_UI:(
+'*--simplified-ui=[Allow plugins to use a more simplified layout that is compatible with more fonts (true or false)]:SIMPLIFIED_UI:(true false)' \
 '*--theme=[Set the default theme]:THEME: ' \
-'*--default-mode=[Set the default mode]:DEFAULT_MODE:((normal\:"In `Normal` mode, input is always written to the terminal, except fo
-locked\:"In `Locked` mode, input is always written to the terminal and all shortcuts are disabled except the one leading back to nor
+'*--default-mode=[Set the default mode]:DEFAULT_MODE:((normal\:"In `Normal` mode, input is always written to the terminal, except for the shortcuts leading to other modes"
+locked\:"In `Locked` mode, input is always written to the terminal and all shortcuts are disabled except the one leading back to normal mode"
 resize\:"`Resize` mode allows resizing the different existing panes"
 pane\:"`Pane` mode allows creating and closing panes, as well as moving between them"
 tab\:"`Tab` mode allows creating and closing tabs, as well as moving between them"
@@ -62,7 +62,7 @@ tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
 '*--default-layout=[Set the default layout]:DEFAULT_LAYOUT:_files' \
 '*--layout-dir=[Set the layout_dir, defaults to subdirectory of config dir]:LAYOUT_DIR:_files' \
 '*--theme-dir=[Set the theme_dir, defaults to subdirectory of config dir]:THEME_DIR:_files' \
-'*--mouse-mode=[Set the handling of mouse events (true or false) Can be temporarily bypassed by the \[SHIFT\] key]:MOUSE_MODE:(true
+'*--mouse-mode=[Set the handling of mouse events (true or false) Can be temporarily bypassed by the \[SHIFT\] key]:MOUSE_MODE:(true false)' \
 '*--pane-frames=[Set display of the pane frames (true or false)]:PANE_FRAMES:(true false)' \
 '*--mirror-session=[Mirror session when multiple users are connected (true or false)]:MIRROR_SESSION:(true false)' \
 '*--on-force-close=[Set behaviour on force close (quit or detach)]:ON_FORCE_CLOSE:(quit detach)' \
@@ -73,6 +73,7 @@ tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
 '*--scrollback-editor=[Explicit full path to open the scrollback editor (default is $EDITOR or $VISUAL)]:SCROLLBACK_EDITOR:_files' \
 '*--session-name=[The name of the session to create when starting Zellij]:SESSION_NAME: ' \
 '*--attach-to-session=[Whether to attach to a session specified in "session-name" if it exists]:ATTACH_TO_SESSION:(true false)' \
+'*--auto-layout=[Whether to lay out panes in a predefined set of layouts whenever possible]:AUTO_LAYOUT:(true false)' \
 '(--mouse-mode)*--disable-mouse-mode[Disable handling of mouse events]' \
 '(--pane-frames)*--no-pane-frames[Disable display of pane frames]' \
 '-h[Print help information]' \
@@ -82,6 +83,8 @@ tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
 (setup)
 _arguments "${_arguments_options[@]}" \
 '*--dump-layout=[Dump the specified layout file to stdout]:DUMP_LAYOUT: ' \
+'*--dump-swap-layout=[Dump the specified swap layout file to stdout]:DUMP_SWAP_LAYOUT: ' \
+'*--dump-plugins=[Dump the builtin plugins to DIR or "DATA DIR" if unspecified]:DIR:_files' \
 '*--generate-completion=[Generates completion for the specified shell]:SHELL: ' \
 '*--generate-auto-start=[Generates auto-start script for the specified shell]:SHELL: ' \
 '*--dump-config[Dump the default configuration file to stdout]' \
@@ -117,10 +120,10 @@ _arguments "${_arguments_options[@]}" \
         case $line[2] in
             (options)
 _arguments "${_arguments_options[@]}" \
-'*--simplified-ui=[Allow plugins to use a more simplified layout that is compatible with more fonts (true or false)]:SIMPLIFIED_UI:(
+'*--simplified-ui=[Allow plugins to use a more simplified layout that is compatible with more fonts (true or false)]:SIMPLIFIED_UI:(true false)' \
 '*--theme=[Set the default theme]:THEME: ' \
-'*--default-mode=[Set the default mode]:DEFAULT_MODE:((normal\:"In `Normal` mode, input is always written to the terminal, except fo
-locked\:"In `Locked` mode, input is always written to the terminal and all shortcuts are disabled except the one leading back to nor
+'*--default-mode=[Set the default mode]:DEFAULT_MODE:((normal\:"In `Normal` mode, input is always written to the terminal, except for the shortcuts leading to other modes"
+locked\:"In `Locked` mode, input is always written to the terminal and all shortcuts are disabled except the one leading back to normal mode"
 resize\:"`Resize` mode allows resizing the different existing panes"
 pane\:"`Pane` mode allows creating and closing panes, as well as moving between them"
 tab\:"`Tab` mode allows creating and closing tabs, as well as moving between them"
@@ -137,7 +140,7 @@ tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
 '*--default-layout=[Set the default layout]:DEFAULT_LAYOUT:_files' \
 '*--layout-dir=[Set the layout_dir, defaults to subdirectory of config dir]:LAYOUT_DIR:_files' \
 '*--theme-dir=[Set the theme_dir, defaults to subdirectory of config dir]:THEME_DIR:_files' \
-'*--mouse-mode=[Set the handling of mouse events (true or false) Can be temporarily bypassed by the \[SHIFT\] key]:MOUSE_MODE:(true
+'*--mouse-mode=[Set the handling of mouse events (true or false) Can be temporarily bypassed by the \[SHIFT\] key]:MOUSE_MODE:(true false)' \
 '*--pane-frames=[Set display of the pane frames (true or false)]:PANE_FRAMES:(true false)' \
 '*--mirror-session=[Mirror session when multiple users are connected (true or false)]:MIRROR_SESSION:(true false)' \
 '*--on-force-close=[Set behaviour on force close (quit or detach)]:ON_FORCE_CLOSE:(quit detach)' \
@@ -148,6 +151,7 @@ tmux\:"`Tmux` mode allows for basic tmux keybindings functionality"))' \
 '*--scrollback-editor=[Explicit full path to open the scrollback editor (default is $EDITOR or $VISUAL)]:SCROLLBACK_EDITOR:_files' \
 '*--session-name=[The name of the session to create when starting Zellij]:SESSION_NAME: ' \
 '*--attach-to-session=[Whether to attach to a session specified in "session-name" if it exists]:ATTACH_TO_SESSION:(true false)' \
+'*--auto-layout=[Whether to lay out panes in a predefined set of layouts whenever possible]:AUTO_LAYOUT:(true false)' \
 '(--mouse-mode)*--disable-mouse-mode[Disable handling of mouse events]' \
 '(--pane-frames)*--no-pane-frames[Disable display of pane frames]' \
 '-h[Print help information]' \
@@ -210,7 +214,8 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '-h[Print help information]' \
 '--help[Print help information]' \
-':resize-direction:' \
+':resize:' \
+'::direction:' \
 && ret=0
 ;;
 (focus-next-pane)
@@ -243,7 +248,13 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '-h[Print help information]' \
 '--help[Print help information]' \
-':direction:' \
+'::direction:' \
+&& ret=0
+;;
+(move-pane-backwards)
+_arguments "${_arguments_options[@]}" \
+'-h[Print help information]' \
+'--help[Print help information]' \
 && ret=0
 ;;
 (dump-screen)
@@ -274,6 +285,12 @@ _arguments "${_arguments_options[@]}" \
 && ret=0
 ;;
 (scroll-to-bottom)
+_arguments "${_arguments_options[@]}" \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(scroll-to-top)
 _arguments "${_arguments_options[@]}" \
 '-h[Print help information]' \
 '--help[Print help information]' \
@@ -416,6 +433,15 @@ _arguments "${_arguments_options[@]}" \
 ':index:' \
 && ret=0
 ;;
+(go-to-tab-name)
+_arguments "${_arguments_options[@]}" \
+'*-c[Create a tab if one does not exist]' \
+'*--create[Create a tab if one does not exist]' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+':name:' \
+&& ret=0
+;;
 (rename-tab)
 _arguments "${_arguments_options[@]}" \
 '-h[Print help information]' \
@@ -433,10 +459,29 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '*-l+[Layout to use for the new tab]:LAYOUT:_files' \
 '*--layout=[Layout to use for the new tab]:LAYOUT:_files' \
+'*--layout-dir=[Default folder to look for layouts]:LAYOUT_DIR:_files' \
 '*-n+[Name of the new tab]:NAME: ' \
 '*--name=[Name of the new tab]:NAME: ' \
 '*-c+[Change the working directory of the new tab]:CWD:_files' \
 '*--cwd=[Change the working directory of the new tab]:CWD:_files' \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(previous-swap-layout)
+_arguments "${_arguments_options[@]}" \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(next-swap-layout)
+_arguments "${_arguments_options[@]}" \
+'-h[Print help information]' \
+'--help[Print help information]' \
+&& ret=0
+;;
+(query-tab-names)
+_arguments "${_arguments_options[@]}" \
 '-h[Print help information]' \
 '--help[Print help information]' \
 && ret=0
@@ -544,17 +589,19 @@ _zellij__action_commands() {
     local commands; commands=(
 'write:Write bytes to the terminal' \
 'write-chars:Write characters to the terminal' \
-'resize:Resize the focused pane in the specified direction. \[right|left|up|down|+|-\]' \
+'resize:\[increase|decrease\] the focused panes area at the \[left|down|up|right\] border' \
 'focus-next-pane:Change focus to the next pane' \
 'focus-previous-pane:Change focus to the previous pane' \
 'move-focus:Move the focused pane in the specified direction. \[right|left|up|down\]' \
 'move-focus-or-tab:Move focus to the pane or tab (if on screen edge) in the specified direction \[right|left|up|down\]' \
-'move-pane:Change the location of the focused pane in the specified direction \[right|left|up|down\]' \
+'move-pane:Change the location of the focused pane in the specified direction or rotate forwrads \[right|left|up|down\]' \
+'move-pane-backwards:Rotate the location of the previous pane backwards' \
 'dump-screen:Dump the focused pane to a file' \
 'edit-scrollback:Open the pane scrollback in your default editor' \
 'scroll-up:Scroll up in the focused pane' \
 'scroll-down:Scroll down in focus pane' \
 'scroll-to-bottom:Scroll down to bottom in focus pane' \
+'scroll-to-top:Scroll up to top in focus pane' \
 'page-scroll-up:Scroll up one page in focus pane' \
 'page-scroll-down:Scroll down one page in focus pane' \
 'half-page-scroll-up:Scroll up half page in focus pane' \
@@ -574,9 +621,13 @@ _zellij__action_commands() {
 'go-to-previous-tab:Go to the previous tab' \
 'close-tab:Close the current tab' \
 'go-to-tab:Go to tab with index \[index\]' \
+'go-to-tab-name:Go to tab with name \[name\]' \
 'rename-tab:Renames the focused pane' \
 'undo-rename-tab:Remove a previously set tab name' \
 'new-tab:Create a new tab, optionally with a specified tab layout and name' \
+'previous-swap-layout:' \
+'next-swap-layout:' \
+'query-tab-names:Query all tab names' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'zellij action commands' commands "$@"
@@ -659,6 +710,11 @@ _zellij__action__go-to-tab_commands() {
     local commands; commands=()
     _describe -t commands 'zellij action go-to-tab commands' commands "$@"
 }
+(( $+functions[_zellij__action__go-to-tab-name_commands] )) ||
+_zellij__action__go-to-tab-name_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij action go-to-tab-name commands' commands "$@"
+}
 (( $+functions[_zellij__action__half-page-scroll-down_commands] )) ||
 _zellij__action__half-page-scroll-down_commands() {
     local commands; commands=()
@@ -714,6 +770,11 @@ _zellij__action__move-pane_commands() {
     local commands; commands=()
     _describe -t commands 'zellij action move-pane commands' commands "$@"
 }
+(( $+functions[_zellij__action__move-pane-backwards_commands] )) ||
+_zellij__action__move-pane-backwards_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij action move-pane-backwards commands' commands "$@"
+}
 (( $+functions[_zellij__action__new-pane_commands] )) ||
 _zellij__action__new-pane_commands() {
     local commands; commands=()
@@ -723,6 +784,11 @@ _zellij__action__new-pane_commands() {
 _zellij__action__new-tab_commands() {
     local commands; commands=()
     _describe -t commands 'zellij action new-tab commands' commands "$@"
+}
+(( $+functions[_zellij__action__next-swap-layout_commands] )) ||
+_zellij__action__next-swap-layout_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij action next-swap-layout commands' commands "$@"
 }
 (( $+functions[_zellij__attach__options_commands] )) ||
 _zellij__attach__options_commands() {
@@ -743,6 +809,16 @@ _zellij__action__page-scroll-down_commands() {
 _zellij__action__page-scroll-up_commands() {
     local commands; commands=()
     _describe -t commands 'zellij action page-scroll-up commands' commands "$@"
+}
+(( $+functions[_zellij__action__previous-swap-layout_commands] )) ||
+_zellij__action__previous-swap-layout_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij action previous-swap-layout commands' commands "$@"
+}
+(( $+functions[_zellij__action__query-tab-names_commands] )) ||
+_zellij__action__query-tab-names_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij action query-tab-names commands' commands "$@"
 }
 (( $+functions[_zellij__action__rename-pane_commands] )) ||
 _zellij__action__rename-pane_commands() {
@@ -773,6 +849,11 @@ _zellij__action__scroll-down_commands() {
 _zellij__action__scroll-to-bottom_commands() {
     local commands; commands=()
     _describe -t commands 'zellij action scroll-to-bottom commands' commands "$@"
+}
+(( $+functions[_zellij__action__scroll-to-top_commands] )) ||
+_zellij__action__scroll-to-top_commands() {
+    local commands; commands=()
+    _describe -t commands 'zellij action scroll-to-top commands' commands "$@"
 }
 (( $+functions[_zellij__action__scroll-up_commands] )) ||
 _zellij__action__scroll-up_commands() {
@@ -839,4 +920,4 @@ _zellij "$@"
 function zr () { zellij run --name "$*" -- zsh -ic "$*";}
 function zrf () { zellij run --name "$*" --floating -- zsh -ic "$*";}
 function ze () { zellij edit "$*";}
-function zef () { zellij edit --floating "$*";
+function zef () { zellij edit --floating "$*";}
