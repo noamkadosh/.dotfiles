@@ -1,5 +1,7 @@
 mod color;
 mod datetime;
+mod layout;
+mod mode;
 mod session;
 mod tabs;
 mod view;
@@ -11,6 +13,8 @@ use zellij_tile::prelude::*;
 
 use crate::{
     datetime::DateTime,
+    layout::Layout,
+    mode::Mode,
     session::Session,
     tabs::Tabs,
     view::{Bg, Spacer},
@@ -98,19 +102,22 @@ impl ZellijPlugin for State {
         }
 
         let session_name = &self.mode_info.session_name;
-        let mode = self.mode_info.mode;
+        let current_mode = self.mode_info.mode;
         let palette = self.mode_info.style.colors;
 
-        let mut session = Session::render(session_name.as_deref(), mode, palette);
-        let tabs = Tabs::render(&self.tabs, mode, palette);
-        let mut datetime = self.now.render(mode, palette);
+        let mut mode = Mode::render(current_mode, palette);
+        let mut layout = Layout::render(current_mode, &self.tabs, palette);
+        let tabs = Tabs::render(&self.tabs, current_mode, palette);
+        let mut session = Session::render(session_name.as_deref(), current_mode, palette);
+        let mut datetime = self.now.render(current_mode, palette);
         let pad = Bg::render(2, self.mode_info.style.colors);
 
         let mut blocks = Vec::with_capacity(cols);
 
         let occupied = session.len + tabs.len + datetime.len + (pad.len * 2);
 
-        blocks.append(&mut session.blocks);
+        blocks.append(&mut mode.blocks);
+        blocks.append(&mut layout.blocks);
         blocks.push(pad.clone());
 
         let (mut mid, spacer) = if occupied > cols {
@@ -119,13 +126,13 @@ impl ZellijPlugin for State {
                 palette,
             );
 
-            let parts_len = (session.len + pad.len, error.len, datetime.len + pad.len);
+            let parts_len = (mode.len + layout.len + pad.len, error.len, session.len + datetime.len + pad.len);
 
             let spacer = Spacer::render(cols, parts_len, palette);
 
             (vec![error], spacer)
         } else {
-            let parts_len = (session.len + pad.len, tabs.len, datetime.len + pad.len);
+            let parts_len = (mode.len + layout.len + pad.len, tabs.len, session.len + datetime.len + pad.len);
 
             let spacer = Spacer::render(cols, parts_len, palette);
 
@@ -165,6 +172,7 @@ impl ZellijPlugin for State {
         }
 
         blocks.push(pad);
+        blocks.append(&mut session.blocks);
         blocks.append(&mut datetime.blocks);
 
         let mut bar = String::new();

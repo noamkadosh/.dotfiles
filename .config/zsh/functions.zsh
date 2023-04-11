@@ -59,3 +59,4 @@ function killPort() {
         echo 'Error: please provide a port number.'
     fi
 }
+

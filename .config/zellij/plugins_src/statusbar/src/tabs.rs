@@ -3,7 +3,10 @@ use unicode_width::UnicodeWidthStr;
 use zellij_tile::prelude::*;
 use zellij_tile_utils::style;
 
-use crate::view::{Block, View};
+use crate::{
+    color::ModeColor,
+    view::{Block, View},
+};
 
 pub struct Tabs;
 
@@ -48,12 +51,10 @@ impl Tab {
 
         let len = text.width();
 
+        let ModeColor { mode_color } = ModeColor::new(mode, palette);
+
         let fg = if tab.active {
-            match mode {
-                InputMode::Locked => palette.red,
-                InputMode::Normal => palette.blue,
-                _ => palette.orange,
-            }
+            mode_color
         } else {
             palette.fg
         };

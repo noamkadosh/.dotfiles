@@ -1,13 +1,10 @@
-# TODO: some keymappings don't work:
-# delete forward
-# delete word forward
-
 import:
   - ~/.config/alacritty/themes/tokyo-night.yml
 env:
   TERM: alacritty
 window:
   option_as_alt: Both
+  startup_mode: SimpleFullscreen
 font:
   normal:
     family: "LeagueMono Nerd Font"
@@ -35,8 +32,8 @@ key_bindings:
   - {key: Back, mods: Super, chars: "\x15"}
   - {key: Left, mods: Alt, chars: "\eb"}
   - {key: Right, mods: Alt, chars: "\ef"}
-  - {key: Left, mods: Command, chars: "\e[1~"} # Home
-  - {key: Right, mods: Command, chars: "\e[4~"} # End
+  - {key: Left, mods: Command, chars: "\e[1~"}
+  - {key: Right, mods: Command, chars: "\e[4~"}
   - {key: V, mods: Command, action: Paste}
   - {key: C, mods: Command, action: Copy}
   - {key: Q, mods: Command, action: Quit}

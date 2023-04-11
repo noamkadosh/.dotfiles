@@ -1,6 +1,6 @@
 pane_frames true
 theme "tokyo-night" 
-default_layout "custom"
+default_layout "default"
 plugins {
     tab-bar { path "tab-bar"; }
     status-bar { path "status-bar"; }

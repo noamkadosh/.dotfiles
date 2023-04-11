@@ -10,8 +10,8 @@ for conf in "$XDG_CONFIG_HOME/zsh/"*.zsh; do
 done
 unset conf
 
-autoload -Uz compinit # zsh completion
-compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
+# zsh completion
+autoload -Uz compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 
 # prevent duplicates in $PATH and $FPATH.
 unique path

@@ -46,16 +46,13 @@ impl DateTime {
         let mut blocks = vec![];
         let mut total_len = 0;
 
-        let ModeColor {
-            fg: mode_fg,
-            bg: mode_bg,
-        } = ModeColor::new(mode, palette);
+        let ModeColor { mode_color } = ModeColor::new(mode, palette);
 
         // date
         {
             let text = format!("  {} ", self.date);
             let len = text.width();
-            let body = style!(mode_fg, mode_bg).bold().paint(text);
+            let body = style!(palette.bg, mode_color).bold().paint(text);
 
             total_len += len;
             blocks.push(Block {
@@ -69,7 +66,7 @@ impl DateTime {
         {
             let text = format!(" 󱑇 {} ", self.time);
             let len = text.width();
-            let body = style!(mode_fg, mode_bg).bold().paint(text);
+            let body = style!(palette.bg, mode_color).bold().paint(text);
 
             total_len += len;
             blocks.push(Block {

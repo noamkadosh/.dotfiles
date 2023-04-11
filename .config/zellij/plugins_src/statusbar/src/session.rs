@@ -17,42 +17,11 @@ impl Session {
 
         // name
         if let Some(name) = name {
-            let ModeColor { fg, bg } = ModeColor::new(mode, palette);
+            let ModeColor { mode_color } = ModeColor::new(mode, palette);
 
             let text = format!(" {} ", name.to_uppercase());
             let len = text.width();
-            let body = style!(fg, bg).bold().paint(text);
-
-            total_len += len;
-            blocks.push(Block {
-                body: body.to_string(),
-                len,
-                tab_index: None,
-            })
-        }
-
-        // mode
-        {
-            let text = {
-                let sym = match mode {
-                    InputMode::Locked => "".to_string(),
-                    InputMode::Normal => "".to_string(),
-                    InputMode::Pane => "".to_string(),
-                    _ => format!("{:?}", mode).to_uppercase(),
-                };
-
-                format!(" {} ", sym)
-            };
-            let len = text.width();
-            let body = style!(
-                match mode {
-                    InputMode::Locked => palette.red,
-                    InputMode::Normal => palette.blue,
-                    _ => palette.orange,
-                },
-                palette.black
-            )
-            .paint(text);
+            let body = style!(mode_color, palette.black).bold().paint(text);
 
             total_len += len;
             blocks.push(Block {
