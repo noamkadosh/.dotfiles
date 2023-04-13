@@ -9,7 +9,7 @@
 	pl = pull
 	lo = log
 [core]
-	editor = code --wait
+	editor = vim
 	excludesfile = /Users/noam/.gitignore_global
 [user]
 	name = noam
