@@ -68,6 +68,7 @@
       tealdeer
       tokei
       tree-sitter
+      vim
       wget
       yarn
       zellij
