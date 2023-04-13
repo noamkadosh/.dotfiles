@@ -9,6 +9,8 @@ return {
             { "petertriho/cmp-git" },
             { "saadparwaiz1/cmp_luasnip" },
             { "hrsh7th/cmp-nvim-lua" },
+            { "tzachar/cmp-fuzzy-buffer" },
+            { "tzachar/cmp-fuzzy-path" },
             "zbirenbaum/copilot.lua",
 
             -- LSP Icons
@@ -16,6 +18,8 @@ return {
         },
         config = function()
             local cmp = require("cmp")
+            local compare = require("cmp.config.compare")
+            local copilot_cmp_comparators = require("copilot_cmp.comparators")
             local helpers = require("noam.plugins.tools.helpers")
 
             local cmp_select = {
@@ -69,6 +73,12 @@ return {
                     {
                         name = "luasnip",
                     },
+                    {
+                        name = "fuzzy_buffer",
+                    },
+                    {
+                        name = "fuzzy_path",
+                    },
                 }, {
                     {
                         name = "buffer",
@@ -98,7 +108,18 @@ return {
                 sorting = {
                     priority_weight = 2,
                     comparators = {
-                        require("copilot_cmp.comparators").prioritize,
+                        copilot_cmp_comparators.prioritize,
+                        copilot_cmp_comparators.score,
+                        require("cmp_fuzzy_path.compare"),
+                        require("cmp_fuzzy_buffer.compare"),
+                        compare.offset,
+                        compare.exact,
+                        compare.score,
+                        compare.recently_used,
+                        compare.kind,
+                        compare.sort_text,
+                        compare.length,
+                        compare.order,
                     },
                 },
             })
@@ -108,51 +129,53 @@ return {
             })
 
             cmp.setup.filetype("gitcommit", {
-                sources = cmp.config.sources(
-                    { {
+                sources = cmp.config.sources({
+                    {
                         name = "cmp_git",
-                    } },
-                    { {
+                    },
+                }, {
+                    {
                         name = "buffer",
-                    } }
-                ),
+                    },
+                }),
             })
 
             cmp.setup.cmdline({ "/", "?" }, {
                 mapping = cmp.mapping.preset.cmdline(),
-                sources = { {
-                    name = "buffer",
-                } },
+                sources = {
+                    {
+                        name = "fuzzy_buffer",
+                    },
+                },
             })
 
             cmp.setup.cmdline(":", {
                 mapping = cmp.mapping.preset.cmdline(),
-                sources = cmp.config.sources(
-                    { {
-                        name = "path",
-                    } },
+                sources = cmp.config.sources({
                     {
-                        {
-                            name = "cmdline",
-                            option = {
-                                ignore_cmds = {
-                                    "q",
-                                    "qa",
-                                    "w",
-                                    "wq",
-                                    "x",
-                                    "xa",
-                                    "cq",
-                                    "cqa",
-                                    "cw",
-                                    "cwq",
-                                    "cx",
-                                    "cxa",
-                                },
+                        name = "fuzzy_path",
+                    },
+                }, {
+                    {
+                        name = "cmdline",
+                        option = {
+                            ignore_cmds = {
+                                "q",
+                                "qa",
+                                "w",
+                                "wq",
+                                "x",
+                                "xa",
+                                "cq",
+                                "cqa",
+                                "cw",
+                                "cwq",
+                                "cx",
+                                "cxa",
                             },
                         },
-                    }
-                ),
+                    },
+                }),
             })
         end,
     },

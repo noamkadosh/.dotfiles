@@ -12,6 +12,7 @@ return {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
             },
+            { "tzachar/fuzzy.nvim" },
         },
         config = function()
             local telescope = require("telescope")
