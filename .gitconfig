@@ -11,6 +11,9 @@
 [core]
 	editor = vim
 	excludesfile = /Users/noam/.gitignore_global
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
 [user]
 	name = noam
 	email = noamkadosh91@gmail.com
@@ -18,8 +21,14 @@
 	defaultBranch = main
 [pull]
 	rebase = false
-	twohead = ort
+    twohead = ort
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
 [rerere]
 	enabled = true
 [delta]
+    hyperlinks = true
     navigate = true
+    side-by-side = true
