@@ -3,7 +3,7 @@ return {
         "goolord/alpha-nvim",
         event = "VimEnter",
         config = function()
-            local helpers = require("noam.plugins.tools.helpers")
+            local helpers = require("plugins.tools.helpers")
 
             local hero = {
                 [[  ██████   █████                   █████   █████  ███                  ]],

@@ -7,5 +7,5 @@ export GOPATH="$HOME/go"
 export GOROOT=
 export EDITOR="nvim"
 export TERM="alacritty"
-export VIMRC="$HOME/.config/vim/vimrc"
+export VIMRC="$HOME/.config/nvim/min.lua"
 export VIMINIT="source $VIMRC"

@@ -9,7 +9,7 @@
 	pl = pull
 	lo = log
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = /Users/noam/.gitignore_global
     pager = delta
 [interactive]

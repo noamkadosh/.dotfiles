@@ -250,14 +250,14 @@ function M.shortcuts()
                 0,
                 "n",
                 "r",
-                "<cmd>e ~/.config/nvim/lua/noam/remap.lua<CR>",
+                "<cmd>e ~/.config/nvim/lua/config/remap.lua<CR>",
                 keybind_opts
             )
             vim.api.nvim_buf_set_keymap(
                 0,
                 "n",
                 "s",
-                "<cmd>e ~/.config/nvim/lua/noam/set.lua<CR>",
+                "<cmd>e ~/.config/nvim/lua/config/set.lua<CR>",
                 keybind_opts
             )
             vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>q<CR>", keybind_opts)
@@ -350,7 +350,7 @@ function M.get_recent_projects(start, target_width)
                     keymap = {
                         "n",
                         shortcut,
-                        "<cmd>lua require('noam.plugins.tools.helpers').open_project('"
+                        "<cmd>lua require('config.plugins.tools.helpers').open_project('"
                             .. project_path
                             .. "')<CR>",
                         { noremap = true, silent = true, nowait = true },

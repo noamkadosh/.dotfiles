@@ -16,7 +16,7 @@ return {
                 delay = 0,
             },
             current_line_blame_formatter = function(_, blame_info, _)
-                local helpers = require("noam.plugins.tools.helpers")
+                local helpers = require("plugins.tools.helpers")
 
                 local day = tonumber(
                     os.date("%d", blame_info.author_time):match("^%d*")

@@ -127,7 +127,7 @@ return {
 
             lsp.setup()
 
-            require("noam.plugins.tools.language_tools").setup_language_tools(
+            require("plugins.tools.language_tools").setup_language_tools(
                 lsp
             )
 

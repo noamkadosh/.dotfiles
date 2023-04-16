@@ -20,7 +20,7 @@ return {
             local cmp = require("cmp")
             local compare = require("cmp.config.compare")
             local copilot_cmp_comparators = require("copilot_cmp.comparators")
-            local helpers = require("noam.plugins.tools.helpers")
+            local helpers = require("plugins.tools.helpers")
 
             local cmp_select = {
                 behavior = cmp.SelectBehavior.Select,

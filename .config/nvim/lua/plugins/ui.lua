@@ -32,7 +32,7 @@ return {
                             separator = "%#StatusLineSeparator#·%#StatusLine#",
                         },
                         {
-                            require("noam.plugins.tools.helpers").lsp_breakdown,
+                            require("plugins.tools.helpers").lsp_breakdown,
                             separator = "    ",
                         },
                         {

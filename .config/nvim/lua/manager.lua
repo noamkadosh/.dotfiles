@@ -16,9 +16,3 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("noam.remap")
-require("noam.set")
-
-local options = require("noam.options")
-
-require("lazy").setup("noam.plugins", options)
