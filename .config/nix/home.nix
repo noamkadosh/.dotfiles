@@ -69,6 +69,7 @@
       tokei
       tree-sitter
       vim
+      wezterm
       wget
       yarn
       zellij
