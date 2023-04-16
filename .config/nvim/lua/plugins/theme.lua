@@ -2,6 +2,9 @@ return {
     {
         "folke/tokyonight.nvim",
         lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        dependencies = {
+            "mawkler/modicator.nvim",
+        },
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             require("tokyonight").setup({
@@ -90,7 +93,41 @@ return {
             vim.o.termguicolors = true
         end,
         config = function()
-            require("modicator").setup({})
+            local colors = require("tokyonight.colors").setup()
+
+            require("modicator").setup({
+                highlights = {
+                    modes = {
+                        ["n"] = {
+                            foreground = colors.blue,
+                        },
+                        ["i"] = {
+                            foreground = colors.green,
+                        },
+                        ["v"] = {
+                            foreground = colors.magenta,
+                        },
+                        ["V"] = {
+                            foreground = colors.magenta,
+                        },
+                        ["�"] = { -- This symbol is the ^V character
+                            foreground = colors.magenta,
+                        },
+                        ["s"] = {
+                            foreground = colors.magenta,
+                        },
+                        ["S"] = {
+                            foreground = colors.magenta,
+                        },
+                        ["R"] = {
+                            foreground = colors.red,
+                        },
+                        ["c"] = {
+                            foreground = colors.yellow,
+                        },
+                    },
+                },
+            })
         end,
     },
 }
