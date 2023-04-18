@@ -69,10 +69,8 @@
       tokei
       tree-sitter
       vim
-      wezterm
       wget
       yarn
-      zellij
       zoxide
       zsh
   ] ++ lib.optionals stdenv.isDarwin [

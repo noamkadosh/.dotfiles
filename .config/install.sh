@@ -12,8 +12,8 @@ source ~/.config/nix/install.sh
 # Rust
 rustup default stable
 
-# Zellij
-source ~/.config/zellij/install.sh
+# WezTerm
+source ~/.config/wezterm/install.sh
 
 # VSCode
 source ~/.config/vscode/install.sh

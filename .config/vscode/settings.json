@@ -277,7 +277,7 @@
 		"css",
 		"scss"
 	],
-	"terminal.external.osxExec": "Alacritty.app",
+	"terminal.external.osxExec": "wezterm.app",
 	"terminal.explorerKind": "external",
 	"terminal.integrated.defaultProfile.osx": "zsh",
 	"terminal.integrated.fontSize": 15,

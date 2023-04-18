@@ -1,7 +1,0 @@
-layout {
-    pane
-    pane size=1 borderless=true {
-        // FIXME: Zellij wants absolute path only
-        plugin location="file:///Users/noam/.config/zellij/plugins/statusbar.wasm"
-    }
-}

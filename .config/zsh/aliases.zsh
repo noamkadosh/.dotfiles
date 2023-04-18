@@ -39,12 +39,11 @@ alias nixupdate="nix flake update ~/.config/nix/"
 alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
 
 # Config aliases
-alias alacrittyconfig='$EDITOR $XDG_CONFIG_HOME/alacritty/alacritty.yml'
+alias reloadzsh='source $ZDOTDIR/.zshrc'
 alias gitconfig='$EDITOR $HOME/.gitconfig'
 alias nixconfig='$EDITOR $XDG_CONFIG_HOME/nix/.nixpkgs/darwin-configuration.nix'
 alias nvimconfig='$EDITOR $XDG_CONFIG_HOME/nvim/init.vim'
-alias reloadzsh='source $ZDOTDIR/.zshrc'
-alias zellijconfig='$EDITOR $XDG_CONFIG_HOME/zellij/config.kdl'
+alias weztermconfig='$EDITOR $XDG_CONFIG_HOME/westerm/wezterm.lua'
 alias zshconfig='$EDITOR $ZDOTDIR/.zshrc'
 
 # Dotfiles bare repo management

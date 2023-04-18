@@ -17,9 +17,6 @@ autoload -Uz compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 unique path
 unique fpath
 
-# Start Zellij on startup
-eval "$(zellij setup --generate-auto-start zsh)"
-
 # Added by Docker Desktop
 if [ -f "/Users/noam/.docker/init-zsh.sh" ]; then
     source /Users/noam/.docker/init-zsh.sh || true

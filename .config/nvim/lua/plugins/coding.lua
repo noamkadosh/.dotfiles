@@ -23,7 +23,7 @@ return {
                     height = 1,
                 },
                 plugins = {
-                    alacritty = {
+                    wezterm = {
                         enabled = true,
                         font = "22",
                     },
