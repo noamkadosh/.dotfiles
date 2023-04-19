@@ -20,6 +20,9 @@ return {
                     highlights.gradient7 = { fg = "#8B85D0" }
                     highlights.gradient8 = { fg = "#9D7CD8" }
 
+                    highlights.BufferManagerNormal = { fg = colors.green }
+                    highlights.BufferManagerModified = { fg = colors.red }
+
                     highlights.NormalFloat = { bg = colors.bg }
                     highlights.FloatBorder =
                         { bg = colors.bg, fg = highlights.FloatBorder.fg }

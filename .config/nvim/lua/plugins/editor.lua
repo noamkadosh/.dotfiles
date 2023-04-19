@@ -93,6 +93,8 @@ return {
 
             require("buffer_manager").setup({
                 line_keys = keys,
+                width = 100,
+                highlight = "BufferManagerNormal",
             })
 
             local buffer_manager_ui = require("buffer_manager.ui")

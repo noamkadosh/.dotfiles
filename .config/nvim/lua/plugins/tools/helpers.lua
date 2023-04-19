@@ -376,7 +376,7 @@ function M.has_words_before()
 end
 
 function M.capitalize(str)
-    return str:gsub("(%l)(%w*)", function(a, b)
+    return str:gsub("^(%l)(.*)", function(a, b)
         return string.upper(a) .. b
     end)
 end
