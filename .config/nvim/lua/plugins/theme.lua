@@ -11,6 +11,8 @@ return {
                 -- transparent = true,
                 lualine_bold = true,
                 on_highlights = function(highlights, colors)
+                    local util = require("tokyonight.util")
+
                     highlights.gradient1 = { fg = "#1ABC9C" }
                     highlights.gradient2 = { fg = "#2EB3A5" }
                     highlights.gradient3 = { fg = "#40AAAE" }
@@ -44,6 +46,29 @@ return {
                         bg = colors.bg,
                         fg = highlights.TelescopeBorder.fg,
                     }
+
+                    highlights.Rainbow1 = { fg = colors.red }
+                    highlights.Rainbow2 = { fg = colors.yellow }
+                    highlights.Rainbow3 = { fg = colors.green }
+                    highlights.Rainbow4 = { fg = colors.teal }
+                    highlights.Rainbow5 = { fg = colors.blue }
+                    highlights.Rainbow6 = { fg = colors.magenta }
+                    highlights.Rainbow7 = { fg = colors.purple }
+
+                    highlights.RainbowLight1 =
+                        { fg = util.blend(colors.red, colors.bg, 0.5) }
+                    highlights.RainbowLight2 =
+                        { fg = util.blend(colors.yellow, colors.bg, 0.5) }
+                    highlights.RainbowLight3 =
+                        { fg = util.blend(colors.green, colors.bg, 0.5) }
+                    highlights.RainbowLight4 =
+                        { fg = util.blend(colors.teal, colors.bg, 0.5) }
+                    highlights.RainbowLight5 =
+                        { fg = util.blend(colors.blue, colors.bg, 0.5) }
+                    highlights.RainbowLight6 =
+                        { fg = util.blend(colors.magenta, colors.bg, 0.5) }
+                    highlights.RainbowLight7 =
+                        { fg = util.blend(colors.purple, colors.bg, 0.5) }
 
                     local bg = highlights.StatusLine.bg
 

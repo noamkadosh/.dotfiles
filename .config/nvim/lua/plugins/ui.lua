@@ -228,28 +228,18 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             vim.opt.list = true
-            vim.opt.listchars:append("space: ")
-
-            local colors = require("tokyonight.colors").setup()
-            local util = require("tokyonight.util")
-
-            local red = util.blend(colors.red, colors.bg, 0.1)
-            local yellow = util.blend(colors.yellow, colors.bg, 0.1)
-            local green = util.blend(colors.green, colors.bg, 0.1)
-            local teal = util.blend(colors.teal, colors.bg, 0.1)
-            local blue = util.blend(colors.blue, colors.bg, 0.1)
-            local magenta = util.blend(colors.magenta, colors.bg, 0.1)
-            local purple = util.blend(colors.purple, colors.bg, 0.1)
-
-            vim.cmd("highlight Rainbow1 guibg=" .. red .. " gui=nocombine")
-            vim.cmd("highlight Rainbow2 guibg=" .. yellow .. " gui=nocombine")
-            vim.cmd("highlight Rainbow3 guibg=" .. green .. " gui=nocombine")
-            vim.cmd("highlight Rainbow4 guibg=" .. teal .. " gui=nocombine")
-            vim.cmd("highlight Rainbow5 guibg=" .. blue .. " gui=nocombine")
-            vim.cmd("highlight Rainbow6 guibg=" .. magenta .. " gui=nocombine")
-            vim.cmd("highlight Rainbow7 guibg=" .. purple .. " gui=nocombine")
 
             local color_list = {
+                "RainbowLight1",
+                "RainbowLight2",
+                "RainbowLight3",
+                "RainbowLight4",
+                "RainbowLight5",
+                "RainbowLight6",
+                "RainbowLight7",
+            }
+
+            local context_color_list = {
                 "Rainbow1",
                 "Rainbow2",
                 "Rainbow3",
@@ -261,8 +251,12 @@ return {
 
             require("indent_blankline").setup({
                 char_highlight_list = color_list,
-                show_trailing_blankline_indent = false,
-                space_char_blankline = " ",
+                -- show_trailing_blankline_indent = false,
+                -- indent_blankline_show_trailing_blankline_indent = true,
+                -- space_char_highlight_list = color_list,
+                use_treesitter = true,
+                context_char = "┃",
+                context_highlight_list = context_color_list,
                 show_current_context = true,
                 show_current_context_start = true,
             })
