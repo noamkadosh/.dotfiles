@@ -1,7 +1,6 @@
 return {
     {
         "nvim-lualine/lualine.nvim",
-        -- event = { "BufReadPre", "BufNewFile", "InsertEnter", "CmdlineEnter" },
         dependencies = {},
         config = function()
             local noice = require("noice")
@@ -229,8 +228,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             vim.opt.list = true
-            vim.opt.listchars:append("space:⋅")
-            vim.opt.listchars:append("eol:↴")
+            vim.opt.listchars:append("space: ")
 
             local colors = require("tokyonight.colors").setup()
             local util = require("tokyonight.util")
