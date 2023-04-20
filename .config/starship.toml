@@ -2,9 +2,9 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
-[┌─╼\[](bg: #383E5A)$time[\]](bg: #383E5A)$cmd_duration
-[└─╼\[](bg: #383E5A)$directory[\]](bg: #383E5A)$git_branch$git_status$git_state$git_commit
-$character'''
+[┌─╼\[](fg:#383E5A)$time[\]](fg:#383E5A)$cmd_duration
+[└─╼\[](fg:#383E5A)$directory[\]](fg:#383E5A)$container$docker_context$golang$lua$nodejs$rust$shell$git_branch$git_status$git_state$git_commit
+$status$character'''
 
 # Inserts a blank line between shell prompts
 add_newline = true
@@ -13,8 +13,12 @@ add_newline = true
 command_timeout = 30000 # 30 seconds
 
 [character]
-success_symbol = "[▶](bg: #9ECE6A)"
-error_symbol = "[▶](bg: #F93357)"
+success_symbol = "[▶](fg:#9ECE6A)"
+error_symbol = "[▶](fg:#F93357)"
+
+[status]
+format = '[$status]($style) '
+disabled = false
 
 [time]
 time_format = "%-I:%M %p"
@@ -28,11 +32,11 @@ disabled = false
 [git_branch]
 format = '''
 
-[ ╰╼\[](bg: #383E5A)[$branch](bg: #9ECE6A)'''
+[ ╰╼\[](fg:#383E5A)[$branch](fg:#9ECE6A)'''
 disabled = false
 
 [git_status]
-format = '([$all_status$ahead_behind](fg: #C0CAF5))'
+format = '([$all_status$ahead_behind](fg:#C0CAF5))'
 conflicted = " *"
 ahead = " ⇡"
 behind = " ⇣"
@@ -47,7 +51,7 @@ deleted = " x"
 disabled = false
 
 [git_state]
-format = '([$state\($progress_current/$progress_total\)](fg: #C0CAF5))'
+format = '([$state\($progress_current/$progress_total\)](fg:#C0CAF5))'
 rebase = " REBASING"
 merge = " MERGING"
 revert = " REVERTING"
@@ -58,22 +62,43 @@ am_or_rebase = " AM/REBASE"
 disabled = false
 
 [git_commit]
-format = '[\]](bg: #383E5A)[╾─╼\[](bg: #383E5A)[$hash](fg:#2AC3DE)[\]](bg: #383E5A)'
+format = '[\]](fg:#383E5A)[╾─╼\[](fg:#383E5A)[$hash](fg:#2AC3DE)[\]](fg:#383E5A)'
 commit_hash_length = 7
 only_detached = false
 tag_disabled = true
 disabled = false
 
 [cmd_duration]
-format = '[╾─╼\[](#383E5A)[DURATION $duration](fg: #F93357)[\]](#383E5A)'
+format = '[╾─╼\[](fg:#383E5A)[DURATION $duration]()[\]](fg:#383E5A)'
 disabled = false
 
 [container]
-# add intra container prompt config here
+format = '[╾─╼\[](fg:#383E5A)[$symbol($name)](fg:#0db7ed)[\]](fg:#383E5A)'
+
+[docker_context]
+symbol = '󰡨 '
+detect_folders = ["docker"]
+format = '[╾─╼\[](fg:#383E5A)[$symbol($context)](fg:#0db7ed)[\]](fg:#383E5A)'
+
+[golang]
+symbol = '󰟓 '
+format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:#00ADD8)[\]](fg:#383E5A)'
+
+[lua]
+symbol = '󰢱 '
+format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:#0000FF)[\]](fg:#383E5A)'
+
+[nodejs]
+format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:#68a063)[\]](fg:#383E5A)'
+
+[rust]
+symbol = '󱘗 '
+format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:#CE412B)[\]](fg:#383E5A)'
 
 # disabled
 [aws]
 disabled = true
+
 [c]
 disabled = true
 
@@ -95,9 +120,6 @@ disabled = true
 [deno]
 disabled = true
 
-[docker_context]
-disabled = true
-
 [dotnet]
 disabled = true
 
@@ -111,9 +133,6 @@ disabled = true
 disabled = true
 
 [gcloud]
-disabled = true
-
-[golang]
 disabled = true
 
 [haskell]
@@ -137,9 +156,6 @@ disabled = true
 [kubernetes]
 disabled = true
 
-[lua]
-disabled = true
-
 [memory_usage]
 disabled = true
 
@@ -147,9 +163,6 @@ disabled = true
 disabled = true
 
 [nix_shell]
-disabled = true
-
-[nodejs]
 disabled = true
 
 [ocaml]
@@ -180,9 +193,6 @@ disabled = true
 disabled = true
 
 [ruby]
-disabled = true
-
-[rust]
 disabled = true
 
 [scala]

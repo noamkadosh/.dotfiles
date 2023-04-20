@@ -250,14 +250,14 @@ function M.shortcuts()
                 0,
                 "n",
                 "r",
-                "<cmd>e ~/.config/nvim/lua/config/remap.lua<CR>",
+                "<cmd>e ~/.config/nvim/lua/remap.lua<CR>",
                 keybind_opts
             )
             vim.api.nvim_buf_set_keymap(
                 0,
                 "n",
                 "s",
-                "<cmd>e ~/.config/nvim/lua/config/set.lua<CR>",
+                "<cmd>e ~/.config/nvim/lua/set.lua<CR>",
                 keybind_opts
             )
             vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>q<CR>", keybind_opts)
