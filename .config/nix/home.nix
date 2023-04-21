@@ -48,6 +48,7 @@
       kubectl
       linode-cli
       luarocks
+      mdcat
       mdl
       (writeShellScriptBin "markdownlint" '' exec ${mdl}/bin/mdl "$@" '')
       # mongodb
