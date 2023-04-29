@@ -11,6 +11,7 @@ source ~/.config/nix/install.sh
 
 # Rust
 rustup default stable
+cargo install cargo-watch
 
 # Zellij
 source ~/.config/zellij/install.sh
@@ -27,3 +28,6 @@ bob use nightly
 
 curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Editor Config
+ln -s "$HOME/.config/.editorconfig" "$HOME/.editorconfig
