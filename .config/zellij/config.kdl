@@ -1,5 +1,6 @@
+mouse_mode false
 pane_frames true
-theme "tokyo-night" 
+theme "tokyo-night"
 default_layout "default"
 plugins {
     tab-bar { path "tab-bar"; }
