@@ -37,6 +37,7 @@ return {
 
                 return { { blame, "Comment" } }
             end,
+            sign_priority = 20,
             signs = {
                 add = { text = "" },
                 change = { text = "󰜥" },

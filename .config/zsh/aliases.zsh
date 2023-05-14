@@ -11,6 +11,7 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias ports="lsof -i -P -n | grep LISTEN"
 alias ps="procs"
 # alias sed="sd"
+alias top="btm"
 alias unique="typeset -U"
 alias gui="gitui"
 

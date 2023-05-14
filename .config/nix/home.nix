@@ -11,11 +11,6 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  # Htop
-  # https://rycee.gitlab.io/home-manager/options.html#opt-programs.htop.enable
-  programs.htop.enable = true;
-  programs.htop.settings.show_program_path = true;
-
   home.packages = with pkgs; [
       act
       alejandra
@@ -23,6 +18,7 @@
       avrdude
       bandwhich
       bat
+      blackbox
       bottom
       cachix # adding/managing alternative binary caches hosted by Cachix
       coreutils
@@ -39,6 +35,7 @@
       fzf
       gh
       gitui
+      gnupg
       gnused
       (writeShellScriptBin "gsed" '' exec ${gnused}/bin/sed "$@" '')
       go
@@ -53,9 +50,11 @@
       (writeShellScriptBin "markdownlint" '' exec ${mdl}/bin/mdl "$@" '')
       # mongodb
       mprocs
+      nmap
       nodePackages.snyk
       nodePackages.stylelint
       nodePackages.vercel
+      openssl
       # postgresql
       procs
       python3
@@ -95,3 +94,4 @@
     nix.enable = true;
   };
 }
+

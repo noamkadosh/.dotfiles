@@ -14,7 +14,12 @@ shell = "zsh"
 
 [templates]
 defer = { value = 'zsh-defer source "{{ file }}"', each = true } # version 0.6.6
-# defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}" # version 0.7.0
+# defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}" # version ^0.7.0
+# source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}" # version ^0.7.0
+PATH = 'export PATH="{{ dir }}:$PATH"'
+path = 'path=( "{{ dir }}" $path )'
+fpath = 'fpath=( "{{ dir }}" $fpath )'
+fpath-src = 'fpath=( "{{ dir }}/src" $fpath )'
 
 [plugins]
 
@@ -76,6 +81,14 @@ apply = ["defer"]
 [plugins.yarn]
 remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/yarn/yarn.plugin.zsh"
 apply = ["defer"]
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+apply = ["defer", "fpath-src"]
+
+[plugins.nix-zsh-completions]
+github = "nix-community/nix-zsh-completions"
+apply = ["defer", "fpath"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"

@@ -13,13 +13,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     # Other sources
-    # neovim-nightly-overlay = {
-    #   url = "github:nix-community/neovim-nightly-overlay";
-    #   # Pin to a nixpkgs revision that doesn't have NixOS/nixpkgs#208103 yet
-    #   inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
-    # };
-    comma = { url = "github:Shopify/comma"; flake = false; };
-    
+    comma = {
+      url = "github:Shopify/comma";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -28,51 +25,52 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    # neovim-nightly-overlay,
     ...
-    }@inputs:
-  let 
-
+  } @ inputs: let
     inherit (darwin.lib) darwinSystem;
     inherit (nixpkgs-unstable.lib) attrValues makeOverridable optionalAttrs singleton;
 
-    overlays = [
-      # neovim-nightly-overlay.overlay
-    ];
-
     # Configuration for `nixpkgs`
     nixpkgsConfig = {
-      config = { allowUnfree = true; allowUnsupportedSystem = true; };
-      overlays = attrValues self.overlays ++ overlays ++ singleton (
-        # Sub in x86 version of packages that don't build on Apple Silicon yet
-        final: prev: (optionalAttrs (prev.stdenv.system == "aarch64-darwin") {
-          inherit (final.pkgs-x86)
-            nix-index;
-        })
-      );
-    }; 
-  in
-  {
+      config = {
+        allowUnfree = true;
+        allowUnsupportedSystem = true;
+      };
+      overlays =
+        attrValues self.overlays
+        ++ singleton (
+          # Sub in x86 version of packages that don't build on Apple Silicon yet
+          final: prev: (optionalAttrs (prev.stdenv.system == "aarch64-darwin") {
+            inherit
+              (final.pkgs-x86)
+              nix-index
+              ;
+          })
+        );
+    };
+  in {
     # My `nix-darwin` configs
-      
+
     darwinConfigurations = rec {
       Noam = darwinSystem {
         # TODO: Can I detect system, somehow? or add per system config?
         system = "aarch64-darwin";
         # system = "x86_64-darwin";
-        modules = attrValues self.darwinModules ++ [ 
-          # Main `nix-darwin` config
-          ./configuration.nix
-          # `home-manager` module
-          home-manager.darwinModules.home-manager
-          {
-            nixpkgs = nixpkgsConfig;
-            # `home-manager` config
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.noam = import ./home.nix;
-          }
-        ];
+        modules =
+          attrValues self.darwinModules
+          ++ [
+            # Main `nix-darwin` config
+            ./configuration.nix
+            # `home-manager` module
+            home-manager.darwinModules.home-manager
+            {
+              nixpkgs = nixpkgsConfig;
+              # `home-manager` config
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.noam = import ./home.nix;
+            }
+          ];
       };
     };
 
@@ -80,24 +78,25 @@
 
     overlays = {
       # Overlays to add various packages into package set
-        comma = final: prev: {
-          comma = import inputs.comma { inherit (prev) pkgs; };
-        };  
+      comma = final: prev: {
+        comma = import inputs.comma {inherit (prev) pkgs;};
+      };
 
       # Overlay useful on Macs with Apple Silicon
-        apple-silicon = final: prev: optionalAttrs (prev.stdenv.system == "aarch64-darwin") {
+      apple-silicon = final: prev:
+        optionalAttrs (prev.stdenv.system == "aarch64-darwin") {
           # Add access to x86 packages system is running Apple Silicon
           pkgs-x86 = import inputs.nixpkgs-unstable {
             system = "x86_64-darwin";
             inherit (nixpkgsConfig) config;
           };
-        }; 
-      };
+        };
+    };
 
     # My `nix-darwin` modules that are pending upstream, or patched versions waiting on upstream
     # fixes.
     darwinModules = {
-      # security-pam = 
+      # security-pam =
       #   # Upstream PR: https://github.com/LnL7/nix-darwin/pull/228
       #   { config, lib, pkgs, ... }:
 
@@ -158,5 +157,5 @@
       #     };
       #   };
     };
- };
+  };
 }
