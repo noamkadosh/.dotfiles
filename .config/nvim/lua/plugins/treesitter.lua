@@ -58,5 +58,13 @@ return {
         end,
     },
 
-    { "nvim-treesitter/playground", lazy = true },
+    {
+        "nvim-treesitter/playground",
+        lazy = true,
+    },
+
+    {
+        "chr4/nginx.vim",
+        event = { "BufReadPost", "BufNewFile" },
+    },
 }

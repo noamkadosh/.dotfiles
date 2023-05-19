@@ -275,7 +275,9 @@ return {
         "folke/todo-comments.nvim",
         event = { "BufReadPost", "BufNewFile" },
         config = function()
-            require("todo-comments").setup({})
+            require("todo-comments").setup({
+                sign_priority = 10,
+            })
 
             vim.keymap.set("n", "]t", function()
                 require("todo-comments").jump_next()

@@ -146,7 +146,7 @@ return {
                     severity = {
                         min = vim.diagnostic.severity.HINT,
                     },
-                    priority = 10,
+                    priority = 30,
                 },
                 virtual_text = {
                     severity = {
@@ -169,7 +169,7 @@ return {
                 autocmd = { enabled = true },
                 sign = {
                     enabled = true,
-                    priority = 30,
+                    priority = 40,
                 },
             })
 

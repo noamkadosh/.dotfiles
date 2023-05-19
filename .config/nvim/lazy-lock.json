@@ -40,6 +40,7 @@
   "neoconf.nvim": { "branch": "main", "commit": "bcb5b82255a754735d3721316188f6b6ed4c38f1" },
   "neodev.nvim": { "branch": "main", "commit": "6498a07601702349c31909005bb333003e4687d4" },
   "neodim": { "branch": "master", "commit": "6506918f1b0eee46f87e4ae83bedf0b23a448adb" },
+  "nginx.vim": { "branch": "master", "commit": "8a42e93c9f004fbc5b32bb2e4940107fb7b70a42" },
   "noice.nvim": { "branch": "main", "commit": "c2a745a26ae562f1faecbf6177ac53377d2658d5" },
   "nui.nvim": { "branch": "main", "commit": "698e75814cd7c56b0dd8af4936bcef2d13807f3c" },
   "null-ls.nvim": { "branch": "main", "commit": "08bb00c7c2cd58c72e02cf54e4b9cbfe14b03e09" },
