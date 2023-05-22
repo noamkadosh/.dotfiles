@@ -89,11 +89,12 @@ return {
                 builtin.git_files,
                 { desc = "Find file (Git)" }
             )
-            vim.keymap.set("n", "<leader>ps", function()
-                builtin.grep_string({
-                    search = vim.fn.input({ " Grep > " }),
-                })
-            end, { desc = "Find file (Grep)" })
+            vim.keymap.set(
+                "n",
+                "<leader>ps",
+                builtin.grep_string,
+                { desc = "Find file (Grep)" }
+            )
             vim.keymap.set(
                 "n",
                 "<leader>cd",

@@ -56,6 +56,7 @@ return {
                 "<leader>sr",
                 function()
                     require("spectre").open()
+                    vim.api.nvim_win_set_width(0, 60)
                 end,
                 desc = "Search and replace (Spectre)",
             },
@@ -63,20 +64,24 @@ return {
                 "<leader>sw",
                 function()
                     require("spectre").open_visual({ select_word = true })
+                    vim.api.nvim_win_set_width(0, 60)
                 end,
                 desc = "Search current word (Spectre)",
             },
             {
-                "<leader>sv",
+                "<leader>sw",
                 function()
                     require("spectre").open_visual()
+                    vim.api.nvim_win_set_width(0, 60)
                 end,
+                mode = "v",
                 desc = "Search current word (Spectre)",
             },
             {
                 "<leader>sp",
                 function()
                     require("spectre").open_file_search()
+                    vim.api.nvim_win_set_width(0, 60)
                 end,
                 desc = "Search in current file (Spectre)",
             },

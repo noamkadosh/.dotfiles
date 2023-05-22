@@ -45,6 +45,7 @@
       kubectl
       linode-cli
       luarocks
+      luajit
       mdcat
       mdl
       (writeShellScriptBin "markdownlint" '' exec ${mdl}/bin/mdl "$@" '')
@@ -55,6 +56,7 @@
       nodePackages.stylelint
       nodePackages.vercel
       openssl
+      pkg-config
       # postgresql
       procs
       python3

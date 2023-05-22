@@ -59,6 +59,7 @@ return {
                 "cssls",
                 "dockerls",
                 "docker_compose_language_service",
+                "eslint",
                 "gopls",
                 "html",
                 "jsonls",
@@ -100,9 +101,6 @@ return {
 
                 vim.keymap.set("n", "<leader>f", function()
                     vim.lsp.buf.format({
-                        filter = function(lsp_client)
-                            return lsp_client.name == "null-ls"
-                        end,
                         bufnr = bufnr,
                     })
                 end, { desc = "Format" })

@@ -41,7 +41,7 @@ function M.lsp_breakdown()
 
             table.insert(
                 status,
-                "%#ConstantStatus#󱁤 %#StatusLine#" .. client.name
+                "%#ConstantStatus#󰦬 %#StatusLine#" .. client.name
             )
         elseif
             client.config.name == "tsserver"

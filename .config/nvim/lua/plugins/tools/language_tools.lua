@@ -12,10 +12,7 @@ local function setup_null_ls()
             null_ls.builtins.formatting.rustfmt,
 
             -- TS, JS
-            null_ls.builtins.code_actions.eslint_d,
             require("typescript.extensions.null-ls.code-actions"),
-            null_ls.builtins.diagnostics.eslint_d,
-            null_ls.builtins.formatting.eslint_d,
             null_ls.builtins.formatting.prettierd,
 
             -- HTML
@@ -60,7 +57,6 @@ local function setup_null_ls()
     require("mason-null-ls").setup({
         ensure_installed = {
             "actionlint",
-            "eslint_d",
             "golangci_lint",
             "prettierd",
             "rustfmt",
