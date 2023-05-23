@@ -1,12 +1,20 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:noamkadosh/.nvim.git
+	branch = main
+	update = merge
 [submodule ".config/zellij/plugins_src/statusbar"]
 	path = .config/zellij/plugins_src/statusbar
 	url = git@github.com:noamkadosh/.zellij-statusbar.git
+	branch = main
+	update = merge
 [submodule ".config/keyboards/adv360_pro_zmk"]
 	path = .config/keyboards/adv360_pro_zmk
 	url = git@github.com:noamkadosh/.adv360_pro_zmk.git
+	branch = main
+	update = merge
 [submodule ".config/obsidian"]
 	path = .config/obsidian
 	url = git@github.com:noamkadosh/.obsidian.git
+	branch = main
+	update = merge

@@ -6,6 +6,7 @@ export VOLTA_HOME="$HOME/.volta"
 export GOPATH="$HOME/Developer/go"
 export GOROOT=
 export EDITOR="nvim"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export TERM="alacritty"
 export VIMRC="$HOME/.config/nvim/min.lua"
 export VIMINIT="source $VIMRC"
