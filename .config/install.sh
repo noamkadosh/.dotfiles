@@ -32,5 +32,8 @@ cargo install --force aichat
 curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Obsidian
+ln -s "$HOME/.config/obsidian" "$HOME/obsidian"
+
 # Editor Config
-ln -s "$HOME/.config/.editorconfig" "$HOME/.editorconfig
+ln -s "$HOME/.config/editorconfig" "$HOME/.editorconfig"
