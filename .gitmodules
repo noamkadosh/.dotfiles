@@ -1,3 +1,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:noamkadosh/.nvim.git
+[submodule ".config/zellij/plugins_src/statusbar"]
+	path = .config/zellij/plugins_src/statusbar
+	url = git@github.com:noamkadosh/.zellij-statusbar.git
