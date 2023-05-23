@@ -4,3 +4,6 @@
 [submodule ".config/zellij/plugins_src/statusbar"]
 	path = .config/zellij/plugins_src/statusbar
 	url = git@github.com:noamkadosh/.zellij-statusbar.git
+[submodule ".config/keyboards/Adv360-Pro-ZMK"]
+	path = .config/keyboards/Adv360-Pro-ZMK
+	url = git@github.com:noamkadosh/Adv360-Pro-ZMK.git
