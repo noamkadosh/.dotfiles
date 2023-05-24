@@ -7,30 +7,22 @@ volta install node
 volta install pnpm
 
 # Nix
-source ~/.config/nix/install.sh
+source nix/install.sh
 
 # Rust
 rustup default stable
-cargo install cargo-watch
+
+# Cargo
+source cargo/install.sh
 
 # Zellij
-source ~/.config/zellij/install.sh
+source zellij/install.sh
 
 # VSCode
-source ~/.config/vscode/install.sh
+source vscode/install.sh
 
 # Bat
 bat cache --build
-
-# Bob-nvim
-cargo install bob-nvim
-bob use nightly
-
-# AiChat
-cargo install --force aichat
-
-curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Obsidian
 ln -s "$HOME/.config/obsidian" "$HOME/obsidian"
