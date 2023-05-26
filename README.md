@@ -14,7 +14,7 @@ Checkout `main`.
 
 Update submodules.
 ```shell
-/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME submodule update --checkout
+/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME submodule update --init
 ```
 
 To ignore untracked files and avoid too much noise:
