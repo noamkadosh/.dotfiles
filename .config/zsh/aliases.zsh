@@ -49,13 +49,13 @@ alias zellijconfig="$EDITOR $XDG_CONFIG_HOME/zellij/config.kdl"
 alias zshconfig="$EDITOR $ZDOTDIR/.zshrc"
 
 # Dotfiles bare repo management
-alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias dotsa="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME add"
-alias dotsc="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME commit"
-alias dotsco="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout"
-alias dotsl="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull"
-alias dotsp="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME push"
-alias dotss="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status"
+alias dots="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+alias dotsa="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME add"
+alias dotsc="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME commit"
+alias dotsco="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout"
+alias dotsl="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME pull"
+alias dotsp="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME push"
+alias dotss="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME status"
 
 # Git worktrees aliases
 alias gwt="git worktree"
