@@ -7,17 +7,17 @@ window:
   startup_mode: Fullscreen
 font:
   normal:
-    family: "LeagueMono Nerd Font"
+    family: LeagueMono Nerd Font
     style: Narrow Regular
   bold:
-    family: "LeagueMono Nerd Font"
+    family: LeagueMono Nerd Font
     style: Narrow Medium
   italic:
-    family: "LeagueMono Nerd Font"
-    style: Narrow Italic
+    family: LeagueMono Nerd Font
+    style: Narrow Light
   bold_italic:
-    family: "LeagueMono Nerd Font"
-    style: Narrow Medium Italic
+    family: LeagueMono Nerd Font
+    style: Narrow UltraLight
   size: 20.0
   offset:
     y: 10
