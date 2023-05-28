@@ -24,6 +24,7 @@
       coreutils
       curl
       delta
+      deno
       # docker
       # docker-compose
       du-dust
