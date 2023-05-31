@@ -25,5 +25,5 @@ To ignore untracked files and avoid too much noise:
 Then, run the install script.
 
 ```shell
-source $HOME/.config/install.sh
+$(command -v zsh) "$HOME/.config/install.zsh"
 ```

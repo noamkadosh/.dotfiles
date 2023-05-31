@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/zsh
 
 # Symilink VSCode settings
-ln -s $HOME/.config/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
-ln -s $HOME/.config/vscode/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
-ln -s $HOME/.config/vscode/snippets/ $HOME/Library/Application\ Support/Code/User/snippets/
+[ -e "$HOME/.config/vscode/settings.json" -a ! -L "$HOME/Library/Application\ Support/Code/User/settings.json" ] && ln -s $HOME/.config/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+[ -e "$HOME/.config/vscode/keybindings.json" -a ! -L "$HOME/Library/Application\ Support/Code/User/keybindings.json" ] && ln -s $HOME/.config/vscode/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
+[ -e "$HOME/.config/vscode/snippets/" -a ! -L "$HOME/Library/Application\ Support/Code/User/snippets/" ] && ln -s $HOME/.config/vscode/snippets/ $HOME/Library/Application\ Support/Code/User/snippets/
 
 # Install VSCode extensions
 extensions=(
@@ -104,5 +104,6 @@ extensions=(
 )
 
 for i in ${extensions[@]}; do
-    code --install-extension $i
+    code --log error --install-extension $i --force || echo "Failed to install extension $i"
 done
+
