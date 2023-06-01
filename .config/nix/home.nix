@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   home.stateVersion = "23.05";
 
   # https://github.com/malob/nixpkgs/blob/master/home/default.nix
@@ -11,7 +14,8 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs;
+    [
       act
       alejandra
       argparse
@@ -38,7 +42,7 @@
       gitui
       gnupg
       gnused
-      (writeShellScriptBin "gsed" '' exec ${gnused}/bin/sed "$@" '')
+      (writeShellScriptBin "gsed" ''exec ${gnused}/bin/sed "$@" '')
       go
       grex
       hadolint
@@ -49,7 +53,7 @@
       luajit
       mdcat
       mdl
-      (writeShellScriptBin "markdownlint" '' exec ${mdl}/bin/mdl "$@" '')
+      (writeShellScriptBin "markdownlint" ''exec ${mdl}/bin/mdl "$@" '')
       # mongodb
       mprocs
       nmap
@@ -77,10 +81,11 @@
       zellij
       zoxide
       zsh
-  ] ++ lib.optionals stdenv.isDarwin [
-    cocoapods
-    m-cli # useful macOS CLI commands
-  ];
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      cocoapods
+      m-cli # useful macOS CLI commands
+    ];
 
   # Misc configuration files --------------------------------------------------------------------{{{
 
@@ -97,4 +102,3 @@
     nix.enable = true;
   };
 }
-

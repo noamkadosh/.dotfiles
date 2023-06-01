@@ -27,6 +27,12 @@
       extra-platforms = x86_64-darwin aarch64-darwin
     '';
 
+  users.users = {
+    noam = {
+      home = "/Users/noam";
+    };
+  };
+
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;
 

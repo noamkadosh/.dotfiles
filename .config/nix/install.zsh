@@ -18,7 +18,11 @@ fi
 # Enable nix-command and flakes to bootstrap 
 \cat <<EOF > ~/.config/nix/nix.conf
 experimental-features = nix-command flakes
-EOF || die "Failed to edit nix.conf"
+EOF
+
+if [ $? -ne 0 ]; then
+  die "Failed to edit nix.conf"
+fi
 
 # Until this is addressed https://github.com/LnL7/nix-darwin/issues/149
 mv /etc/nix/nix.conf /etc/nix/.nix-darwin.bkp.nix.conf || die "Failed to move nix.conf"
