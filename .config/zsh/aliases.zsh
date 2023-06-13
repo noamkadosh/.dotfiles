@@ -1,7 +1,7 @@
 # General aliases
 # alias act="act --container-architecture linux/amd64"
 alias byebye="killPort" # byebye <port>
-alias cat="bat"
+alias cat="batOrMdcat"
 alias cmon="sudo -s eval $(history -p !!)"
 alias du="dust"
 alias find="fd"
@@ -14,6 +14,7 @@ alias ps="procs"
 alias top="btm"
 alias unique="typeset -U"
 alias gui="gitui"
+alias fzp="fzf --preview 'bat --color=always {} --style=numbers'"
 
 # Cargo aliases
 alias c="cargo"

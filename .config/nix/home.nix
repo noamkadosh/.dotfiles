@@ -77,6 +77,8 @@
       tree-sitter
       vim
       wget
+      xclip
+      xquartz
       yarn
       zellij
       zoxide

@@ -26,6 +26,10 @@ fpath-src = 'fpath=( "{{ dir }}/src" $fpath )'
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+[plugins.fzf-tab-source]
+github = "Freed-Wu/fzf-tab-source"
+apply = ["defer"]
+
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
 apply = ["defer"]

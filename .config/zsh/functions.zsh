@@ -1,3 +1,16 @@
+#
+function batOrMdcat() {
+    # Get the file extension
+    extension="${1##*.}"
+
+    # Check the extension and run the appropriate command
+    if [[ "$extension" == "md" ]]; then
+        mdcat "$@"
+    else
+        bat "$@"
+    fi
+}
+
 # getLastCommit
 function saveLastCommit() {
     lastCommit=$(git rev-parse HEAD | cut -c 1-8)

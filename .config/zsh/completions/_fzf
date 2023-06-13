@@ -1,0 +1,94 @@
+#compdef fzf
+
+autoload -U is-at-least
+
+_fzf() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+   '-x[Extended-search mode (enabled by default)]' \
+    '-e[Enable Exact-match]' \
+    '-i[Case-insensitive match (default: smart-case match)]' \
+    '+i[Case-sensitive match]' \
+    '--scheme=[Scoring scheme]: :(default path history)' \
+    '--literal[Do not normalize latin script letters before matching]' \
+    '-n+[Comma-separated list of field index expressions for limiting search scope]: ' \
+    '--with-nth+[Transform the presentation of each line using field index expressions]: ' \
+    '-d+[Field delimiter regex (default: AWK-style)]: ' \
+    '+s[Do not sort the result]' \
+    '--track[Track the current selection when the result is updated]' \
+    '--tac[Reverse the order of the input]' \
+    '--disabled[Do not perform search]' \
+    '--tiebreak=[Comma-separated list of sort criteria to apply when the scores are tied]: :(length chunk begin end index)' \
+    '-m+[Enable multi-select with tab/shift-tab]: ' \
+    '--no-mouse[Disable mouse]' \
+    '--bind=[Custom key bindings]: ' \
+    '--cycle[Enable cyclic scroll]' \
+    '--keep-right[Keep the right end of the line visible on overflow]' \
+    '--scroll-off=[Number of screen lines to keep above or below when scrolling to the top or to the bottom (default: 0)]: ' \
+    '--no-hscroll[Disable horizontal scroll]' \
+    '--hscroll-off=[Number of screen columns to keep to the right of the highlighted substring (default: 10)]: ' \
+    '--filepath-word[Make word-wise movements respect path separators]' \
+    '--jump-labels=[Label characters for jump and jump-accept]: ' \
+    '--height=[Display fzf window below the cursor with the given height instead of using fullscreen]: ' \
+    '--min-height=[Minimum height when --height is given in percent]: ' \
+    '--layout=[Choose layout]: :(default reverse reverse-list)' \
+    '--border[Draw border around the finder]: :(rounded sharp bold block double horizontal vertical top bottom left right none)' \
+    '--border-label=[Label to print on the border]: ' \
+    '--border-label-pos=[Position of the border label]: ' \
+    '--margin=[Screen margin]: ' \
+    '--padding=[Padding inside border]: ' \
+    '--info=[Finder info style]: :(default hidden inline "inline:SEPARATOR")' \
+    '--separator=[String to form horizontal separator on info line]: ' \
+    '--no-separator[Hide info line separator]' \
+    '--scrollbar=[Scrollbar character(s) (each for main and preview window)]: ' \
+    '--no-scrollbar[Hide scrollbar]' \
+    '--prompt=[Input prompt]: ' \
+    '--pointer=[Pointer to the current line]: ' \
+    '--marker=[Multi-select marker]: ' \
+    '--header=[String to print as header]: ' \
+    '--header-lines=[The first N lines of the input are treated as header]: ' \
+    '--header-first[Print header before the prompt line]' \
+    '--ellipsis=[Ellipsis to show when line is truncated]: ' \
+    '--ansi[Enable processing of ANSI color codes]' \
+    '--tabstop=[Number of spaces for a tab character]: ' \
+    '--color=[Base scheme and/or custom colors]: ' \
+    '--no-bold[Do not use bold text]' \
+    '--history=[History file]: ' \
+    '--history-size=[Maximum number of history entries]: ' \
+    '--preview=[Command to preview highlighted line]: ' \
+    '--preview-window=[Preview window layout]: ' \
+    '--preview-label=[Label for the preview window]: ' \
+    '--preview-label-pos=[Position of the preview window label]: ' \
+    '-q+[Start the finder with the given query]: ' \
+    '-1[Automatically select the only match]' \
+    "-0[Exit immediately when there's no match]" \
+    '-f+[Filter mode. Do not start interactive finder]: ' \
+    '--print-query[Print query as the first line]' \
+    '--expect=[Comma-separated list of keys to complete fzf]: ' \
+    '--read0[Read input delimited by ASCII NUL characters]' \
+    '--print0[Print output delimited by ASCII NUL characters]' \
+    '--sync[Synchronous search for multi-staged filtering]' \
+    '--listen=[Start HTTP server to receive actions (POST /)]: ' \
+    '--version[Display version information and exit]' \
+    '--help[Display help message and exit]' \
+    '*:: :->args'
+
+  case $state in
+    (args)
+      _files
+      ;;
+  esac
+}
+
+_fzf "$@"
+
