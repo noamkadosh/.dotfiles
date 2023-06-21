@@ -8,14 +8,22 @@ layout {
     }
 
     // Tab templates
-    default_tab_template {
+    tab_template name="dotfiles" {
         floating_panes {
-            terminal name="TERMINAL"
+            terminal name="TERMINAL" cwd=".config"
         }
-        editor name="EDITOR"
+        editor name="EDITOR" cwd=".config"
+        statusbar size=1 borderless=true
+    }
+    tab_template name="notes" {
+        floating_panes {
+            terminal name="TERMINAL" cwd=".config/obsidian"
+        }
+        editor name="EDITOR" cwd=".config/obsidian"
         statusbar size=1 borderless=true
     }
 
     // Layout
-    tab name="DOTFILES"
+    dotfiles name="DOTFILES"
+    notes name="NOTES"
 }
