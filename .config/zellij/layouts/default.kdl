@@ -28,6 +28,11 @@ layout {
         statusbar size=1 borderless=true
     }
 
+    default_tab_template {
+        pane
+        statusbar size=1 borderless=true
+    }
+
     // Layout
     dotfiles name="DOTFILES" focus=true
     notes name="NOTES"
