@@ -19,6 +19,8 @@
 	email = noamkadosh91@gmail.com
 [init]
 	defaultBranch = main
+[include]
+    path = /Users/noam/.config/delta/themes/tokyonight_night.gitconfig
 [pull]
 	rebase = false
     twohead = ort
@@ -29,6 +31,7 @@
 [rerere]
 	enabled = true
 [delta]
+	features = tokyonight_night
     hyperlinks = true
     navigate = true
     side-by-side = true
