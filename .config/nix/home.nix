@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 
   # https://github.com/malob/nixpkgs/blob/master/home/default.nix
 

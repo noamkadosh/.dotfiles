@@ -4,7 +4,7 @@ env:
   TERM: alacritty
 window:
   option_as_alt: Both
-  startup_mode: Fullscreen
+  startup_mode: Maximized
 font:
   normal:
     family: LeagueMono Nerd Font

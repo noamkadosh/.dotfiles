@@ -70,10 +70,8 @@ alias gwtrt="gitWorktreeAdd root"
 
 # Git aliases
 alias gbstop="git bisect reset HEAD"
-alias gcns="gc && saveLastCommit"
-alias gco--="gRemoveFileChangesTillCommit" # gco-- <commit> <filename>
-alias gcplast="gcp $lastCommit"
-
+alias cplast="git rev-parse --short HEAD | pbcopy"
+alias gcplast="git cherry-pick ${pbpaste}"
 
 # AI tools
 alias autogpt="docker compose -f ~/Developer/AutoGPT/docker-compose.yaml run --rm auto-gpt"

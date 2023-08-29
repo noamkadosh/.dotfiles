@@ -3,7 +3,7 @@
 
   inputs = {
     # Package sets
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.11-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-23.05-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Environment/system management
@@ -28,7 +28,7 @@
     ...
   } @ inputs: let
     inherit (darwin.lib) darwinSystem;
-    inherit (nixpkgs-unstable.lib) attrValues makeOverridable optionalAttrs singleton;
+    inherit (nixpkgs-unstable.lib) attrValues optionalAttrs singleton;
 
     # Configuration for `nixpkgs`
     nixpkgsConfig = {
@@ -51,7 +51,7 @@
   in {
     # My `nix-darwin` configs
 
-    darwinConfigurations = rec {
+    darwinConfigurations = {
       Noam = darwinSystem {
         # TODO: Can I detect system, somehow? or add per system config?
         system = "aarch64-darwin";

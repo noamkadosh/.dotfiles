@@ -11,11 +11,6 @@ function batOrMdcat() {
     fi
 }
 
-# getLastCommit
-function saveLastCommit() {
-    lastCommit=$(git rev-parse HEAD | cut -c 1-8)
-}
-
 # gitWorktreeAdd <new/existing> <branch>
 function gitWorktreeAdd() {
     # move to root if requested
