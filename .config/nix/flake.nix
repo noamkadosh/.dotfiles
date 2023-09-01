@@ -36,17 +36,18 @@
         allowUnfree = true;
         allowUnsupportedSystem = true;
       };
-      overlays =
-        attrValues self.overlays
-        ++ singleton (
-          # Sub in x86 version of packages that don't build on Apple Silicon yet
-          final: prev: (optionalAttrs (prev.stdenv.system == "aarch64-darwin") {
-            inherit
-              (final.pkgs-x86)
-              nix-index
-              ;
-          })
-        );
+      # NOTE: the following overlay appear to break things at the moment
+      # overlays =
+      #   attrValues self.overlays
+      #   ++ singleton (
+      #     # Sub in x86 version of packages that don't build on Apple Silicon yet
+      #     final: prev: (optionalAttrs (prev.stdenv.system == "aarch64-darwin") {
+      #       inherit
+      #         (final.pkgs-x86)
+      #         nix-index
+      #         ;
+      #     })
+      #   );
     };
   in {
     # My `nix-darwin` configs
