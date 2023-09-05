@@ -3,6 +3,7 @@ export FPATH="$HOME/.config/zsh/completions:$HOME/.local/share/sheldon:$FPATH"
 export CARGO_HOME="$HOME/.cargo"
 export BOB_NVIM_HOME="$HOME/.local/share/bob/nvim-bin"
 export VOLTA_HOME="$HOME/.volta"
+export VOLTA_FEATURE_PNPM=1
 export GOPATH="$HOME/Developer/go"
 export GOROOT=
 export EDITOR="nvim"
