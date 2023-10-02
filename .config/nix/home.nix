@@ -31,7 +31,7 @@
       # docker
       # docker-compose
       du-dust
-      exa
+      eza
       fd
       ffmpeg_5
       flyctl
@@ -69,6 +69,7 @@
       rustup
       sd
       sheldon
+      skhd
       starship
       statix
       tealdeer
@@ -77,7 +78,7 @@
       vim
       wget
       xclip
-      xquartz
+      yabai
       yarn
       zellij
       zoxide

@@ -49,6 +49,7 @@
     firefox-devedition
     obsidian
     vscode
+    xquartz
   ];
 
   programs.nix-index.enable = true;

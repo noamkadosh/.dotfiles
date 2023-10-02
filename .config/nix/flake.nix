@@ -33,6 +33,7 @@
     # Configuration for `nixpkgs`
     nixpkgsConfig = {
       config = {
+        allowBroken = true;
         allowUnfree = true;
         allowUnsupportedSystem = true;
       };
@@ -53,9 +54,7 @@
 
     darwinConfigurations = {
       Noam = darwinSystem {
-        # TODO: Can I detect system, somehow? or add per system config?
         system = "aarch64-darwin";
-        # system = "x86_64-darwin";
         modules =
           attrValues self.darwinModules
           ++ [

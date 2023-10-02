@@ -38,7 +38,7 @@ alias nixb="nix build --out-link ~/result ~/.config/nix#darwinConfigurations.Noa
 ~/result/sw/bin/darwin-rebuild switch --flake ~/.config/nix#Noam"
 alias nixup="nix-env -u"
 alias nixupdate="nix flake update ~/.config/nix/"
-alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
+alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env --install --attr nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
 
 # Config aliases
 alias alacrittyconfig="$EDITOR $XDG_CONFIG_HOME/alacritty/alacritty.yml"
