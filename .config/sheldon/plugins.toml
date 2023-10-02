@@ -13,9 +13,8 @@
 shell = "zsh"
 
 [templates]
-defer = { value = 'zsh-defer source "{{ file }}"', each = true } # version 0.6.6
-# defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}" # version ^0.7.0
-# source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}" # version ^0.7.0
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"
 PATH = 'export PATH="{{ dir }}:$PATH"'
 path = 'path=( "{{ dir }}" $path )'
 fpath = 'fpath=( "{{ dir }}" $fpath )'

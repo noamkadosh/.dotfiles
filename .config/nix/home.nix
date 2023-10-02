@@ -2,12 +2,19 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
-}: {
-  home.stateVersion = "23.11";
+}: let
+  unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs) system;
+    config.allowUnsupportedSystem = true;
+  };
+in {
+  home.stateVersion = "23.05";
 
   # https://github.com/malob/nixpkgs/blob/master/home/default.nix
 
+  programs.home-manager.enable = true;
   # Direnv, load and unload environment variables depending on the current directory.
   # https://direnv.net
   # https://rycee.gitlab.io/home-manager/options.html#opt-programs.direnv.enable
@@ -31,7 +38,7 @@
       # docker
       # docker-compose
       du-dust
-      eza
+      unstable.eza
       fd
       ffmpeg_5
       flyctl
@@ -68,7 +75,7 @@
       ripgrep
       rustup
       sd
-      sheldon
+      unstable.sheldon
       skhd
       starship
       statix

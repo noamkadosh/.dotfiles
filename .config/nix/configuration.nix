@@ -33,7 +33,7 @@
     };
   };
 
-  # Create /etc/bashrc that loads the nix-darwin environment.
+  # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;
 
   # Auto upgrade nix package and the daemon service.
@@ -46,7 +46,7 @@
     _1password
     _1password-gui
     alacritty
-    firefox-devedition
+    # firefox-devedition
     obsidian
     vscode
     xquartz
