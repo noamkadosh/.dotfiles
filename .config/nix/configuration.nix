@@ -1,8 +1,15 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
-}: {
+}: let
+  unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs) system;
+    config.allowUnfree = true;
+    config.allowUnsupportedSystem = true;
+  };
+in {
   # Nix configuration
 
   nix.settings.substituters = [
@@ -17,7 +24,7 @@
   nix.configureBuildUsers = true;
 
   # Enable experimental nix command and flakes
-  # nix.package = pkgs.nixUnstable;
+  nix.package = pkgs.nixUnstable;
   nix.extraOptions =
     ''
       auto-optimise-store = true
@@ -43,13 +50,12 @@
   # `home-manager` currently has issues adding them to `~/Applications`
   # Issue: https://github.com/nix-community/home-manager/issues/1341
   environment.systemPackages = with pkgs; [
-    _1password
-    _1password-gui
-    alacritty
+    # _1password-gui
+    unstable.alacritty
+    # unstable.bartender
     # firefox-devedition
-    obsidian
+    unstable.obsidian
     vscode
-    xquartz
   ];
 
   programs.nix-index.enable = true;

@@ -3,7 +3,7 @@ import:
 env:
   TERM: alacritty
 window:
-  opacity: 0.9
+  # opacity: 0.93
   option_as_alt: Both
   startup_mode: Maximized
 font:
@@ -12,13 +12,13 @@ font:
     style: Narrow Regular
   bold:
     family: LeagueMono Nerd Font
-    style: Narrow Medium
+    style: Narrow SemiBold
   italic:
-    family: LeagueMono Nerd Font
-    style: Narrow Light
+    family: JetBrainsMono Nerd Font
+    style: Italic
   bold_italic:
-    family: LeagueMono Nerd Font
-    style: Narrow UltraLight
+    family: JetBrainsMono Nerd Font
+    style: Italic SemiBold
   size: 20.0
   offset:
     y: 10

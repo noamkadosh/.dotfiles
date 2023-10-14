@@ -7,6 +7,7 @@
 }: let
   unstable = import inputs.nixpkgs-unstable {
     inherit (pkgs) system;
+    config.allowUnfree = true;
     config.allowUnsupportedSystem = true;
   };
 in {
@@ -23,6 +24,7 @@ in {
 
   home.packages = with pkgs;
     [
+      _1password
       act
       alejandra
       argparse
@@ -63,9 +65,6 @@ in {
       # mongodb
       mprocs
       nmap
-      nodePackages.snyk
-      nodePackages.stylelint
-      nodePackages.vercel
       openssl
       pkg-config
       # postgresql
@@ -77,14 +76,19 @@ in {
       sd
       unstable.sheldon
       skhd
+      nodePackages.snyk
       starship
       statix
+      nodePackages.stylelint
       tealdeer
       tokei
       tree-sitter
+      nodePackages.vercel
       vim
       wget
       xclip
+      xplr
+      xquartz
       yabai
       yarn
       zellij

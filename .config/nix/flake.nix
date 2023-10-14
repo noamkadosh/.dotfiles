@@ -50,7 +50,6 @@
     };
   in {
     # My `nix-darwin` configs
-
     darwinConfigurations = {
       Noam = darwinSystem {
         system = "aarch64-darwin";
@@ -67,10 +66,22 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.noam = import ./home.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = {inherit inputs;};
             }
           ];
+        specialArgs = {inherit inputs;};
       };
+    };
+
+    services.yabai = {
+      enable = true;
+      package = nixpkgs.yabai;
+      enableScriptingAddition = true;
+    };
+
+    services.skhd = {
+      enable = true;
+      package = nixpkgs.skhd;
     };
 
     # Overlays --------------------------------------------------------------- {{{
