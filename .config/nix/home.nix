@@ -75,7 +75,7 @@ in {
       rustup
       sd
       unstable.sheldon
-      skhd
+      unstable.skhd
       nodePackages.snyk
       starship
       statix
@@ -89,7 +89,7 @@ in {
       xclip
       xplr
       xquartz
-      yabai
+      unstable.yabai
       yarn
       zellij
       zoxide

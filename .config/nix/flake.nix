@@ -73,15 +73,15 @@
       };
     };
 
+    services.skhd = {
+      enable = true;
+      package = nixpkgs.skhd;
+    };
+
     services.yabai = {
       enable = true;
       package = nixpkgs.yabai;
       enableScriptingAddition = true;
-    };
-
-    services.skhd = {
-      enable = true;
-      package = nixpkgs.skhd;
     };
 
     # Overlays --------------------------------------------------------------- {{{
