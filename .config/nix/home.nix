@@ -29,11 +29,13 @@ in {
       alejandra
       argparse
       avrdude
+      awscli2
       bandwhich
       bat
       blackbox
       bottom
       cachix # adding/managing alternative binary caches hosted by Cachix
+      cloudflared
       coreutils
       curl
       delta
@@ -72,6 +74,7 @@ in {
       python3
       redis
       ripgrep
+      rojo
       rustup
       sd
       unstable.sheldon
@@ -91,7 +94,7 @@ in {
       xquartz
       unstable.yabai
       yarn
-      zellij
+      unstable.zellij
       zoxide
       zsh
     ]
