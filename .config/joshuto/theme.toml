@@ -1,0 +1,168 @@
+##########################################
+## Tabs
+##########################################
+[tabs]
+
+[tabs.chars]
+divider = " "
+active_prefix = ""
+active_postfix = ""
+inactive_prefix = ""
+inactive_postfix = ""
+scroll_front_prefix = ""
+scroll_front_postfix = ""
+scroll_front_prestring = ""
+scroll_front_poststring = " "
+scroll_back_prefix = ""
+scroll_back_postfix = ""
+scroll_back_prestring = " "
+scroll_back_poststring = ""
+
+[tabs.styles]
+
+# Style of active tab & current directory
+[tabs.styles.active]
+bg = "rgb(122,162,247)" # blue
+fg = "rgb(30,32,48)" # black
+bold = true
+
+[tabs.styles.active_prefix]
+fg = "rgb(122,162,247)" # blue
+bg = "reset"
+
+# Style of inactive tabs
+[tabs.styles.inactive]
+fg = "rgb(30,32,48)" # black
+bg = "rgb(130,139,184)" # gray
+
+[tabs.styles.inactive_prefix]
+fg = "rgb(130,139,184)" # gray
+bg = "reset"
+
+# Style of the left/front tab scroll tag (when tabs overflow)
+[tabs.styles.scroll_front]
+bg = "rgb(255,199,119)" # yellow
+fg = "rgb(30,32,48)" # black
+bold = true
+
+[tabs.styles.scroll_front_prefix]
+bg = "reset"
+fg = "rgb(255,199,119)" # yellow
+
+[tabs.styles.scroll_front_postfix]
+invert = true
+
+# Style of the right/back tab scroll tag (when tabs overflow)
+[tabs.styles.scroll_back]
+bg = "rgb(255,199,119)" # yellow
+fg = "rgb(30,32,48)" # black
+bold = true
+
+[tabs.styles.scroll_back_prefix]
+bg = "reset"
+fg = "rgb(255,199,119)" # yellow
+invert = true
+
+[tabs.styles.scroll_back_postfix]
+invert = false
+
+##########################################
+## File List - Selections
+##########################################
+
+# Selected files (standard selection)
+[selection]
+fg = "rgb(255,199,119)" # yellow
+bold = true
+
+# Files selected in current visual mode
+[visual_mode_selection]
+fg = "rgb(255,117,127)" # red
+bold = true
+
+[selection.prefix]
+prefix = "  "
+size = 2
+
+##########################################
+## File List - System File Types
+##########################################
+
+# Basic style, used for regular files (and also device files and FIFOs)
+[regular]
+fg = "rgb(200,211,245)" # white
+
+# For directories
+[directory]
+fg = "rgb(122,162,247)" # blue
+bold = true
+
+# For symbolic links
+[link]
+fg = "rgb(134,225,252)" # cyan
+bold = true
+
+# For socket files
+[socket]
+fg = "rgb(252,167,234)" # purple
+bold = true
+
+##########################################
+## File List - Exceptional Files
+##########################################
+
+# Files marked as executable
+[executable]
+fg = "rgb(195,232,141)" # green
+bold = true
+
+# Invalid symbolic links (pointing to non-existing target)
+[link_invalid]
+fg = "rgb(255,117,127)" # red
+bold = true
+
+##########################################
+## File list - Override style by extension
+##########################################
+# This sections allows to override the basic 
+# style with a specific style for the file's
+# extension.
+
+[ext]
+
+bmp.fg = "rgb(255,199,119)" # yellow
+gif.fg = "rgb(255,199,119)" # yellow
+heic.fg = "rgb(255,199,119)" # yellow
+jpg.fg = "rgb(255,199,119)" # yellow
+jpeg.fg = "rgb(255,199,119)" # yellow
+pgm.fg = "rgb(255,199,119)" # yellow
+png.fg = "rgb(255,199,119)" # yellow
+ppm.fg = "rgb(255,199,119)" # yellow
+svg.fg = "rgb(255,199,119)" # yellow
+
+wav.fg = "rgb(192,153,255)" # magenta
+flac.fg = "rgb(192,153,255)" # magenta
+mp3.fg = "rgb(192,153,255)" # magenta
+amr.fg = "rgb(192,153,255)" # magenta
+
+avi.fg = "rgb(192,153,255)" # magenta
+flv.fg = "rgb(192,153,255)" # magenta
+m3u.fg = "rgb(192,153,255)" # magenta
+m4a.fg = "rgb(192,153,255)" # magenta
+m4v.fg = "rgb(192,153,255)" # magenta
+mkv.fg = "rgb(192,153,255)" # magenta
+mov.fg = "rgb(192,153,255)" # magenta
+mp4.fg = "rgb(192,153,255)" # magenta
+mpg.fg = "rgb(192,153,255)" # magenta
+rmvb.fg = "rgb(192,153,255)" # magenta
+webm.fg = "rgb(192,153,255)" # magenta
+wmv.fg = "rgb(192,153,255)" # magenta
+
+7z.fg = "rgb(255,117,127)" # red
+bz2.fg = "rgb(255,117,127)" # red
+gz.fg = "rgb(255,117,127)" # red
+rar.fg = "rgb(255,117,127)" # red
+tar.fg = "rgb(255,117,127)" # red
+tgz.fg = "rgb(255,117,127)" # red
+xz.fg = "rgb(255,117,127)" # red
+zip.fg = "rgb(255,117,127)" # red

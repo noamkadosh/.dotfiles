@@ -57,6 +57,7 @@ in {
       grex
       hadolint
       hyperfine
+      unstable.joshuto
       kubectl
       linode-cli
       luarocks
@@ -86,11 +87,10 @@ in {
       tealdeer
       tokei
       tree-sitter
-      nodePackages.vercel
+      unstable.nodePackages.vercel
       vim
       wget
       xclip
-      xplr
       xquartz
       unstable.yabai
       yarn

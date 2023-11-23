@@ -2,10 +2,7 @@
 nvim() {
     export NVIM_NEW_DIR_FILE="$HOME/.temp/nvim/cwd"
     
-    unset VIMINIT;  
     command nvim "$@"
-
-    export VIMINIT="source $VIMRC"
 
     if [[ -f "$NVIM_NEW_DIR_FILE" ]]; then
         rc=$?

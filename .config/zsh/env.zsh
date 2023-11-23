@@ -9,6 +9,4 @@ export EDITOR="nvim"
 export DISPLAY=:0
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export TERM="alacritty"
-export VIMRC="$HOME/.config/nvim/min.lua"
-export VIMINIT="source $VIMRC"
 export LESSOPEN='|~/.lessfilter %s'
