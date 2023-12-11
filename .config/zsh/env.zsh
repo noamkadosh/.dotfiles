@@ -8,5 +8,6 @@ export GOROOT=
 export EDITOR="nvim"
 export DISPLAY=:0
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-export TERM="alacritty"
 export LESSOPEN='|~/.lessfilter %s'
+# $TERM should be set automatically
+# export TERM="wezterm" OR "alacritty"

@@ -12,27 +12,31 @@
 in {
   # Nix configuration
 
-  nix.settings.substituters = [
-    "https://cache.nixos.org/"
-  ];
-  nix.settings.trusted-public-keys = [
-    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-  ];
-  nix.settings.trusted-users = [
-    "@admin"
-  ];
-  nix.configureBuildUsers = true;
+  nix = {
+    settings = {
+      substituters = [
+        "https://cache.nixos.org/"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      ];
+      trusted-users = [
+        "@admin"
+      ];
+    };
+    configureBuildUsers = true;
+    # Enable experimental nix command and flakes
+    package = pkgs.nixUnstable;
 
-  # Enable experimental nix command and flakes
-  nix.package = pkgs.nixUnstable;
-  nix.extraOptions =
-    ''
-      auto-optimise-store = true
-      experimental-features = nix-command flakes
-    ''
-    + lib.optionalString (pkgs.system == "aarch64-darwin") ''
-      extra-platforms = x86_64-darwin aarch64-darwin
-    '';
+    extraOptions =
+      ''
+        auto-optimise-store = true
+        experimental-features = nix-command flakes
+      ''
+      + lib.optionalString (pkgs.system == "aarch64-darwin") ''
+        extra-platforms = x86_64-darwin aarch64-darwin
+      '';
+  };
 
   users.users = {
     noam = {
@@ -51,11 +55,12 @@ in {
   # Issue: https://github.com/nix-community/home-manager/issues/1341
   environment.systemPackages = with pkgs; [
     # _1password-gui
-    unstable.alacritty
+    # unstable.alacritty
     # unstable.bartender
     # firefox-devedition
     unstable.obsidian
     vscode
+    unstable.wezterm
   ];
 
   programs.nix-index.enable = true;

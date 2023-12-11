@@ -63,10 +63,12 @@
             {
               nixpkgs = nixpkgsConfig;
               # `home-manager` config
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.noam = import ./home.nix;
-              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.noam = import ./home.nix;
+                extraSpecialArgs = {inherit inputs;};
+              };
             }
           ];
         specialArgs = {inherit inputs;};
