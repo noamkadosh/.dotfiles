@@ -4,7 +4,9 @@ local M = {}
 
 -- Weights
 local REGULAR = "Regular"
+local MEDIUM = "Medium"
 local BOLD = "Bold"
+local EXTRA_BOLD = "ExtraBold"
 -- Styles
 local NORMAL = "Normal"
 local ITALIC = "Italic"
@@ -34,27 +36,27 @@ local LEAGUE_MONO = "LeagueMono Nerd Font"
 M.fonts = {
     monaspace_neon = {
         family = MONASPACE_NEON,
-        weight = REGULAR,
+        weight = MEDIUM,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
     monaspace_argon = {
         family = MONASPACE_ARGON,
-        weight = REGULAR,
+        weight = MEDIUM,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
     monaspace_krypton = {
         family = MONASPACE_KRYPTON,
-        weight = REGULAR,
+        weight = MEDIUM,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
     monaspace_xenon = {
         family = MONASPACE_XENON,
-        weight = REGULAR,
+        weight = MEDIUM,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
     monaspace_radon = {
         family = MONASPACE_RADON,
-        weight = REGULAR,
+        weight = MEDIUM,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
     jetbrains_mono = {
@@ -75,7 +77,7 @@ M.font_rules = {
             italic = false,
             font = wezterm.font(
                 MONASPACE_NEON,
-                { weight = BOLD, stretch = NORMAL, style = NORMAL }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
             ),
         },
         {
@@ -83,7 +85,7 @@ M.font_rules = {
             italic = true,
             font = wezterm.font(
                 MONASPACE_NEON,
-                { weight = BOLD, stretch = NORMAL, style = ITALIC }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
             ),
         },
     },
@@ -93,7 +95,7 @@ M.font_rules = {
             italic = false,
             font = wezterm.font(
                 MONASPACE_ARGON,
-                { weight = BOLD, stretch = NORMAL, style = NORMAL }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
             ),
         },
         {
@@ -101,7 +103,7 @@ M.font_rules = {
             italic = true,
             font = wezterm.font(
                 MONASPACE_ARGON,
-                { weight = BOLD, stretch = NORMAL, style = ITALIC }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
             ),
         },
     },
@@ -111,7 +113,7 @@ M.font_rules = {
             italic = false,
             font = wezterm.font(
                 MONASPACE_KRYPTON,
-                { weight = BOLD, stretch = NORMAL, style = NORMAL }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
             ),
         },
         {
@@ -119,7 +121,7 @@ M.font_rules = {
             italic = true,
             font = wezterm.font(
                 MONASPACE_KRYPTON,
-                { weight = BOLD, stretch = NORMAL, style = ITALIC }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
             ),
         },
     },
@@ -129,7 +131,7 @@ M.font_rules = {
             italic = false,
             font = wezterm.font(
                 MONASPACE_XENON,
-                { weight = BOLD, stretch = NORMAL, style = NORMAL }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
             ),
         },
         {
@@ -137,7 +139,7 @@ M.font_rules = {
             italic = true,
             font = wezterm.font(
                 MONASPACE_XENON,
-                { weight = BOLD, stretch = NORMAL, style = ITALIC }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
             ),
         },
     },
@@ -147,7 +149,7 @@ M.font_rules = {
             italic = false,
             font = wezterm.font(
                 MONASPACE_RADON,
-                { weight = BOLD, stretch = NORMAL, style = NORMAL }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
             ),
         },
         {
@@ -155,7 +157,7 @@ M.font_rules = {
             italic = true,
             font = wezterm.font(
                 MONASPACE_RADON,
-                { weight = BOLD, stretch = NORMAL, style = ITALIC }
+                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
             ),
         },
     },

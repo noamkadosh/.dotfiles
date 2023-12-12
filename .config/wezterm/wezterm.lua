@@ -1,5 +1,5 @@
 local wezterm = require("wezterm")
-local typography = require("fonts")
+local typography = require("typography")
 local fonts = typography.fonts
 local font_rules = typography.font_rules
 
