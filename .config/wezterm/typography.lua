@@ -1,15 +1,7 @@
-local wezterm = require("wezterm")
-
 local M = {}
 
 -- Weights
 local REGULAR = "Regular"
-local MEDIUM = "Medium"
-local BOLD = "Bold"
-local EXTRA_BOLD = "ExtraBold"
--- Styles
-local NORMAL = "Normal"
-local ITALIC = "Italic"
 -- Ligatures features
 local HARFBUZZ_FEATURES = {
     "calt",
@@ -25,38 +17,28 @@ local HARFBUZZ_FEATURES = {
     "ss08",
 }
 
+local CASCADIA_CODE = "Cascadia Code"
+local FIRA_CODE = "Fira Code"
+local JETBRAINS_MONO = "JetBrains Mono"
+local IOSEVKA_TERM = "Iosevka Term"
+local LEAGUE_MONO = "LeagueMono"
 local MONASPACE_NEON = "Monaspace Neon"
 local MONASPACE_ARGON = "Monaspace Argon"
 local MONASPACE_KRYPTON = "Monaspace Krypton"
 local MONASPACE_XENON = "Monaspace Xenon"
 local MONASPACE_RADON = "Monaspace Radon"
-local JETBRAINS_MONO = "JetBrains Mono Nerd Font"
-local LEAGUE_MONO = "LeagueMono Nerd Font"
+local SF_MONO = "SF Mono"
+local VICTOR_MONO = "Victor Mono"
 
 M.fonts = {
-    monaspace_neon = {
-        family = MONASPACE_NEON,
-        weight = MEDIUM,
+    cascadia_code = {
+        family = CASCADIA_CODE,
+        weight = REGULAR,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
-    monaspace_argon = {
-        family = MONASPACE_ARGON,
-        weight = MEDIUM,
-        harfbuzz_features = HARFBUZZ_FEATURES,
-    },
-    monaspace_krypton = {
-        family = MONASPACE_KRYPTON,
-        weight = MEDIUM,
-        harfbuzz_features = HARFBUZZ_FEATURES,
-    },
-    monaspace_xenon = {
-        family = MONASPACE_XENON,
-        weight = MEDIUM,
-        harfbuzz_features = HARFBUZZ_FEATURES,
-    },
-    monaspace_radon = {
-        family = MONASPACE_RADON,
-        weight = MEDIUM,
+    fira_code = {
+        family = FIRA_CODE,
+        weight = REGULAR,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
     jetbrains_mono = {
@@ -64,102 +46,49 @@ M.fonts = {
         weight = REGULAR,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
+    iosevka_term = {
+        family = IOSEVKA_TERM,
+        weight = REGULAR,
+        harfbuzz_features = HARFBUZZ_FEATURES,
+    },
     league_mono = {
         family = LEAGUE_MONO,
         weight = REGULAR,
     },
-}
-
-M.font_rules = {
     monaspace_neon = {
-        {
-            intensity = BOLD,
-            italic = false,
-            font = wezterm.font(
-                MONASPACE_NEON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
-            ),
-        },
-        {
-            intensity = BOLD,
-            italic = true,
-            font = wezterm.font(
-                MONASPACE_NEON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
-            ),
-        },
+        family = MONASPACE_NEON,
+        weight = REGULAR,
+        harfbuzz_features = HARFBUZZ_FEATURES,
     },
     monaspace_argon = {
-        {
-            intensity = BOLD,
-            italic = false,
-            font = wezterm.font(
-                MONASPACE_ARGON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
-            ),
-        },
-        {
-            intensity = BOLD,
-            italic = true,
-            font = wezterm.font(
-                MONASPACE_ARGON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
-            ),
-        },
+        family = MONASPACE_ARGON,
+        weight = REGULAR,
+        harfbuzz_features = HARFBUZZ_FEATURES,
     },
     monaspace_krypton = {
-        {
-            intensity = BOLD,
-            italic = false,
-            font = wezterm.font(
-                MONASPACE_KRYPTON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
-            ),
-        },
-        {
-            intensity = BOLD,
-            italic = true,
-            font = wezterm.font(
-                MONASPACE_KRYPTON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
-            ),
-        },
+        family = MONASPACE_KRYPTON,
+        weight = REGULAR,
+        harfbuzz_features = HARFBUZZ_FEATURES,
     },
     monaspace_xenon = {
-        {
-            intensity = BOLD,
-            italic = false,
-            font = wezterm.font(
-                MONASPACE_XENON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
-            ),
-        },
-        {
-            intensity = BOLD,
-            italic = true,
-            font = wezterm.font(
-                MONASPACE_XENON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
-            ),
-        },
+        family = MONASPACE_XENON,
+        weight = REGULAR,
+        harfbuzz_features = HARFBUZZ_FEATURES,
     },
     monaspace_radon = {
-        {
-            intensity = BOLD,
-            italic = false,
-            font = wezterm.font(
-                MONASPACE_RADON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = NORMAL }
-            ),
-        },
-        {
-            intensity = BOLD,
-            italic = true,
-            font = wezterm.font(
-                MONASPACE_RADON,
-                { weight = EXTRA_BOLD, stretch = NORMAL, style = ITALIC }
-            ),
-        },
+        family = MONASPACE_RADON,
+        weight = REGULAR,
+        harfbuzz_features = HARFBUZZ_FEATURES,
+    },
+    sf_mono = {
+        family = SF_MONO,
+        weight = REGULAR,
+        harfbuzz_features = HARFBUZZ_FEATURES,
+    },
+    victor_mono = {
+        family = VICTOR_MONO,
+        weight = REGULAR,
+        harfbuzz_features = HARFBUZZ_FEATURES,
     },
 }
 

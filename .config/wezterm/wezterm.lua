@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local typography = require("typography")
 local fonts = typography.fonts
-local font_rules = typography.font_rules
 
 local config = {
     term = "wezterm",
@@ -9,9 +8,6 @@ local config = {
         fonts.monaspace_neon,
         fonts.jetbrains_mono,
     }),
-    font_rules = {
-        table.unpack(font_rules.monaspace_neon),
-    },
     window_padding = {
         left = 0,
         right = 0,

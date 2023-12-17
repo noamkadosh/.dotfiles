@@ -45,6 +45,7 @@ in {
         # docker-compose
         du-dust
         unstable.eza
+        unstable.fastfetch
         fd
         ffmpeg_5
         flyctl

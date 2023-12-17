@@ -74,4 +74,10 @@ alias cplast="git rev-parse --short HEAD | pbcopy"
 alias gcplast="git cherry-pick ${pbpaste}"
 
 # AI tools
+alias cop="gh copilot"
+alias cope="gh copilot explain"
+alias cops="gh copilot suggest"
+alias copsh="gh copilot suggest -t shell"
+alias copg="gh copilot suggest -t git"
+alias copgh="gh copilot suggest -t gh"
 alias autogpt="docker compose -f ~/Developer/AutoGPT/docker-compose.yaml run --rm auto-gpt"
