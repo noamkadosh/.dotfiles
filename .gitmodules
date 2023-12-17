@@ -18,8 +18,3 @@
 	url = git@github.com:noamkadosh/.obsidian.git
 	branch = main
 	update = rebase
-[submodule ".config/fonts"]
-	path = .config/fonts
-	url = https://github.com/noamkadosh/.fonts.git
-	branch = main
-	update = rebase
