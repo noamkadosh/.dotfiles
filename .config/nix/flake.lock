@@ -37,6 +37,22 @@
         "type": "github"
       }
     },
+    "fonts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702807708,
+        "narHash": "sha256-/sBObGmMWwtWohqqa5wnhSDhNynrUhNFSkqXtQaV2kU=",
+        "owner": "noamkadosh",
+        "repo": ".dotfiles",
+        "rev": "c0037e604ef8434cb46297c97ddb74aed5dc7924",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noamkadosh",
+        "repo": ".dotfiles",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -94,6 +110,7 @@
       "inputs": {
         "comma": "comma",
         "darwin": "darwin",
+        "fonts": "fonts",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"

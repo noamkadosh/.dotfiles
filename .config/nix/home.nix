@@ -27,12 +27,15 @@ in {
     packages = with pkgs;
       [
         _1password
+        # _1password-gui
         act
+        # unstable.alacritty
         alejandra
         argparse
         avrdude
         awscli2
         bandwhich
+        # unstable.bartender
         bat
         blackbox
         bottom
@@ -48,6 +51,7 @@ in {
         unstable.fastfetch
         fd
         ffmpeg_5
+        # firefox-devedition
         flyctl
         fontforge
         fzf
@@ -72,6 +76,7 @@ in {
         mprocs
         nmap
         openssl
+        unstable.obsidian
         pkg-config
         # postgresql
         procs
@@ -92,6 +97,8 @@ in {
         tree-sitter
         unstable.nodePackages.vercel
         vim
+        vscode
+        unstable.wezterm
         wget
         xclip
         xquartz
