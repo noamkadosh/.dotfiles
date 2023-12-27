@@ -33,7 +33,7 @@ local MONASPACE_RADON = "Monaspace Radon"
 local SF_MONO = "SFMono"
 local VICTOR_MONO = "Victor Mono"
 
-M.fonts = {
+M = {
     cascadia_code = {
         family = CASCADIA_CODE,
         weight = REGULAR,
