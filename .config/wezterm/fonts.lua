@@ -21,15 +21,15 @@ local HARFBUZZ_FEATURES = {
 
 local CASCADIA_CODE = "Cascadia Code"
 local FIRA_CODE = "Fira Code"
-local JETBRAINS_MONO = "JetBrains Mono"
+local GEIST_MONO = "Geist Mono"
 local HERMIT = "Hermit"
-local IOSEVKA_TERM = "Iosevka Term"
+local JETBRAINS_MONO = "JetBrains Mono"
 local LEAGUE_MONO = "League Mono"
-local MONASPACE_NEON = "Monaspace Neon"
 local MONASPACE_ARGON = "Monaspace Argon"
 local MONASPACE_KRYPTON = "Monaspace Krypton"
-local MONASPACE_XENON = "Monaspace Xenon"
+local MONASPACE_NEON = "Monaspace Neon"
 local MONASPACE_RADON = "Monaspace Radon"
+local MONASPACE_XENON = "Monaspace Xenon"
 local SF_MONO = "SFMono"
 local VICTOR_MONO = "Victor Mono"
 
@@ -44,8 +44,8 @@ M = {
         weight = REGULAR,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
-    jetbrains_mono = {
-        family = JETBRAINS_MONO,
+    geist_mono = {
+        family = GEIST_MONO,
         weight = REGULAR,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
@@ -54,12 +54,9 @@ M = {
         weight = REGULAR,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
-    -- NOTE: looks like there's an issue loading the correct Iosevka font,
-    -- it also causes long loading times
-    iosevka_term = {
-        family = IOSEVKA_TERM,
+    jetbrains_mono = {
+        family = JETBRAINS_MONO,
         weight = REGULAR,
-        stretch = EXPANDED,
         harfbuzz_features = HARFBUZZ_FEATURES,
     },
     league_mono = {

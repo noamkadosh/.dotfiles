@@ -75,6 +75,7 @@ in {
         # mongodb
         mprocs
         nmap
+        unstable.ollama
         openssl
         unstable.obsidian
         pkg-config

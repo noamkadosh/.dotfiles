@@ -5,7 +5,7 @@ local fonts = require("fonts")
 local config = {
     term = "wezterm",
     font = wezterm.font_with_fallback({
-        fonts.sf_mono,
+        fonts.geist_mono,
         fonts.jetbrains_mono,
     }),
     window_padding = {
@@ -14,7 +14,8 @@ local config = {
         top = 0,
         bottom = 0,
     },
-    window_background_opacity = 0.9,
+    window_background_opacity = 0.85,
+    macos_window_background_blur = 25,
     font_size = 18.0,
     line_height = 1.22,
     cell_width = 0.95,

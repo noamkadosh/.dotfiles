@@ -12,12 +12,6 @@
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # fonts
-    fonts = {
-      url = "github:noamkadosh/.dotfiles";
-      flake = false;
-    };
-
     # Other sources
     comma = {
       url = "github:nix-community/comma";
@@ -51,7 +45,6 @@
               (final.pkgs-x86)
               nix-index
               ;
-            # TODO: add fonts overlays here??
           })
         );
     };
@@ -96,8 +89,6 @@
     # Overlays --------------------------------------------------------------- {{{
 
     overlays = {
-      # TODO: or maybe add fonts overlays here??
-
       # Overlays to add various packages into package set
       comma = final: prev: {
         comma = import inputs.comma {inherit (prev) pkgs;};
