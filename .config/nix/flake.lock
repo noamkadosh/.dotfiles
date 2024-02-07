@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "comma": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1703707084,
-        "narHash": "sha256-27UMbdvgVu1A1zHnte+7RrNYyhtaQWy1yPm5WqLvX8A=",
-        "owner": "nix-community",
-        "repo": "comma",
-        "rev": "cbcec3d8288ade32c39b76cf5087417e5c517397",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "comma",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -34,22 +18,6 @@
         "owner": "lnl7",
         "ref": "master",
         "repo": "nix-darwin",
-        "type": "github"
-      }
-    },
-    "fonts": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1703656553,
-        "narHash": "sha256-hNw22UuvmPM80B/aV2aYoXLgBioJVu3CC6WBNQ70NdY=",
-        "owner": "noamkadosh",
-        "repo": ".dotfiles",
-        "rev": "130f182afe586b34b4b7416a46e5d41643a7c7f0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noamkadosh",
-        "repo": ".dotfiles",
         "type": "github"
       }
     },
@@ -108,9 +76,7 @@
     },
     "root": {
       "inputs": {
-        "comma": "comma",
         "darwin": "darwin",
-        "fonts": "fonts",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"

@@ -11,7 +11,6 @@
   };
 in {
   # Nix configuration
-
   nix = {
     settings = {
       substituters = [
@@ -51,12 +50,6 @@ in {
   services.nix-daemon.enable = true;
 
   programs.nix-index.enable = true;
-
-  # Fonts
-  # TODO: add fonts
-  # fonts.fonts = with pkgs; [
-  #
-  #  ];
 
   # Keyboard
   system.keyboard.enableKeyMapping = true;

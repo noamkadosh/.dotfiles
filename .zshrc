@@ -11,7 +11,8 @@ done
 unset conf
 
 # zsh completion
-autoload -Uz compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump" && compinit
 
 # prevent duplicates in $PATH and $FPATH.
 unique path

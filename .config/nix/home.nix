@@ -11,8 +11,6 @@
     config.allowUnsupportedSystem = true;
   };
 in {
-  # https://github.com/malob/nixpkgs/blob/master/home/default.nix
-
   programs = {
     home-manager.enable = true;
     # Direnv, load and unload environment variables depending on the current directory.
@@ -41,6 +39,7 @@ in {
         bottom
         cachix # adding/managing alternative binary caches hosted by Cachix
         cloudflared
+        comma
         coreutils
         curl
         delta
@@ -56,7 +55,6 @@ in {
         fontforge
         fzf
         gh
-        gitui
         gnupg
         gnused
         (writeShellScriptBin "gsed" ''exec ${gnused}/bin/sed "$@" '')
@@ -66,6 +64,9 @@ in {
         hyperfine
         unstable.joshuto
         kubectl
+        lazydocker
+        lazygit
+        # lazysql - not available yet
         linode-cli
         luarocks
         luajit
@@ -81,7 +82,6 @@ in {
         pkg-config
         # postgresql
         procs
-        python3
         redis
         ripgrep
         rojo
@@ -114,6 +114,10 @@ in {
         m-cli # useful macOS CLI commands
       ];
   };
+
+  imports = [
+    ./python.nix
+  ];
 
   # Misc configuration files --------------------------------------------------------------------{{{
 

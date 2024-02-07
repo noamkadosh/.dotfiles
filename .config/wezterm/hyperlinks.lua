@@ -28,11 +28,11 @@ M.numeric_hyperlinks = {
 -- }
 
 -- Make username/project paths clickable. This implies paths like the following are for GitHub.
--- ( "nvim-treesitter/nvim-treesitter" | wbthomason/packer.nvim | wez/wezterm | "wez/wezterm.git" )
+-- ( "nvim-treesitter/nvim-treesitter" | wbthomason/packer.nvim | wez/wezterm | 'wez/wezterm.git' )
 -- As long as a full URL hyperlink regex exists above this it should not match a full URL to
 -- GitHub or GitLab / BitBucket (i.e. https://gitlab.com/user/project.git is still a whole clickable URL)
 M.github_hyperlinks = {
-    regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
+    regex = [[["']?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["']?]],
     format = "https://www.github.com/$1/$3",
 }
 

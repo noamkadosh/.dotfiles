@@ -1,7 +1,6 @@
 layout {
     // Pane templates
     pane_template name="editor"
-    pane_template name="aichat" command="/Users/noam/.cargo/bin/aichat" start_suspended=true
     pane_template name="terminal"
     pane_template name="statusbar" {
         // NOTE: Zellij wants absolute path only
@@ -9,6 +8,13 @@ layout {
     }
 
     // Tab templates
+    tab_template name="turbo" {
+        floating_panes {
+            terminal name="TERMINAL" cwd="Developer/turbo"
+        }
+        editor name="EDITOR" cwd="Developer/turbo"
+        statusbar size=1 borderless=true
+    }
     tab_template name="dotfiles" {
         floating_panes {
             terminal name="TERMINAL" cwd=".config"
@@ -23,10 +29,6 @@ layout {
         editor name="EDITOR" cwd=".config/obsidian"
         statusbar size=1 borderless=true
     }
-    tab_template name="chat" {
-        aichat name="CHAT"
-        statusbar size=1 borderless=true
-    }
 
     default_tab_template {
         pane
@@ -34,7 +36,7 @@ layout {
     }
 
     // Layout
-    dotfiles name="DOTFILES" focus=true
+    turbo name="TURBO" focus=true
+    dotfiles name="DOTFILES"
     notes name="NOTES"
-    chat name="CHAT"
 }
