@@ -92,7 +92,7 @@ in {
         nodePackages.snyk
         starship
         statix
-        nodePackages.stylelint
+        stow
         tealdeer
         tokei
         tree-sitter
