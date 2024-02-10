@@ -1,29 +1,15 @@
-## Installation
+# Prerequisites
 
-Clone this repository as a bare repo.
+- git
+- stow
 
-```shell
-git clone --bare --jobs 8 git@github.com:noamkadosh/.dotfiles.git $HOME/.dotfiles.git/
-```
-
-Checkout `main`.
+# Installation
 
 ```shell
-/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME checkout main
-```
-
-Update submodules.
-```shell
-/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME submodule update --init --force --checkout
-```
-
-To ignore untracked files and avoid too much noise:
-```shell
-/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME config --local status.showUntrackedFiles no
-````
-
-Then, run the install script.
-
-```shell
-$(command -v zsh) "$HOME/.config/install.zsh"
+git clone git@github.com:noamkadosh/.dotfiles.git # clone this repository
+cd .dotfiles # cd into the repository
+git checkout main # checkout main
+git submodule update --init --force --checkout # pull, update and checkout main on submodules
+stow . # run stow
+$(command -v zsh) "$HOME/.config/install.zsh" # run the install script
 ```
