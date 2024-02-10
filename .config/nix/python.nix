@@ -6,8 +6,6 @@
 }: let
   unstable = import inputs.nixpkgs-unstable {
     inherit (pkgs) system;
-    config.allowUnfree = true;
-    config.allowUnsupportedSystem = true;
   };
 in {
   home.packages = with pkgs; [
