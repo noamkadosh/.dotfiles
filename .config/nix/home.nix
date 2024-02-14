@@ -63,6 +63,7 @@ in {
         hadolint
         hyperfine
         unstable.joshuto
+        jq
         kubectl
         lazydocker
         lazygit
