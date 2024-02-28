@@ -1,7 +1,7 @@
 # Prerequisites
 
-- git
-- stow
+- `git`
+- `stow`
 
 # Installation
 
