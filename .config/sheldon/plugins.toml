@@ -81,10 +81,6 @@ apply = ["defer"]
 remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/tmux/tmux.plugin.zsh"
 apply = ["defer"]
 
-[plugins.yarn]
-remote = "https://github.com/ohmyzsh/ohmyzsh/raw/master/plugins/yarn/yarn.plugin.zsh"
-apply = ["defer"]
-
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 apply = ["defer", "fpath-src"]

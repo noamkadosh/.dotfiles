@@ -24,7 +24,10 @@ alias crr="cargo run --release"
 alias ct="cargo test"
 alias cta="cargo test && cargo test -- --ignored"
 
-# Pnpm aliases
+# Package Manegers aliases
+alias n="npm"
+alias nx="npx"
+alias y="yarn"
 alias p="pnpm"
 alias pex="pnpm exec"
 alias pnx="pnpm nx"
