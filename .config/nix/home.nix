@@ -77,7 +77,7 @@ in {
         # mongodb
         mprocs
         nmap
-        unstable.ollama
+        # unstable.ollama
         openssl
         unstable.obsidian
         pkg-config
@@ -97,7 +97,6 @@ in {
         tealdeer
         tokei
         tree-sitter
-        unstable.nodePackages.vercel
         vim
         vscode
         unstable.wezterm
