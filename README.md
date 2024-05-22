@@ -14,7 +14,5 @@ git checkout main # checkout main
 
 git submodule update --init --force --checkout # pull, update and checkout main on submodules
 
-stow . # run stow
-
 $(command -v zsh) "$HOME/.config/install.zsh" # run the install script
 ```

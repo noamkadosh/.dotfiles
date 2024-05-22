@@ -29,3 +29,5 @@ $(command -v bat) cache --build || die "Failed to build bat cache"
 
 # Editor Config
 [ -e "$HOME/.config/editorconfig" -a ! -L "$HOME/.editorconfig" ] && ln -s "$HOME/.config/editorconfig" "$HOME/.editorconfig" || die "Failed to create EditorConfig symlink"
+
+stow .
