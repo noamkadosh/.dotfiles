@@ -1,10 +1,5 @@
 #!/bin/zsh
 
-die() {
-    echo "Error: $1" >&2
-    exit 1
-}
-
 # Volta
 curl https://get.volta.sh | bash || die "Failed to install Volta"
 
@@ -12,7 +7,7 @@ curl https://get.volta.sh | bash || die "Failed to install Volta"
 ~/.volta/bin/volta install pnpm || die "Failed to install pnpm via Volta"
 
 # Nix
-\. ~/.config/nix/install.zsh || die "Failed to install Nix"
+\. "$HOME/.config/nix/install.zsh" || die "Failed to install Nix"
 
 # Rust
 $(command -v rustup) default stable || die "Failed to install Rust"

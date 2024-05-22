@@ -1,3 +1,10 @@
+# display error message when a command fails
+# usage: <COMMAND> || die "<ERROR>"
+function die() {
+    echo "Error: $1" >&2
+    exit 1
+}
+
 #
 function batOrMdcat() {
     # Get the file extension
