@@ -29,7 +29,7 @@ mv /etc/nix/nix.conf /etc/nix/.nix-darwin.bkp.nix.conf || die "Failed to move ni
 
 # Build configuration
 /nix/var/nix/profiles/default/bin/nix build ~/.dotfiles/.config/nix#darwinConfigurations.Noam.system || die "Failed to build nix"
-~/result/sw/bin/darwin-rebuild switch --flake ~/.dotfiles/config/nix#Noam || die "Failed to switch to flake"
+~/result/sw/bin/darwin-rebuild switch --flake ~/.dotfiles/.config/nix#Noam || die "Failed to switch to flake"
 
 [ -f "$HOME/.zshrc" ] && \. "$HOME/.zshrc"
 
