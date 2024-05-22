@@ -4,4 +4,4 @@ $(command -v cargo) install cargo-watch
 
 # Bob-nvim
 $(command -v cargo) install bob-nvim
-$(command -v bob) install nightly
+$(command -v bob) use nightly
