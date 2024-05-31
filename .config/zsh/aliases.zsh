@@ -34,6 +34,7 @@ alias pnx="pnpm nx"
 alias pr="pnpm run"
 alias px="pnpm dlx"
 alias b="bun"
+alias bx="bunx"
 
 # Nix aliases
 alias nixgc="nix-collect-garbage -d"

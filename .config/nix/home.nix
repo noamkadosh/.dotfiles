@@ -62,7 +62,6 @@ in {
         grex
         hadolint
         hyperfine
-        unstable.joshuto
         jq
         kubectl
         lazydocker
@@ -72,6 +71,7 @@ in {
         luarocks
         luajit
         mdcat
+        mermaid-cli
         mdl
         (writeShellScriptBin "markdownlint" ''exec ${mdl}/bin/mdl "$@" '')
         # mongodb
@@ -105,6 +105,7 @@ in {
         xquartz
         unstable.yabai
         yarn
+        unstable.yazi
         unstable.zellij
         zoxide
         zsh
@@ -115,9 +116,10 @@ in {
       ];
   };
 
-  imports = [
-    ./python.nix
-  ];
+  # NOTE: python packages not needed anymore, but leaving it for reference
+  # imports = [
+  #   ./python.nix
+  # ];
 
   # Misc configuration files --------------------------------------------------------------------{{{
 
