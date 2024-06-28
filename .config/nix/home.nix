@@ -21,7 +21,7 @@ in {
   };
 
   home = {
-    stateVersion = "23.11";
+    stateVersion = "24.05";
     packages = with pkgs;
       [
         _1password
@@ -54,6 +54,7 @@ in {
         flyctl
         fontforge
         fzf
+        unstable.ggshield
         gh
         gnupg
         gnused

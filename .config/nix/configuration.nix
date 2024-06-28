@@ -25,7 +25,7 @@ in {
     };
     configureBuildUsers = true;
     # Enable experimental nix command and flakes
-    package = pkgs.nixUnstable;
+    package = pkgs.nixFlakes;
 
     extraOptions =
       ''

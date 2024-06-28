@@ -39,11 +39,12 @@ alias bx="bunx"
 # Nix aliases
 alias nixgc="nix-collect-garbage -d"
 alias nixq="nix-env -qaP"
-alias nixb="nix build --out-link ~/result ~/.dotfiles/.config/nix#darwinConfigurations.Noam.system
-~/result/sw/bin/darwin-rebuild switch --flake ~/.dotfiles/.config/nix#Noam"
+alias nixb="nix build --out-link ~/result $HOME/.dotfiles/.config/nix#darwinConfigurations.Noam.system
+$HOME/result/sw/bin/darwin-rebuild switch --flake $HOME/.dotfiles/.config/nix#Noam"
 alias nixup="nix-env -u"
 alias nixupdate="nix flake update ~/.dotfiles/.config/nix/"
 alias nixupgrade="sudo -i sh -c 'nix-channel --update && nix-env --install --attr nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'"
+alias reloadnixdaemon="sudo launchctl unload /Libray/LaunchDaemons/org.nixos.nix-daemon.plist && sudo launchctl load /Libray/LaunchDaemons/org.nixos.nix-daemon.plist"
 
 # Config aliases
 alias alacrittyconfig="$EDITOR $XDG_CONFIG_HOME/alacritty/alacritty.yml"
