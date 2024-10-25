@@ -1,15 +1,19 @@
 {
   pkgs,
   lib,
-  inputs,
   ...
-}: let
-  unstable = import inputs.nixpkgs-unstable {
-    inherit (pkgs) system;
-    config.allowUnfree = true;
-    config.allowUnsupportedSystem = true;
+}: {
+  system = {
+    stateVersion = 5;
+    # Keyboard
+    keyboard.enableKeyMapping = true;
+    keyboard.remapCapsLockToEscape = true;
   };
-in {
+
+  # This is needed since stateVersion is set to 5 (the GID for v5 is 350)
+  # see https://github.com/LnL7/nix-darwin/blob/7840909b00fbd5a183008a6eb251ea307fe4a76e/CHANGELOG#L1
+  ids.gids.nixbld = 30000;
+
   # Nix configuration
   nix = {
     settings = {
@@ -50,10 +54,6 @@ in {
   services.nix-daemon.enable = true;
 
   programs.nix-index.enable = true;
-
-  # Keyboard
-  system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToEscape = true;
 
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
