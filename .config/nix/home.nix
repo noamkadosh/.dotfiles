@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   inputs,
@@ -27,7 +26,7 @@ in {
         _1password
         # _1password-gui
         act
-        # unstable.alacritty
+        unstable.aider-chat
         alejandra
         argparse
         avrdude
