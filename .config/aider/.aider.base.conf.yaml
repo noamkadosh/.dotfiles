@@ -1,0 +1,10 @@
+---
+model: openrouter/anthropic/claude-3.5-sonnet
+editor-model: openrouter/anthropic/claude-3.5-sonnet
+# model: codestral/codestral-latest
+# editor-model: codestral/codestral-latest
+architect: true
+read:
+  - rules.md
+  - prompt.md
+  - conventions.md
