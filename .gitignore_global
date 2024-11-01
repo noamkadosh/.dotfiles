@@ -36,10 +36,16 @@
 ehthumbs.db
 Thumbs.db
 
+# .env #
+######################
+.env*
+
 # Git #
 ######################
-
-
 **/gh/hosts.yaml
 **/github-copilot/hosts.json
 .git-worktrees/
+
+# Aider #
+######################
+.aider*.
