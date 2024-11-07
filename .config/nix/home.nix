@@ -42,6 +42,7 @@ in {
         coreutils
         curl
         delta
+        unstable.deno
         # docker
         # docker-compose
         du-dust
@@ -64,9 +65,9 @@ in {
         hyperfine
         jq
         kubectl
-        lazydocker
-        lazygit
-        # lazysql - not available yet
+        unstable.lazydocker
+        unstable.lazygit
+        unstable.lazysql
         linode-cli
         luarocks
         luajit

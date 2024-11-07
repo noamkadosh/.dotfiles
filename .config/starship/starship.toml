@@ -75,6 +75,9 @@ disabled = false
 [container]
 format = '[╾─╼\[](fg:#383E5A)[$symbol($name)](fg:#0db7ed)[\]](fg:#383E5A)'
 
+[deno]
+format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:green bold)[\]](fg:#383E5A)'
+
 [docker_context]
 symbol = '󰡨 '
 detect_folders = ["docker"]
@@ -89,6 +92,7 @@ symbol = '󰢱 '
 format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:#0000FF)[\]](fg:#383E5A)'
 
 [nodejs]
+detect_extensions = []
 format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:#68a063)[\]](fg:#383E5A)'
 
 [rust]
@@ -115,9 +119,6 @@ disabled = true
 disabled = true
 
 [dart]
-disabled = true
-
-[deno]
 disabled = true
 
 [dotnet]
