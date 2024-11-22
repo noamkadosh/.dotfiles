@@ -81,8 +81,9 @@ in {
         # unstable.ollama
         openssl
         unstable.obsidian
+        # pgadmin
         pkg-config
-        # postgresql
+        unstable.postgresql
         procs
         redis
         ripgrep

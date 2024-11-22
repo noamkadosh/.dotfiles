@@ -10,9 +10,9 @@ layout {
     // Tab templates
     tab_template name="turbo" {
         floating_panes {
-            terminal name="TERMINAL" cwd="Developer/turbo"
+            terminal name="TERMINAL" cwd="Developer/turbo-deno"
         }
-        editor name="EDITOR" cwd="Developer/turbo"
+        editor name="EDITOR" cwd="Developer/turbo-deno"
         statusbar size=1 borderless=true
     }
     tab_template name="dotfiles" {

@@ -3,7 +3,7 @@
 
 format = '''
 [┌─╼\[](fg:#383E5A)$time[\]](fg:#383E5A)$cmd_duration
-[└─╼\[](fg:#383E5A)$directory[\]](fg:#383E5A)$container$docker_context$golang$lua$nodejs$rust$shell$git_branch$git_status$git_state$git_commit
+[└─╼\[](fg:#383E5A)$directory[\]](fg:#383E5A)$container$docker_context$golang$lua$deno$nodejs$rust$shell$git_branch$git_status$git_state$git_commit
 $status$character'''
 
 # Inserts a blank line between shell prompts
@@ -77,6 +77,7 @@ format = '[╾─╼\[](fg:#383E5A)[$symbol($name)](fg:#0db7ed)[\]](fg:#383E5A)'
 
 [deno]
 format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:green bold)[\]](fg:#383E5A)'
+symbol = ' '
 
 [docker_context]
 symbol = '󰡨 '
@@ -93,6 +94,7 @@ format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:#0000FF)[\]](fg:#383E5
 
 [nodejs]
 detect_extensions = []
+detect_folders = []
 format = '[╾─╼\[](fg:#383E5A)[$symbol($version)](fg:#68a063)[\]](fg:#383E5A)'
 
 [rust]
