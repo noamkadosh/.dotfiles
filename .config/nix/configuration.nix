@@ -1,8 +1,16 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
-}: {
+}: let
+  # Create unstable reference similar to home.nix
+  unstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs) system;
+    config.allowUnfree = true;
+    config.allowUnsupportedSystem = true;
+  };
+in {
   system = {
     stateVersion = 5;
     # Keyboard
@@ -51,7 +59,18 @@
   programs.zsh.enable = true;
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  services = {
+    nix-daemon.enable = true;
+    skhd = {
+      enable = true;
+      package = unstable.skhd;
+    };
+    yabai = {
+      enable = true;
+      package = unstable.yabai;
+      enableScriptingAddition = true;
+    };
+  };
 
   programs.nix-index.enable = true;
 

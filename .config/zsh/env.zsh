@@ -1,3 +1,4 @@
+. "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -13,5 +14,3 @@ export EDITOR="nvim"
 export DISPLAY=:0
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export LESSOPEN='|~/.lessfilter %s'
-# $TERM should be set automatically
-# export TERM="wezterm" OR "alacritty"

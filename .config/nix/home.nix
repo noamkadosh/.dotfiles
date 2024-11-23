@@ -62,6 +62,7 @@ in {
         go
         grex
         hadolint
+        home-manager
         hyperfine
         jq
         kubectl
@@ -91,7 +92,6 @@ in {
         rustup
         sd
         unstable.sheldon
-        unstable.skhd
         nodePackages.snyk
         starship
         statix
@@ -105,7 +105,6 @@ in {
         wget
         xclip
         xquartz
-        unstable.yabai
         yarn
         unstable.yazi
         unstable.zellij

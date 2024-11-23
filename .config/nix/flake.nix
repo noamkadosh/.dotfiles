@@ -9,8 +9,10 @@
     # Environment/system management
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -67,17 +69,6 @@
           ];
         specialArgs = {inherit inputs;};
       };
-    };
-
-    services.skhd = {
-      enable = true;
-      package = nixpkgs.skhd;
-    };
-
-    services.yabai = {
-      enable = true;
-      package = nixpkgs.yabai;
-      enableScriptingAddition = true;
     };
 
     # Overlays --------------------------------------------------------------- {{{
