@@ -6,8 +6,10 @@
 }: let
   unstable = import inputs.nixpkgs-unstable {
     inherit (pkgs) system;
-    config.allowUnfree = true;
-    config.allowUnsupportedSystem = true;
+    config = {
+      allowUnfree = true;
+      allowUnsupportedSystem = true;
+    };
   };
 in {
   programs = {
@@ -15,8 +17,10 @@ in {
     # Direnv, load and unload environment variables depending on the current directory.
     # https://direnv.net
     # https://rycee.gitlab.io/home-manager/options.html#opt-programs.direnv.enable
-    direnv.enable = true;
-    direnv.nix-direnv.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   home = {
@@ -36,7 +40,7 @@ in {
         bat
         blackbox
         bottom
-        cachix # adding/managing alternative binary caches hosted by Cachix
+        cachix
         cloudflared
         comma
         coreutils
@@ -121,8 +125,6 @@ in {
   # imports = [
   #   ./python.nix
   # ];
-
-  # Misc configuration files --------------------------------------------------------------------{{{
 
   # https://docs.haskellstack.org/en/stable/yaml_configuration/#non-project-specific-config
   home.file.".stack/config.yaml".text = lib.generators.toYAML {} {
