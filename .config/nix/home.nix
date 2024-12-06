@@ -24,10 +24,10 @@ in {
   };
 
   home = {
-    stateVersion = "24.05";
+    stateVersion = "24.11";
     packages = with pkgs;
       [
-        _1password
+        _1password-cli
         # _1password-gui
         act
         unstable.aider-chat
@@ -38,7 +38,7 @@ in {
         bandwhich
         # unstable.bartender
         bat
-        blackbox
+        # blackbox
         bottom
         cachix
         cloudflared
@@ -53,7 +53,7 @@ in {
         unstable.eza
         unstable.fastfetch
         fd
-        ffmpeg_5
+        ffmpeg
         # firefox-devedition
         flyctl
         fontforge
@@ -69,6 +69,7 @@ in {
         home-manager
         hyperfine
         jq
+        jqp
         kubectl
         unstable.lazydocker
         unstable.lazygit
@@ -92,7 +93,6 @@ in {
         procs
         redis
         ripgrep
-        rojo
         rustup
         sd
         unstable.sheldon

@@ -39,7 +39,7 @@ in {
     };
     configureBuildUsers = true;
 
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
 
     extraOptions =
       ''
