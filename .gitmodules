@@ -3,8 +3,8 @@
 	url = git@github.com:noamkadosh/nvim.git
 	branch = main
 	update = rebase
-[submodule ".config/zellij/plugins_src/statusbar"]
-	path = .config/zellij/plugins_src/statusbar
+[submodule ".config/zellij/statusbar"]
+	path = .config/zellij/statusbar
 	url = git@github.com:noamkadosh/statusbar.git
 	branch = main
 	update = rebase
