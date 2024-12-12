@@ -8,11 +8,11 @@ layout {
     }
 
     // Tab templates
-    tab_template name="turbo" {
+    tab_template name="nk" {
         floating_panes {
-            terminal name="TERMINAL" cwd="Developer/turbo-deno"
+            terminal name="TERMINAL" cwd="Developer/nk"
         }
-        editor name="EDITOR" cwd="Developer/turbo-deno"
+        editor name="EDITOR" cwd="Developer/nk"
         statusbar size=1 borderless=true
     }
     tab_template name="dotfiles" {
@@ -36,7 +36,7 @@ layout {
     }
 
     // Layout
-    turbo name="TURBO" focus=true
+    nk name="NK" focus=true
     dotfiles name="DOTFILES"
     notes name="NOTES"
 }
